@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:background="#f4f6fa"
+    tools:context="net.azurewebsites.farmtrace.drawer.NavigationDrawerFragment">
+
+    <ScrollView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/icon_edit_height"
+                        android:orientation="horizontal">
+
+                        <net.azurewebsites.farmtrace.widget.RoundedImageView
+                            android:id="@+id/profile_pic"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/avatar"
+                            android:scaleType="centerInside"/>
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingLeft="16dp">
+
+
+                            <TextView
+                                android:id="@+id/username"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="2"
+                                android:textColor="#FF202020"
+                                android:textSize="18sp"
+                                fontPath="fonts/kontrapunkt_light.otf"
+                                tools:ignore="MissingPrefix"/>
+
+                            <TextView
+                                android:id="@+id/designation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:textColor="#FF202020"
+                                android:textSize="14sp"
+                                fontPath="fonts/kontrapunkt_light.otf"
+                                tools:ignore="MissingPrefix"/>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                 </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+     </ScrollView>
+</LinearLayout>

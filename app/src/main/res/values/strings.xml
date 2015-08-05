@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">FarmTrace</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Login</string>
+    <string name="login">Login</string>
+    <string name="username">User Name</string>
+    <string name="password">Password</string>
+    <string name="numberoffarmers">1,200 </string>
+    <string name="numberoffields">275</string>
+    <string name="weeklyharvet">80,600</string>
+    <string name="farmers">Farmers</string>
+    <string name="fields">Fields</string>
+    <string name="harvest">Weekly Harvest</string>
+    <string name="empty_string">""</string>
+    <string name="set_profile_photo">Set profile photo</string>
+</resources>

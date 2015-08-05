@@ -1,0 +1,111 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingPrefix"
+    tools:context="net.azurewebsites.farmtrace.Login">
+
+    <LinearLayout
+        android:id="@+id/header_bottom"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="@dimen/header_bottom_height"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/circular_image"
+            android:layout_width="@dimen/header_circular_image_size"
+            android:layout_height="@dimen/header_circular_image_size"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            >
+
+            <net.azurewebsites.farmtrace.widget.CircularBackgroundView
+                android:id="@+id/icon_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+            <ImageView
+                android:id="@+id/account_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="24dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/black_hand_planting_512" />
+        </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/appname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/account_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="@string/app_name"
+            android:textColor="@color/black_semi_transparent"
+            android:textSize="@dimen/header_text_size"
+            fontPath="fonts/kontrapunkt_light.otf"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/usercredentials"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="300dp"
+        android:padding="@dimen/ui_spacing_medium"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/txtUsername"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/round_rect_shape"
+            android:hint="@string/username"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColor="@color/black_semi_transparent"
+            android:textCursorDrawable="@null"
+            fontPath="fonts/kontrapunkt_light.otf"
+            >
+            <requestFocus/>
+        </EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:layout_below="@+id/txtUsername"
+            android:id="@+id/txtPassword"
+            android:layout_height="40dp"
+            android:background="@drawable/round_rect_shape"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            fontPath="fonts/kontrapunkt_light.otf"
+            android:textColor="@color/black_semi_transparent"
+            android:textCursorDrawable="@null"
+            >
+
+        </EditText>
+
+        <Button android:id="@+id/btnLogIn"
+            android:layout_below="@id/txtPassword"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/green_button"
+            android:text="@string/login"
+            fontPath="fonts/kontrapunkt_light.otf"
+            android:textColor="@android:color/white"
+            />
+    </RelativeLayout>
+</FrameLayout>
