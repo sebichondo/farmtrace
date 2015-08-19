@@ -10,8 +10,11 @@
     <string name="numberoffields">275</string>
     <string name="weeklyharvet">80,600</string>
     <string name="farmers">Farmers</string>
+    <string name="crops">Crops</string>
+
     <string name="fields">Fields</string>
     <string name="harvest">Weekly Harvest</string>
     <string name="empty_string">""</string>
+    <string name="logout">Logout</string>
     <string name="set_profile_photo">Set profile photo</string>
 </resources>

@@ -2,87 +2,243 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f4f6fa"
     android:fillViewport="true"
     android:orientation="vertical"
-    android:background="#f4f6fa"
     tools:context="net.azurewebsites.farmtrace.drawer.NavigationDrawerFragment">
 
-    <ScrollView
-        android:id="@+id/content"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-               >
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/ui_spacing_small"
+                android:paddingRight="@dimen/ui_spacing_small">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp">
+                    android:layout_height="@dimen/icon_edit_height"
+                    android:orientation="horizontal">
 
+                    <net.azurewebsites.farmtrace.widget.RoundedImageView
+                        android:id="@+id/profile_pic"
+                        android:layout_width="@dimen/profile_pic_size"
+                        android:layout_height="@dimen/profile_pic_size"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/avatar" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/icon_edit_height"
-                        android:orientation="horizontal">
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/ui_spacing_small">
 
-                        <net.azurewebsites.farmtrace.widget.RoundedImageView
-                            android:id="@+id/profile_pic"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/avatar"
-                            android:scaleType="centerInside"/>
-
-
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/username"
+                            fontPath="fonts/kontrapunkt_light.otf"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:paddingLeft="16dp">
-
-
-                            <TextView
-                                android:id="@+id/username"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:maxLines="2"
-                                android:textColor="#FF202020"
-                                android:textSize="18sp"
-                                fontPath="fonts/kontrapunkt_light.otf"
-                                tools:ignore="MissingPrefix"/>
-
-                            <TextView
-                                android:id="@+id/designation"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:ellipsize="end"
-                                android:singleLine="true"
-                                android:textColor="#FF202020"
-                                android:textSize="14sp"
-                                fontPath="fonts/kontrapunkt_light.otf"
-                                tools:ignore="MissingPrefix"/>
-
-
-                        </LinearLayout>
-
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:textColor="#FF202020"
+                            android:textSize="@dimen/slight_medium_text"
+                            tools:ignore="MissingPrefix" />
+                        <TextView
+                            android:id="@+id/designation"
+                            fontPath="fonts/kontrapunkt_light.otf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/ui_padding"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:textColor="#FF202020"
+                            android:textSize="14sp"
+                            tools:ignore="MissingPrefix" />
                     </LinearLayout>
-                 </LinearLayout>
-            </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/accounts_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="8dp">
         </LinearLayout>
-     </ScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffcccccc" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_marginTop="@dimen/ui_padding"
+                android:id="@+id/farmer_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ui_spacing_small"
+                android:layout_marginStart="@dimen/ui_spacing_small"
+                android:focusable="false"
+                android:paddingBottom="@dimen/ui_padding"
+                android:textSize="@dimen/drawer_icon_size"
+                android:paddingTop="@dimen/ui_padding"
+                android:text="{zmdi-accounts-alt}" />
+
+        <TextView
+
+            android:id="@+id/txtfarmers"
+            fontPath="fonts/kontrapunkt_light.otf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ui_padding"
+            android:layout_toRightOf="@+id/farmer_image"
+            android:clickable="true"
+            android:paddingLeft="@dimen/ui_spacing_small"
+            android:paddingBottom="@dimen/ui_padding"
+            android:paddingRight="@dimen/ui_padding"
+            android:paddingTop="@dimen/ui_padding"
+            android:text="@string/farmers"
+            android:textColor="#ff202020"
+            android:textSize="@dimen/slight_medium_text"
+            tools:ignore="MissingPrefix" />
+
+
+            <TextView
+                android:layout_marginTop="@dimen/ui_padding"
+                android:id="@+id/crop_image"
+                android:layout_below="@+id/txtfarmers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ui_spacing_small"
+                android:layout_marginStart="@dimen/ui_spacing_small"
+                android:focusable="false"
+                android:paddingBottom="@dimen/ui_padding"
+                android:textSize="@dimen/drawer_icon_size"
+                android:paddingTop="@dimen/ui_padding"
+                android:text="{zmdi-flower-alt}" />
+
+        <TextView
+            android:id="@+id/txtcrops"
+            android:layout_below="@+id/txtfarmers"
+            fontPath="fonts/kontrapunkt_light.otf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ui_padding"
+            android:clickable="true"
+            android:layout_toRightOf="@+id/farmer_image"
+            android:paddingBottom="@dimen/ui_padding"
+            android:paddingLeft="@dimen/ui_spacing_small"
+            android:paddingRight="@dimen/ui_spacing_small"
+            android:paddingTop="@dimen/ui_padding"
+            android:text="@string/crops"
+            android:textColor="#ff202020"
+            android:textSize="@dimen/slight_medium_text"
+            tools:ignore="MissingPrefix" />
+
+
+            <TextView
+                android:layout_marginTop="@dimen/ui_padding"
+                android:id="@+id/input_image"
+                android:layout_below="@+id/txtcrops"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ui_spacing_small"
+                android:layout_marginStart="@dimen/ui_spacing_small"
+                android:focusable="false"
+                android:paddingBottom="@dimen/ui_padding"
+                android:textSize="@dimen/drawer_icon_size"
+                android:paddingTop="@dimen/ui_padding"
+                android:text="{zmdi-polymer}" />
+
+            <TextView
+            android:layout_below="@+id/txtcrops"
+            fontPath="fonts/kontrapunkt_light.otf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/crop_image"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:paddingBottom="@dimen/ui_padding"
+            android:paddingLeft="@dimen/ui_spacing_small"
+            android:paddingRight="@dimen/ui_spacing_small"
+            android:paddingTop="@dimen/ui_padding"
+            android:text="Farm Inputs"
+            android:textColor="#ff202020"
+            android:textSize="@dimen/slight_medium_text"
+            tools:ignore="MissingPrefix" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/my_life_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/ui_padding" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffcccccc" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/log_out_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <TextView
+            android:id="@+id/log_out_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="@dimen/ui_spacing_small"
+            android:layout_marginStart="@dimen/ui_spacing_small"
+            android:textSize="@dimen/drawer_icon_size"
+            android:focusable="false"
+            android:paddingRight="@dimen/ui_padding"
+            android:text="{zmdi-sign-in}" />
+
+        <TextView
+            android:id="@+id/log_out_text"
+            fontPath="fonts/kontrapunkt_light.otf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/ui_spacing_small"
+            android:layout_toRightOf="@id/log_out_image"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:paddingBottom="@dimen/ui_padding"
+            android:paddingRight="@dimen/ui_padding"
+            android:layout_marginLeft="@dimen/ui_padding"
+            android:paddingTop="@dimen/ui_padding"
+            android:singleLine="true"
+            android:text="@string/logout"
+            android:textColor="#ff202020"
+            android:textSize="@dimen/slight_medium_text"
+            tools:ignore="MissingPrefix" />
+    </RelativeLayout>
+
+
 </LinearLayout>

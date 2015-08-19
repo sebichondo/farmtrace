@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.malinskiy.materialicons.Iconify;
+
 import net.azurewebsites.farmtrace.BaseFragment;
 import net.azurewebsites.farmtrace.Constants;
 import net.azurewebsites.farmtrace.R;
@@ -46,6 +48,14 @@ public class NavigationDrawerFragment  extends BaseFragment implements View.OnCl
     TextView username;
     @Bind(R.id.designation)
     TextView designation;
+    @Bind(R.id.log_out_image)
+    TextView logout;
+    @Bind(R.id.farmer_image)
+    TextView farmerimage;
+    @Bind(R.id.crop_image)
+    TextView cropimage;
+    @Bind(R.id.input_image)
+    TextView inputimage;
 
 
     @Override
@@ -70,6 +80,9 @@ public class NavigationDrawerFragment  extends BaseFragment implements View.OnCl
 
         username.setText("David Kamau");
         designation.setText("Techincal Assistant");
+
+        Iconify.addIcons(logout,farmerimage,cropimage,inputimage);
+
 
         return view;
     }

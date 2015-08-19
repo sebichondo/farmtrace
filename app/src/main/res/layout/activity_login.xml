@@ -47,10 +47,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/large_text"
             android:text="@string/app_name"
             android:textColor="@color/black_semi_transparent"
-            android:textSize="@dimen/header_text_size"
+            android:textSize="@dimen/ui_spacing_large"
             fontPath="fonts/kontrapunkt_light.otf"/>
         </LinearLayout>
     </LinearLayout>
@@ -94,7 +94,6 @@
             android:textColor="@color/black_semi_transparent"
             android:textCursorDrawable="@null"
             >
-
         </EditText>
 
         <Button android:id="@+id/btnLogIn"
