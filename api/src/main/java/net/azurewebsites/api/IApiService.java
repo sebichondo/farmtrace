@@ -1,8 +1,13 @@
 package net.azurewebsites.api;
 
+import net.azurewebsites.api.chemical.ChemicalResponse;
 import net.azurewebsites.api.crop.CropResponse;
 import net.azurewebsites.api.farmer.FarmerResponse;
+import net.azurewebsites.api.fertilizer.FertilizerResponse;
+import net.azurewebsites.api.field.FieldResponse;
 import net.azurewebsites.api.group.GroupResponse;
+import net.azurewebsites.api.plantingseason.PlantingSeasonResponse;
+import net.azurewebsites.api.seed.SeedResponse;
 
 import java.util.List;
 
@@ -19,5 +24,14 @@ public interface IApiService {
     void getCrops(Callback<List<CropResponse>> callback);
     @GET("/groups")
     void getGroups(Callback<List<GroupResponse>> callback);
+    @GET("/fields")
+    void getFields(Callback<List<FieldResponse>> callback);
+    @GET("/plantingseasons")
+    void getPlantingSeasons(Callback<List<PlantingSeasonResponse>> callback);
+    @GET("/fertilizers")
+    void getFertilizers(Callback<List<FertilizerResponse>> callback);
+    @GET("/chemicals")
+    void getChemicals(Callback<List<ChemicalResponse>> callback);
+    @GET("/seeds")
+    void getSeeds(Callback<List<SeedResponse>> callback);
 }
-

@@ -27,7 +27,7 @@ public class PlantingSeasonDao extends AbstractDao<PlantingSeason, Long> {
     */
     public static class Properties {
         public final static Property PlantingSeasonID = new Property(0, Long.class, "plantingSeasonID", true, "PLANTING_SEASON_ID");
-        public final static Property HarvestedQuantity = new Property(1, String.class, "harvestedQuantity", false, "HARVESTED_QUANTITY");
+        public final static Property HarvestedQuantity = new Property(1, Integer.class, "harvestedQuantity", false, "HARVESTED_QUANTITY");
         public final static Property SeasonName = new Property(2, String.class, "seasonName", false, "SEASON_NAME");
         public final static Property StartDate = new Property(3, java.util.Date.class, "startDate", false, "START_DATE");
         public final static Property TargetDate = new Property(4, java.util.Date.class, "targetDate", false, "TARGET_DATE");
@@ -50,7 +50,7 @@ public class PlantingSeasonDao extends AbstractDao<PlantingSeason, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'PLANTING_SEASON' (" + //
                 "'PLANTING_SEASON_ID' INTEGER PRIMARY KEY ," + // 0: plantingSeasonID
-                "'HARVESTED_QUANTITY' TEXT," + // 1: harvestedQuantity
+                "'HARVESTED_QUANTITY' INTEGER," + // 1: harvestedQuantity
                 "'SEASON_NAME' TEXT," + // 2: seasonName
                 "'START_DATE' INTEGER," + // 3: startDate
                 "'TARGET_DATE' INTEGER," + // 4: targetDate
@@ -74,9 +74,9 @@ public class PlantingSeasonDao extends AbstractDao<PlantingSeason, Long> {
             stmt.bindLong(1, plantingSeasonID);
         }
  
-        String harvestedQuantity = entity.getHarvestedQuantity();
+        Integer harvestedQuantity = entity.getHarvestedQuantity();
         if (harvestedQuantity != null) {
-            stmt.bindString(2, harvestedQuantity);
+            stmt.bindLong(2, harvestedQuantity);
         }
  
         String seasonName = entity.getSeasonName();
@@ -116,7 +116,7 @@ public class PlantingSeasonDao extends AbstractDao<PlantingSeason, Long> {
     public PlantingSeason readEntity(Cursor cursor, int offset) {
         PlantingSeason entity = new PlantingSeason( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // plantingSeasonID
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // harvestedQuantity
+            cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1), // harvestedQuantity
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // seasonName
             cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)), // startDate
             cursor.isNull(offset + 4) ? null : new java.util.Date(cursor.getLong(offset + 4)), // targetDate
@@ -130,7 +130,7 @@ public class PlantingSeasonDao extends AbstractDao<PlantingSeason, Long> {
     @Override
     public void readEntity(Cursor cursor, PlantingSeason entity, int offset) {
         entity.setPlantingSeasonID(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setHarvestedQuantity(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setHarvestedQuantity(cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1));
         entity.setSeasonName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setStartDate(cursor.isNull(offset + 3) ? null : new java.util.Date(cursor.getLong(offset + 3)));
         entity.setTargetDate(cursor.isNull(offset + 4) ? null : new java.util.Date(cursor.getLong(offset + 4)));

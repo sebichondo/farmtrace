@@ -57,4 +57,13 @@ public class Field {
         this.farmerID = farmerID;
     }
 
+    @Override
+    public String toString() {
+        return "Field{" +
+                "fieldID=" + fieldID +
+                ", fieldName='" + fieldName + '\'' +
+                ", location='" + location + '\'' +
+                ", farmerID=" + farmerID +
+                '}';
+    }
 }

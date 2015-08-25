@@ -7,8 +7,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,7 @@ import com.malinskiy.materialicons.Iconify;
 import net.azurewebsites.farmtrace.BaseFragment;
 import net.azurewebsites.farmtrace.Constants;
 import net.azurewebsites.farmtrace.R;
+import net.azurewebsites.farmtrace.event.Events;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -56,11 +59,43 @@ public class NavigationDrawerFragment  extends BaseFragment implements View.OnCl
     TextView cropimage;
     @Bind(R.id.input_image)
     TextView inputimage;
-
+    @Bind(R.id.txtFarmInputs)
+    TextView farmInputs;
+    @Bind(R.id.txtfarmers)
+    TextView farmers;
+    @Bind(R.id.txtcrops)
+    TextView crops;
+    @Bind(R.id.txtdashboard)
+    TextView dashboard;
+    @Bind(R.id.dashboard_image)
+    TextView dashboardimage;
 
     @Override
-    public void onClick(View v) {
+    public void onClick(final View v) {
 
+        bus.post(new Events.CloseDrawerEvent());
+        Log.d("DataRepository", "NIKO HAPA: " );
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                switch (v.getId()) {
+                    case R.id.txtfarmers:
+                        bus.post(new Events.FarmersSelectedEvent());
+                        Log.d("DataRepository", "TUMEFIKEA HAPA: ");
+                        break;
+                    case R.id.txtcrops:
+                        bus.post(new Events.CropsSelectedEvent());
+                        break;
+                    case R.id.txtFarmInputs:
+                        bus.post(new Events.FarmInputsSelectedEvent());
+                        break;
+                    case R.id.txtdashboard:
+                        bus.post(new Events.DashboardSelectedEvent());
+                        break;
+
+                }
+            }
+        }, 300);
     }
 
     public NavigationDrawerFragment() {
@@ -81,7 +116,12 @@ public class NavigationDrawerFragment  extends BaseFragment implements View.OnCl
         username.setText("David Kamau");
         designation.setText("Techincal Assistant");
 
-        Iconify.addIcons(logout,farmerimage,cropimage,inputimage);
+        farmers.setOnClickListener(this);
+        farmInputs.setOnClickListener(this);
+        crops.setOnClickListener(this);
+        dashboard.setOnClickListener(this);
+
+        Iconify.addIcons(logout,farmerimage,cropimage,inputimage,dashboardimage);
 
 
         return view;

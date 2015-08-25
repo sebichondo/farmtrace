@@ -17,7 +17,9 @@
     <dimen name="drawer_width">304dp</dimen>
     <dimen name="icon_edit_height">120sp</dimen>
     <dimen name="icon_height">100dp</dimen>
+    <dimen name="card_margin">150dp</dimen>
     <dimen name="icon_width">50dp</dimen>
+    <dimen name="icon_farmer">40dp</dimen>
     <dimen name="profile_pic_size">60dp</dimen>
     <dimen name="drawer_icon_size">20dp</dimen>
     <dimen name="ui_padding">8dp</dimen>

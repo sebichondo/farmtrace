@@ -7,9 +7,9 @@ package net.azurewebsites.farmtrace.datamodel.dao;
 public class Fertilizer {
 
     private Long fertilizerID;
-    private String fertilizerType;
-    private String mainNutrients;
-    private String soilConditions;
+    private Integer fertilizerType;
+    private Integer mainNutrients;
+    private Integer soilConditions;
     private Integer timeOfPlanting;
     private Integer topDressing;
     private Long cropID;
@@ -21,7 +21,7 @@ public class Fertilizer {
         this.fertilizerID = fertilizerID;
     }
 
-    public Fertilizer(Long fertilizerID, String fertilizerType, String mainNutrients, String soilConditions, Integer timeOfPlanting, Integer topDressing, Long cropID) {
+    public Fertilizer(Long fertilizerID, Integer fertilizerType, Integer mainNutrients, Integer soilConditions, Integer timeOfPlanting, Integer topDressing, Long cropID) {
         this.fertilizerID = fertilizerID;
         this.fertilizerType = fertilizerType;
         this.mainNutrients = mainNutrients;
@@ -39,27 +39,27 @@ public class Fertilizer {
         this.fertilizerID = fertilizerID;
     }
 
-    public String getFertilizerType() {
+    public Integer getFertilizerType() {
         return fertilizerType;
     }
 
-    public void setFertilizerType(String fertilizerType) {
+    public void setFertilizerType(Integer fertilizerType) {
         this.fertilizerType = fertilizerType;
     }
 
-    public String getMainNutrients() {
+    public Integer getMainNutrients() {
         return mainNutrients;
     }
 
-    public void setMainNutrients(String mainNutrients) {
+    public void setMainNutrients(Integer mainNutrients) {
         this.mainNutrients = mainNutrients;
     }
 
-    public String getSoilConditions() {
+    public Integer getSoilConditions() {
         return soilConditions;
     }
 
-    public void setSoilConditions(String soilConditions) {
+    public void setSoilConditions(Integer soilConditions) {
         this.soilConditions = soilConditions;
     }
 

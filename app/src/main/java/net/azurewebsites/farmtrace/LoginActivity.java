@@ -17,14 +17,12 @@ public class LoginActivity extends BaseDetailActivity {
     @OnClick(R.id.btnLogIn)
     public void login(){
         startActivity(MainActivity.newIntent(this));
-    }
+ }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
-
     }
 }

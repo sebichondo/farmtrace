@@ -7,9 +7,9 @@ package net.azurewebsites.farmtrace.datamodel.dao;
 public class Chemical {
 
     private Long chemicalID;
-    private String chemicalType;
-    private String cropStage;
-    private String activeIngredient;
+    private Integer chemicalType;
+    private Integer cropStage;
+    private Integer activeIngredient;
     private String agent;
     private String manufacturer;
     private Integer pHI;
@@ -25,7 +25,7 @@ public class Chemical {
         this.chemicalID = chemicalID;
     }
 
-    public Chemical(Long chemicalID, String chemicalType, String cropStage, String activeIngredient, String agent, String manufacturer, Integer pHI, String productTradeName, Integer rate, String reasonForUse, String registrationNumber) {
+    public Chemical(Long chemicalID, Integer chemicalType, Integer cropStage, Integer activeIngredient, String agent, String manufacturer, Integer pHI, String productTradeName, Integer rate, String reasonForUse, String registrationNumber) {
         this.chemicalID = chemicalID;
         this.chemicalType = chemicalType;
         this.cropStage = cropStage;
@@ -47,27 +47,27 @@ public class Chemical {
         this.chemicalID = chemicalID;
     }
 
-    public String getChemicalType() {
+    public Integer getChemicalType() {
         return chemicalType;
     }
 
-    public void setChemicalType(String chemicalType) {
+    public void setChemicalType(Integer chemicalType) {
         this.chemicalType = chemicalType;
     }
 
-    public String getCropStage() {
+    public Integer getCropStage() {
         return cropStage;
     }
 
-    public void setCropStage(String cropStage) {
+    public void setCropStage(Integer cropStage) {
         this.cropStage = cropStage;
     }
 
-    public String getActiveIngredient() {
+    public Integer getActiveIngredient() {
         return activeIngredient;
     }
 
-    public void setActiveIngredient(String activeIngredient) {
+    public void setActiveIngredient(Integer activeIngredient) {
         this.activeIngredient = activeIngredient;
     }
 

@@ -7,7 +7,7 @@ package net.azurewebsites.farmtrace.datamodel.dao;
 public class PlantingSeason {
 
     private Long plantingSeasonID;
-    private String harvestedQuantity;
+    private Integer harvestedQuantity;
     private String seasonName;
     private java.util.Date startDate;
     private java.util.Date targetDate;
@@ -21,7 +21,7 @@ public class PlantingSeason {
         this.plantingSeasonID = plantingSeasonID;
     }
 
-    public PlantingSeason(Long plantingSeasonID, String harvestedQuantity, String seasonName, java.util.Date startDate, java.util.Date targetDate, Integer targetQuantity, Long cropID) {
+    public PlantingSeason(Long plantingSeasonID, Integer harvestedQuantity, String seasonName, java.util.Date startDate, java.util.Date targetDate, Integer targetQuantity, Long cropID) {
         this.plantingSeasonID = plantingSeasonID;
         this.harvestedQuantity = harvestedQuantity;
         this.seasonName = seasonName;
@@ -39,11 +39,11 @@ public class PlantingSeason {
         this.plantingSeasonID = plantingSeasonID;
     }
 
-    public String getHarvestedQuantity() {
+    public Integer getHarvestedQuantity() {
         return harvestedQuantity;
     }
 
-    public void setHarvestedQuantity(String harvestedQuantity) {
+    public void setHarvestedQuantity(Integer harvestedQuantity) {
         this.harvestedQuantity = harvestedQuantity;
     }
 

@@ -36,7 +36,7 @@
                         android:layout_height="@dimen/profile_pic_size"
                         android:layout_gravity="center_vertical"
                         android:scaleType="centerInside"
-                        android:src="@drawable/avatar" />
+                        android:src="@drawable/female6" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -56,6 +56,7 @@
                             android:textColor="#FF202020"
                             android:textSize="@dimen/slight_medium_text"
                             tools:ignore="MissingPrefix" />
+
                         <TextView
                             android:id="@+id/designation"
                             fontPath="fonts/kontrapunkt_light.otf"
@@ -77,8 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="8dp">
-        </LinearLayout>
+            android:paddingBottom="8dp"></LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -90,100 +90,139 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/dashboard_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/ui_spacing_small"
+                android:layout_marginStart="@dimen/ui_spacing_small"
                 android:layout_marginTop="@dimen/ui_padding"
+                android:focusable="false"
+                android:paddingBottom="@dimen/ui_padding"
+                android:paddingTop="@dimen/ui_padding"
+                android:text="{zmdi-airplay}"
+                android:textSize="@dimen/drawer_icon_size" />
+
+            <TextView
+
+                android:id="@+id/txtdashboard"
+                fontPath="fonts/kontrapunkt_light.otf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ui_padding"
+                android:layout_toRightOf="@+id/dashboard_image"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:paddingBottom="@dimen/ui_padding"
+                android:paddingLeft="@dimen/ui_spacing_small"
+                android:paddingRight="@dimen/ui_padding"
+                android:paddingTop="@dimen/ui_padding"
+                android:text="@string/dashboard"
+                android:textColor="#ff202020"
+                android:textSize="@dimen/slight_medium_text"
+                tools:ignore="MissingPrefix" />
+
+
+            <TextView
                 android:id="@+id/farmer_image"
+                android:layout_below="@+id/txtdashboard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/ui_spacing_small"
                 android:layout_marginStart="@dimen/ui_spacing_small"
+                android:layout_marginTop="@dimen/ui_padding"
                 android:focusable="false"
                 android:paddingBottom="@dimen/ui_padding"
-                android:textSize="@dimen/drawer_icon_size"
                 android:paddingTop="@dimen/ui_padding"
-                android:text="{zmdi-accounts-alt}" />
+                android:text="{zmdi-accounts-alt}"
+                android:textSize="@dimen/drawer_icon_size" />
 
-        <TextView
+            <TextView
 
-            android:id="@+id/txtfarmers"
-            fontPath="fonts/kontrapunkt_light.otf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/ui_padding"
-            android:layout_toRightOf="@+id/farmer_image"
-            android:clickable="true"
-            android:paddingLeft="@dimen/ui_spacing_small"
-            android:paddingBottom="@dimen/ui_padding"
-            android:paddingRight="@dimen/ui_padding"
-            android:paddingTop="@dimen/ui_padding"
-            android:text="@string/farmers"
-            android:textColor="#ff202020"
-            android:textSize="@dimen/slight_medium_text"
-            tools:ignore="MissingPrefix" />
+                android:id="@+id/txtfarmers"
+                fontPath="fonts/kontrapunkt_light.otf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ui_padding"
+                android:layout_below="@+id/txtdashboard"
+                android:layout_toRightOf="@+id/farmer_image"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:paddingBottom="@dimen/ui_padding"
+                android:paddingLeft="@dimen/ui_spacing_small"
+                android:paddingRight="@dimen/ui_padding"
+                android:paddingTop="@dimen/ui_padding"
+                android:text="@string/farmers"
+                android:textColor="#ff202020"
+                android:textSize="@dimen/slight_medium_text"
+                tools:ignore="MissingPrefix" />
 
 
             <TextView
-                android:layout_marginTop="@dimen/ui_padding"
                 android:id="@+id/crop_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/txtfarmers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/ui_spacing_small"
                 android:layout_marginStart="@dimen/ui_spacing_small"
-                android:focusable="false"
-                android:paddingBottom="@dimen/ui_padding"
-                android:textSize="@dimen/drawer_icon_size"
-                android:paddingTop="@dimen/ui_padding"
-                android:text="{zmdi-flower-alt}" />
-
-        <TextView
-            android:id="@+id/txtcrops"
-            android:layout_below="@+id/txtfarmers"
-            fontPath="fonts/kontrapunkt_light.otf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/ui_padding"
-            android:clickable="true"
-            android:layout_toRightOf="@+id/farmer_image"
-            android:paddingBottom="@dimen/ui_padding"
-            android:paddingLeft="@dimen/ui_spacing_small"
-            android:paddingRight="@dimen/ui_spacing_small"
-            android:paddingTop="@dimen/ui_padding"
-            android:text="@string/crops"
-            android:textColor="#ff202020"
-            android:textSize="@dimen/slight_medium_text"
-            tools:ignore="MissingPrefix" />
-
-
-            <TextView
                 android:layout_marginTop="@dimen/ui_padding"
-                android:id="@+id/input_image"
-                android:layout_below="@+id/txtcrops"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/ui_spacing_small"
-                android:layout_marginStart="@dimen/ui_spacing_small"
                 android:focusable="false"
                 android:paddingBottom="@dimen/ui_padding"
-                android:textSize="@dimen/drawer_icon_size"
                 android:paddingTop="@dimen/ui_padding"
-                android:text="{zmdi-polymer}" />
+                android:text="{zmdi-flower-alt}"
+                android:textSize="@dimen/drawer_icon_size" />
 
             <TextView
-            android:layout_below="@+id/txtcrops"
-            fontPath="fonts/kontrapunkt_light.otf"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/crop_image"
-            android:layout_marginTop="8dp"
-            android:clickable="true"
-            android:paddingBottom="@dimen/ui_padding"
-            android:paddingLeft="@dimen/ui_spacing_small"
-            android:paddingRight="@dimen/ui_spacing_small"
-            android:paddingTop="@dimen/ui_padding"
-            android:text="Farm Inputs"
-            android:textColor="#ff202020"
-            android:textSize="@dimen/slight_medium_text"
-            tools:ignore="MissingPrefix" />
+                android:id="@+id/txtcrops"
+                fontPath="fonts/kontrapunkt_light.otf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtfarmers"
+                android:layout_marginTop="@dimen/ui_padding"
+                android:layout_toRightOf="@+id/farmer_image"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:paddingBottom="@dimen/ui_padding"
+                android:paddingLeft="@dimen/ui_spacing_small"
+                android:paddingRight="@dimen/ui_spacing_small"
+                android:paddingTop="@dimen/ui_padding"
+                android:text="@string/crops"
+                android:textColor="#ff202020"
+                android:textSize="@dimen/slight_medium_text"
+                tools:ignore="MissingPrefix" />
+
+
+            <TextView
+                android:id="@+id/input_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtcrops"
+                android:layout_marginLeft="@dimen/ui_spacing_small"
+                android:layout_marginStart="@dimen/ui_spacing_small"
+                android:layout_marginTop="@dimen/ui_padding"
+                android:focusable="false"
+                android:paddingBottom="@dimen/ui_padding"
+                android:paddingTop="@dimen/ui_padding"
+                android:text="{zmdi-polymer}"
+                android:textSize="@dimen/drawer_icon_size" />
+
+            <TextView
+                android:id="@+id/txtFarmInputs"
+                fontPath="fonts/kontrapunkt_light.otf"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtcrops"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/crop_image"
+                android:clickable="true"
+                android:paddingBottom="@dimen/ui_padding"
+                android:paddingLeft="@dimen/ui_spacing_small"
+                android:paddingRight="@dimen/ui_spacing_small"
+                android:paddingTop="@dimen/ui_padding"
+                android:text="Farm Inputs"
+                android:textColor="#ff202020"
+                android:textSize="@dimen/slight_medium_text"
+                tools:ignore="MissingPrefix" />
         </RelativeLayout>
 
         <LinearLayout
@@ -214,10 +253,10 @@
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="@dimen/ui_spacing_small"
             android:layout_marginStart="@dimen/ui_spacing_small"
-            android:textSize="@dimen/drawer_icon_size"
             android:focusable="false"
             android:paddingRight="@dimen/ui_padding"
-            android:text="{zmdi-sign-in}" />
+            android:text="{zmdi-sign-in}"
+            android:textSize="@dimen/drawer_icon_size" />
 
         <TextView
             android:id="@+id/log_out_text"
@@ -226,12 +265,13 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginBottom="@dimen/ui_spacing_small"
+            android:layout_marginLeft="@dimen/ui_padding"
             android:layout_toRightOf="@id/log_out_image"
+            android:background="?android:attr/selectableItemBackground"
             android:ellipsize="end"
             android:focusable="false"
             android:paddingBottom="@dimen/ui_padding"
             android:paddingRight="@dimen/ui_padding"
-            android:layout_marginLeft="@dimen/ui_padding"
             android:paddingTop="@dimen/ui_padding"
             android:singleLine="true"
             android:text="@string/logout"

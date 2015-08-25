@@ -10,7 +10,7 @@ import de.greenrobot.daogenerator.Schema;
  */
 public class MyDaoGenerator {
     public static void main(String args[]) throws Exception {
-        Schema schema = new Schema(2, "net.azurewebsites.farmtrace.datamodel.dao");
+        Schema schema = new Schema(4, "net.azurewebsites.farmtrace.datamodel.dao");
 
         //Entities
         Entity crop = schema.addEntity("Crop");
@@ -20,9 +20,9 @@ public class MyDaoGenerator {
 
         Entity chemical = schema.addEntity("Chemical");
         chemical.addLongProperty("chemicalID").primaryKey();
-        chemical.addStringProperty("chemicalType");
-        chemical.addStringProperty("cropStage");
-        chemical.addStringProperty("activeIngredient");
+        chemical.addIntProperty("chemicalType");
+        chemical.addIntProperty("cropStage");
+        chemical.addIntProperty("activeIngredient");
         chemical.addStringProperty("agent");
         chemical.addStringProperty("manufacturer");
         chemical.addIntProperty("pHI");
@@ -50,9 +50,9 @@ public class MyDaoGenerator {
 
         Entity fertilizer = schema.addEntity("Fertilizer");
         fertilizer.addLongProperty("fertilizerID").primaryKey();
-        fertilizer.addStringProperty("fertilizerType");
-        fertilizer.addStringProperty("mainNutrients");
-        fertilizer.addStringProperty("soilConditions");
+        fertilizer.addIntProperty("fertilizerType");
+        fertilizer.addIntProperty("mainNutrients");
+        fertilizer.addIntProperty("soilConditions");
         fertilizer.addIntProperty("timeOfPlanting");
         fertilizer.addIntProperty("topDressing");
         Property cropIdForFertilizer = fertilizer.addLongProperty("cropID").getProperty();
@@ -72,7 +72,7 @@ public class MyDaoGenerator {
 
         Entity plantingSeason = schema.addEntity("PlantingSeason");
         plantingSeason.addLongProperty("plantingSeasonID").primaryKey();
-        plantingSeason.addStringProperty("harvestedQuantity");
+        plantingSeason.addIntProperty("harvestedQuantity");
         plantingSeason.addStringProperty("seasonName");
         plantingSeason.addDateProperty("startDate");
         plantingSeason.addDateProperty("targetDate");

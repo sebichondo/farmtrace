@@ -27,9 +27,9 @@ public class FertilizerDao extends AbstractDao<Fertilizer, Long> {
     */
     public static class Properties {
         public final static Property FertilizerID = new Property(0, Long.class, "fertilizerID", true, "FERTILIZER_ID");
-        public final static Property FertilizerType = new Property(1, String.class, "fertilizerType", false, "FERTILIZER_TYPE");
-        public final static Property MainNutrients = new Property(2, String.class, "mainNutrients", false, "MAIN_NUTRIENTS");
-        public final static Property SoilConditions = new Property(3, String.class, "soilConditions", false, "SOIL_CONDITIONS");
+        public final static Property FertilizerType = new Property(1, Integer.class, "fertilizerType", false, "FERTILIZER_TYPE");
+        public final static Property MainNutrients = new Property(2, Integer.class, "mainNutrients", false, "MAIN_NUTRIENTS");
+        public final static Property SoilConditions = new Property(3, Integer.class, "soilConditions", false, "SOIL_CONDITIONS");
         public final static Property TimeOfPlanting = new Property(4, Integer.class, "timeOfPlanting", false, "TIME_OF_PLANTING");
         public final static Property TopDressing = new Property(5, Integer.class, "topDressing", false, "TOP_DRESSING");
         public final static Property CropID = new Property(6, Long.class, "cropID", false, "CROP_ID");
@@ -50,9 +50,9 @@ public class FertilizerDao extends AbstractDao<Fertilizer, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'FERTILIZER' (" + //
                 "'FERTILIZER_ID' INTEGER PRIMARY KEY ," + // 0: fertilizerID
-                "'FERTILIZER_TYPE' TEXT," + // 1: fertilizerType
-                "'MAIN_NUTRIENTS' TEXT," + // 2: mainNutrients
-                "'SOIL_CONDITIONS' TEXT," + // 3: soilConditions
+                "'FERTILIZER_TYPE' INTEGER," + // 1: fertilizerType
+                "'MAIN_NUTRIENTS' INTEGER," + // 2: mainNutrients
+                "'SOIL_CONDITIONS' INTEGER," + // 3: soilConditions
                 "'TIME_OF_PLANTING' INTEGER," + // 4: timeOfPlanting
                 "'TOP_DRESSING' INTEGER," + // 5: topDressing
                 "'CROP_ID' INTEGER);"); // 6: cropID
@@ -74,19 +74,19 @@ public class FertilizerDao extends AbstractDao<Fertilizer, Long> {
             stmt.bindLong(1, fertilizerID);
         }
  
-        String fertilizerType = entity.getFertilizerType();
+        Integer fertilizerType = entity.getFertilizerType();
         if (fertilizerType != null) {
-            stmt.bindString(2, fertilizerType);
+            stmt.bindLong(2, fertilizerType);
         }
  
-        String mainNutrients = entity.getMainNutrients();
+        Integer mainNutrients = entity.getMainNutrients();
         if (mainNutrients != null) {
-            stmt.bindString(3, mainNutrients);
+            stmt.bindLong(3, mainNutrients);
         }
  
-        String soilConditions = entity.getSoilConditions();
+        Integer soilConditions = entity.getSoilConditions();
         if (soilConditions != null) {
-            stmt.bindString(4, soilConditions);
+            stmt.bindLong(4, soilConditions);
         }
  
         Integer timeOfPlanting = entity.getTimeOfPlanting();
@@ -116,9 +116,9 @@ public class FertilizerDao extends AbstractDao<Fertilizer, Long> {
     public Fertilizer readEntity(Cursor cursor, int offset) {
         Fertilizer entity = new Fertilizer( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // fertilizerID
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // fertilizerType
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // mainNutrients
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // soilConditions
+            cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1), // fertilizerType
+            cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2), // mainNutrients
+            cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3), // soilConditions
             cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4), // timeOfPlanting
             cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5), // topDressing
             cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6) // cropID
@@ -130,9 +130,9 @@ public class FertilizerDao extends AbstractDao<Fertilizer, Long> {
     @Override
     public void readEntity(Cursor cursor, Fertilizer entity, int offset) {
         entity.setFertilizerID(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setFertilizerType(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setMainNutrients(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setSoilConditions(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setFertilizerType(cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1));
+        entity.setMainNutrients(cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2));
+        entity.setSoilConditions(cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3));
         entity.setTimeOfPlanting(cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4));
         entity.setTopDressing(cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5));
         entity.setCropID(cursor.isNull(offset + 6) ? null : cursor.getLong(offset + 6));

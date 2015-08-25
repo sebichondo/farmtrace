@@ -14,7 +14,12 @@ import dagger.Component;
         modules = {FarmerServiceModule.class,
                 APIServicesModule.class,
                 CropServiceModule.class,
-                GroupServiceModule.class
+                GroupServiceModule.class,
+                FieldServiceModule.class,
+                PlantingSeasonServiceModule.class,
+                FertilizerServiceModule.class,
+                ChemicalServiceModule.class,
+                SeedServiceModule.class
         }
 )
 public interface MainComponent {

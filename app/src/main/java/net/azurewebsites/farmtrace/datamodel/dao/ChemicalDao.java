@@ -24,9 +24,9 @@ public class ChemicalDao extends AbstractDao<Chemical, Long> {
     */
     public static class Properties {
         public final static Property ChemicalID = new Property(0, Long.class, "chemicalID", true, "CHEMICAL_ID");
-        public final static Property ChemicalType = new Property(1, String.class, "chemicalType", false, "CHEMICAL_TYPE");
-        public final static Property CropStage = new Property(2, String.class, "cropStage", false, "CROP_STAGE");
-        public final static Property ActiveIngredient = new Property(3, String.class, "activeIngredient", false, "ACTIVE_INGREDIENT");
+        public final static Property ChemicalType = new Property(1, Integer.class, "chemicalType", false, "CHEMICAL_TYPE");
+        public final static Property CropStage = new Property(2, Integer.class, "cropStage", false, "CROP_STAGE");
+        public final static Property ActiveIngredient = new Property(3, Integer.class, "activeIngredient", false, "ACTIVE_INGREDIENT");
         public final static Property Agent = new Property(4, String.class, "agent", false, "AGENT");
         public final static Property Manufacturer = new Property(5, String.class, "manufacturer", false, "MANUFACTURER");
         public final static Property PHI = new Property(6, Integer.class, "pHI", false, "P_HI");
@@ -50,9 +50,9 @@ public class ChemicalDao extends AbstractDao<Chemical, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'CHEMICAL' (" + //
                 "'CHEMICAL_ID' INTEGER PRIMARY KEY ," + // 0: chemicalID
-                "'CHEMICAL_TYPE' TEXT," + // 1: chemicalType
-                "'CROP_STAGE' TEXT," + // 2: cropStage
-                "'ACTIVE_INGREDIENT' TEXT," + // 3: activeIngredient
+                "'CHEMICAL_TYPE' INTEGER," + // 1: chemicalType
+                "'CROP_STAGE' INTEGER," + // 2: cropStage
+                "'ACTIVE_INGREDIENT' INTEGER," + // 3: activeIngredient
                 "'AGENT' TEXT," + // 4: agent
                 "'MANUFACTURER' TEXT," + // 5: manufacturer
                 "'P_HI' INTEGER," + // 6: pHI
@@ -78,19 +78,19 @@ public class ChemicalDao extends AbstractDao<Chemical, Long> {
             stmt.bindLong(1, chemicalID);
         }
  
-        String chemicalType = entity.getChemicalType();
+        Integer chemicalType = entity.getChemicalType();
         if (chemicalType != null) {
-            stmt.bindString(2, chemicalType);
+            stmt.bindLong(2, chemicalType);
         }
  
-        String cropStage = entity.getCropStage();
+        Integer cropStage = entity.getCropStage();
         if (cropStage != null) {
-            stmt.bindString(3, cropStage);
+            stmt.bindLong(3, cropStage);
         }
  
-        String activeIngredient = entity.getActiveIngredient();
+        Integer activeIngredient = entity.getActiveIngredient();
         if (activeIngredient != null) {
-            stmt.bindString(4, activeIngredient);
+            stmt.bindLong(4, activeIngredient);
         }
  
         String agent = entity.getAgent();
@@ -140,9 +140,9 @@ public class ChemicalDao extends AbstractDao<Chemical, Long> {
     public Chemical readEntity(Cursor cursor, int offset) {
         Chemical entity = new Chemical( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // chemicalID
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // chemicalType
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // cropStage
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // activeIngredient
+            cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1), // chemicalType
+            cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2), // cropStage
+            cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3), // activeIngredient
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // agent
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // manufacturer
             cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6), // pHI
@@ -158,9 +158,9 @@ public class ChemicalDao extends AbstractDao<Chemical, Long> {
     @Override
     public void readEntity(Cursor cursor, Chemical entity, int offset) {
         entity.setChemicalID(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setChemicalType(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setCropStage(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setActiveIngredient(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setChemicalType(cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1));
+        entity.setCropStage(cursor.isNull(offset + 2) ? null : cursor.getInt(offset + 2));
+        entity.setActiveIngredient(cursor.isNull(offset + 3) ? null : cursor.getInt(offset + 3));
         entity.setAgent(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setManufacturer(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
         entity.setPHI(cursor.isNull(offset + 6) ? null : cursor.getInt(offset + 6));
