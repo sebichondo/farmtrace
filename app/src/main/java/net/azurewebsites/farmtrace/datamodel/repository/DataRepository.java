@@ -76,6 +76,24 @@ public class DataRepository {
         return getCropDao(context).loadAll();
     }
 
+
+    public static List<Chemical> getAllChemicals(Context context) {
+        return getChemicalDao(context).loadAll();
+    }
+
+    public static List<PlantingSeason> getAllPlantingSeasons(Context context) {
+        return getPlantingSeasonsDao(context).loadAll();
+    }
+
+
+    public static List<Seed> getAllSeeds(Context context) {
+        return getSeedDao(context).loadAll();
+    }
+
+    public static List<Fertilizer> getAllFertilizers(Context context) {
+        return getFertilizerDao(context).loadAll();
+    }
+
     public static List<FarmerGroup> getAllFarmerGroups(Context context) {
         return getFarmerGroupDao(context).loadAll();
     }
@@ -95,6 +113,11 @@ public class DataRepository {
     public static FarmerGroup getGroupById(Context context,Long Id) {
         return getFarmerGroupDao(context).load(Id);
     }
+
+    public static Crop getCropById(Context context,Long Id) {
+        return getCropDao(context).load(Id);
+    }
+
 
     /**
      * Dao getters

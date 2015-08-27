@@ -10,7 +10,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,14 +73,12 @@ public class NavigationDrawerFragment  extends BaseFragment implements View.OnCl
     public void onClick(final View v) {
 
         bus.post(new Events.CloseDrawerEvent());
-        Log.d("DataRepository", "NIKO HAPA: " );
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 switch (v.getId()) {
                     case R.id.txtfarmers:
                         bus.post(new Events.FarmersSelectedEvent());
-                        Log.d("DataRepository", "TUMEFIKEA HAPA: ");
                         break;
                     case R.id.txtcrops:
                         bus.post(new Events.CropsSelectedEvent());

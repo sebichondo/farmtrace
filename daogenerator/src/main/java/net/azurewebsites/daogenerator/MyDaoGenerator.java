@@ -10,7 +10,7 @@ import de.greenrobot.daogenerator.Schema;
  */
 public class MyDaoGenerator {
     public static void main(String args[]) throws Exception {
-        Schema schema = new Schema(4, "net.azurewebsites.farmtrace.datamodel.dao");
+        Schema schema = new Schema(7, "net.azurewebsites.farmtrace.datamodel.dao");
 
         //Entities
         Entity crop = schema.addEntity("Crop");

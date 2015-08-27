@@ -16,5 +16,14 @@
     <string name="harvest">Weekly Harvest</string>
     <string name="empty_string">""</string>
     <string name="logout">Logout</string>
+    <string name="seasons">Planting Seasons</string>
+    <string name="farminputs">Farm Inputs</string>
     <string name="set_profile_photo">Set profile photo</string>
+    <string name="seeds">Seed</string>
+    <string name="chemicals">Chemical</string>
+    <string name="fertilizers">Fertilizer</string>
+    <string name="anyhdrous">Anyhdrous Fertilizer</string>
+    <string name="dry">Dry Fertilizer</string>
+    <string name="liquid">Liquid Fertilizer</string>
+    <string name="micronutrients">Micronutrients Fertilizer</string>
 </resources>

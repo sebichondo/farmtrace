@@ -10,6 +10,7 @@
     <dimen name="ui_spacing_large">24dp</dimen>
     <dimen name="small_text">10sp</dimen>
     <dimen name="regular_text">12sp</dimen>
+    <dimen name="slightly_medium_text">14sp</dimen>
     <dimen name="medium_text">16sp</dimen>
     <dimen name="slight_medium_text">18sp</dimen>
     <dimen name="large_text">25sp</dimen>

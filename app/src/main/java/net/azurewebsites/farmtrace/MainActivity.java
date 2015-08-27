@@ -43,7 +43,9 @@ import net.azurewebsites.farmtrace.datamodel.dao.Seed;
 import net.azurewebsites.farmtrace.datamodel.repository.DataRepository;
 import net.azurewebsites.farmtrace.event.Events;
 import net.azurewebsites.farmtrace.fragment.DashboardFragment;
+import net.azurewebsites.farmtrace.fragment.FarmInputsFragment;
 import net.azurewebsites.farmtrace.fragment.FarmerFragment;
+import net.azurewebsites.farmtrace.fragment.PlantingSeasonFragment;
 import net.azurewebsites.farmtrace.utils.UiUtils;
 
 import java.util.ArrayList;
@@ -110,7 +112,7 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
         loadMasterData();
 
         List<FarmerGroup> farmerGroups=DataRepository.getAllFarmerGroups(this);
-        Log.d("MainActivity", "AM HERE Groups Number: " + farmerGroups.size());
+
     }
 
     private void loadMasterData() {
@@ -127,7 +129,6 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
     @Subscribe
     public void onFetchGroupsResponse(ArrayList<GroupResponse> groupResponses) {
         if (!groupResponses.isEmpty() && groupResponses.get(0) instanceof GroupResponse) {
-            Log.d("MainActivity", "AM HERE Groups Number: " + groupResponses.size());
             for (GroupResponse groupResponse : groupResponses) {
                 FarmerGroup farmerGroup = new FarmerGroup(groupResponse.getGroupID(), groupResponse.getGroupName(),
                         groupResponse.getTelephone(), groupResponse.getEmailAddress(), groupResponse.getContactPerson(),
@@ -140,7 +141,6 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
     @Subscribe
     public void onFetchSeedsResponse(ArrayList<SeedResponse> seedResponses) {
         if (!seedResponses.isEmpty() && seedResponses.get(0) instanceof SeedResponse) {
-            Log.d("MainActivity", "AM HERE Seeds Number: " + seedResponses.size());
             for (SeedResponse seedResponse : seedResponses) {
                 Seed seed = new Seed(seedResponse.getSeedID(), seedResponse.getSeedRate(),
                         seedResponse.getSeedVariety(), seedResponse.getTransplantToHarvest(), seedResponse.getCropID());
@@ -152,7 +152,6 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
     @Subscribe
     public void onFetchChemicalResponse(ArrayList<ChemicalResponse> chemicalResponses) {
         if (!chemicalResponses.isEmpty() && chemicalResponses.get(0) instanceof ChemicalResponse) {
-            Log.d("MainActivity", "AM HERE Groups Number: " + chemicalResponses.size());
             for (ChemicalResponse chemicalResponse : chemicalResponses) {
                 Chemical chemical = new Chemical(chemicalResponse.getChemicalID(), chemicalResponse.getChemicalType(),
                         chemicalResponse.getCropStage(), chemicalResponse.getActiveIngredient(), chemicalResponse.getAgent(),
@@ -166,8 +165,10 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
     @Subscribe
     public void onFetchFertilizerResponse(ArrayList<FertilizerResponse> fertilizerResponses) {
         if (!fertilizerResponses.isEmpty() && fertilizerResponses.get(0) instanceof FertilizerResponse) {
-            Log.d("MainActivity", "AM HERE Groups Number: " + fertilizerResponses.size());
+
             for (FertilizerResponse fertilizerResponse : fertilizerResponses) {
+                Log.d("Fertilizer", "Fertilizer Count: " + fertilizerResponse.toString());
+                Log.d("Fertilizer", "Fertilizer Crop ID: " + fertilizerResponse.getCropID());
                 Fertilizer fertilizer = new Fertilizer(fertilizerResponse.getFertilizerID(), fertilizerResponse.getFertilizerType(),
                         fertilizerResponse.getMainNutrients(), fertilizerResponse.getSoilConditions(), fertilizerResponse.getTimeOfPlanting(),
                         fertilizerResponse.getTopDressing(), fertilizerResponse.getCropID());
@@ -179,10 +180,7 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
     @Subscribe
     public void onFetchPlantingSeasonsResponse(ArrayList<PlantingSeasonResponse> plantingSeasonResponses) {
         if (!plantingSeasonResponses.isEmpty() && plantingSeasonResponses.get(0) instanceof PlantingSeasonResponse) {
-            Log.d("MainActivity", "AM HERE Planting Seasons : " + plantingSeasonResponses.toString());
-
             for (PlantingSeasonResponse plantingSeasonResponse : plantingSeasonResponses) {
-                Log.d("MainActivity", "The Planting Seasons : " + plantingSeasonResponse.getTargetDate());
                 PlantingSeason plantingSeason = new PlantingSeason(plantingSeasonResponse.getPlantingSeasonID(),
                         plantingSeasonResponse.getHarvestedQuantity(),
                         plantingSeasonResponse.getSeasonName(), plantingSeasonResponse.getStartDate(),
@@ -206,7 +204,6 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
 
     @Subscribe
     public void onFetchFarmersResponse(ArrayList<FarmerResponse> farmerResponses) {
-        Log.d("MainActivity", "onFetchFarmersResponse: " + farmerResponses.size());
         if (!farmerResponses.isEmpty() && farmerResponses.get(0) instanceof FarmerResponse) {
             for (FarmerResponse farmerResponse : farmerResponses) {
                 Farmer farmer = new Farmer(farmerResponse.getFarmerID(), farmerResponse.getNames(),
@@ -219,7 +216,6 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
 
     @Subscribe
     public void onFetchFieldsResponse(ArrayList<FieldResponse> fieldResponses) {
-        Log.d("MainActivity", "onFetchFieldsResponse: " + fieldResponses.size());
         if (!fieldResponses.isEmpty() && fieldResponses.get(0) instanceof FieldResponse) {
             for (FieldResponse fieldResponse : fieldResponses) {
                 Field field = new Field(fieldResponse.getFieldID(), fieldResponse.getFieldName(),
@@ -250,6 +246,25 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
         this.toolbartitle.setText(R.string.dashboard);
     }
 
+    @Subscribe
+    public void onPlantingSeasonsSelectedEvent(Events.CropsSelectedEvent event) {
+        getSupportFragmentManager().beginTransaction().
+                replace(R.id.content_view, new PlantingSeasonFragment()).
+                setTransition(FragmentTransaction.TRANSIT_NONE).
+                commit();
+        setToolbarTransparent(false);
+        this.toolbartitle.setText(R.string.seasons);
+    }
+
+    @Subscribe
+    public void onFarmInputsSelectedEvent(Events.FarmInputsSelectedEvent event) {
+        getSupportFragmentManager().beginTransaction().
+                replace(R.id.content_view, new FarmInputsFragment()).
+                setTransition(FragmentTransaction.TRANSIT_NONE).
+                commit();
+        setToolbarTransparent(false);
+        this.toolbartitle.setText(R.string.farminputs);
+    }
 
     @Subscribe
     public void onCloseDrawerEvent(Events.CloseDrawerEvent event) {

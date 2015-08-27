@@ -185,7 +185,7 @@
                 android:paddingLeft="@dimen/ui_spacing_small"
                 android:paddingRight="@dimen/ui_spacing_small"
                 android:paddingTop="@dimen/ui_padding"
-                android:text="@string/crops"
+                android:text="@string/seasons"
                 android:textColor="#ff202020"
                 android:textSize="@dimen/slight_medium_text"
                 tools:ignore="MissingPrefix" />

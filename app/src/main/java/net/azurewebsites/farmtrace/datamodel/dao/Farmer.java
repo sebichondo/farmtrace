@@ -141,6 +141,4 @@ public class Farmer {
         myDao.refresh(this);
     }
 
-
-
 }

@@ -40,15 +40,6 @@
                 fontPath="fonts/kontrapunkt_light.otf"
                 android:textColor="@color/white"
                 />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="@dimen/small_text"
-                android:layout_gravity="center_vertical|right"
-                android:background="?android:attr/selectableItemBackground"
-                android:src="@drawable/hand_planting_32"
-                android:tint="#ccc" />
         </android.support.v7.widget.Toolbar>
 
     </FrameLayout>
