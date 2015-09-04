@@ -12,6 +12,7 @@ import com.squareup.picasso.Picasso;
 
 import net.azurewebsites.farmtrace.R;
 import net.azurewebsites.farmtrace.datamodel.dao.Chemical;
+import net.azurewebsites.farmtrace.utils.EnumUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +27,7 @@ public class ChemicalRecyclerAdapter extends RecyclerView.Adapter<ChemicalRecycl
     private List<Chemical> chemicalList;
     private Context mContext;
     List<Integer> resourceIds = Arrays.asList(
-            R.drawable.truck
+            R.drawable.pirates
     );
 
     public ChemicalRecyclerAdapter(List<Chemical> chemicalList, Context mContext) {
@@ -65,8 +66,79 @@ public class ChemicalRecyclerAdapter extends RecyclerView.Adapter<ChemicalRecycl
         Picasso.with(mContext).load(resourceIds.get(0))
                 .into(holder.farmerImage);
 
-        holder.farmDescription.setText(chemical.getProductTradeName());
-        holder.farmerDescription.setText(chemical.getManufacturer());
+        switch (chemical.getChemicalType()){
+            case EnumUtils.ChemicalType.Fungicide:
+                holder.farmDescription.setText(R.string.fungicide);
+                break;
+            case EnumUtils.ChemicalType.Insecticide:
+                holder.farmDescription.setText(R.string.insecticide);
+                break;
+        }
+
+        switch (chemical.getActiveIngredient()){
+            case EnumUtils.ChemicalActiveIngeredient.Acetamiprid:
+                holder.farmerAddress.setText(R.string.acetamiprid);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.AlphaCrypermethrin:
+                holder.farmerAddress.setText(R.string.alphaCrypermethrin);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Azadiraachtin:
+                holder.farmerAddress.setText(R.string.azadiraachtin);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Azoxystrobin:
+                holder.farmerAddress.setText(R.string.azoxystrobin);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.BacillusThuringiensis:
+                holder.farmerAddress.setText(R.string.bacillusThuringiensis);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Carbendazim:
+                holder.farmerAddress.setText(R.string.carbendazim);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Chlorothalonil:
+                holder.farmerAddress.setText(R.string.chlorothalonil);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.CopperOxychloride:
+                holder.farmerAddress.setText(R.string.copperOxychloride);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Cryromazine:
+                holder.farmerAddress.setText(R.string.cryromazine);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Difenoconazole:
+                holder.farmerAddress.setText(R.string.difenoconazole);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Imidacloprid:
+                holder.farmerAddress.setText(R.string.imidacloprid);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Lambdacyhalothrin:
+                holder.farmerAddress.setText(R.string.lambdacyhalothrin);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Manozeb:
+                holder.farmerAddress.setText(R.string.manozeb);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.MonoDipotassiumPhosphates:
+                holder.farmerAddress.setText(R.string.monoDipotassiumPhosphates);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Pyrethrins:
+                holder.farmerAddress.setText(R.string.pyrethrins);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Spinosad:
+                holder.farmerAddress.setText(R.string.spinosad);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Spiromesifen:
+                holder.farmerAddress.setText(R.string.spiromesifen);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Sulphur:
+                holder.farmerAddress.setText(R.string.sulphur);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Tebuconazole:
+                holder.farmerAddress.setText(R.string.tebuconazole);
+                break;
+            case EnumUtils.ChemicalActiveIngeredient.Thiamethoxam:
+                holder.farmerAddress.setText(R.string.thiamethoxam);
+                break;
+
+        }
+        holder.farmerDescription.setText(chemical.getProductTradeName());
     }
 
     @Override

@@ -28,7 +28,7 @@ public class SeedRecyclerAdapter extends RecyclerView.Adapter<SeedRecyclerAdapte
     private List<Seed> seedList;
     private Context mContext;
     List<Integer> resourceIds = Arrays.asList(
-            R.drawable.leaf
+            R.drawable.seed
     );
 
     public SeedRecyclerAdapter(List<Seed> seedList, Context mContext) {

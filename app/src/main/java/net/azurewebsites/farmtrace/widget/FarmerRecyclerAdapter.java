@@ -48,8 +48,6 @@ public class FarmerRecyclerAdapter extends RecyclerView.Adapter<FarmerRecyclerAd
 
         //Download image using picasso library
         Picasso.with(mContext).load(resourceIds.get(position))
-                //.error(R.drawable.placeholder)
-                // .placeholder(R.drawable.placeholder)
                 .into(holder.farmerImage);
 
         holder.farmDescription.setText(farmer.getNames());

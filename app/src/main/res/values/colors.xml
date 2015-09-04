@@ -5,4 +5,31 @@
     <color name="black_semi_transparent">#B2000000</color>
     <color name="rounded_image_paint">#BAB399</color>
     <color name="primary_color">#1ab394</color>
+    <color name="snow_white">#ffffff</color>
+
+    <color name="text_main_color">#ff202020</color>
+    <color name="text_sub_color">#ff999999</color>
+    <color name="text_sub_sub_color">#ffcccccc</color>
+    <color name="text_dark_bg_color">#ffffffff</color>
+    <color name="opaque_white_background">#CCFFFFFF</color>
+
+    <color name="fab_loans">#616161</color>
+    <color name="fab_loans_pressed">#2E2E2E</color>
+    <color name="fab_pay_bill">#B91E56</color>
+    <color name="fab_pay_bill_pressed">#AAB91E56</color>
+    <color name="fab_withdraw_cash">#A94C02</color>
+    <color name="fab_withdraw_cash_pressed">#AAA94C02</color>
+    <color name="fab_send_money">#2369B3</color>
+    <color name="fab_send_money_pressed">#AA2369B3</color>
+    <color name="fab_own_accouont">#12A19A</color>
+    <color name="fab_own_accouont_pressed">#AA12A19A</color>
+    <color name="fab_send_data_bundle">#2E308E</color>
+    <color name="fab_send_data_bundle_pressed">#AA2E308E</color>
+    <color name="fab_send_airtime">#8F53A1</color>
+    <color name="fab_send_airtime_pressed">#AA8F53A1</color>
+    <color name="fab_buy_airtime">#EA6720</color>
+    <color name="fab_buy_airtime_pressed">#AAEA6720</color>
+    <color name="fab_buy_data_bundle">#F39200</color>
+    <color name="fab_buy_data_bundle_pressed">#AAF39200</color>
 </resources>
+

@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-
+        <item name="actionModeStyle">@style/LStyled.ActionMode</item>
 
         <!-- colorPrimary is used for the default action bar background -->
         <item name="colorPrimary">@color/primary_color</item>
@@ -17,6 +17,18 @@
 
 
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="fontPath">fonts/kontrapunkt_light.otf</item>
+    </style>
+
+    <style name="LStyled.ActionMode" parent="@style/Widget.AppCompat.ActionMode">
+        <item name="background">@android:color/transparent</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_action_back</item>
+    </style>
+
+
+    <style name="menu_labels_style">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">@color/text_main_color</item>
         <item name="fontPath">fonts/kontrapunkt_light.otf</item>
     </style>
 

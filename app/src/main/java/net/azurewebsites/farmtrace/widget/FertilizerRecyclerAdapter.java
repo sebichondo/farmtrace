@@ -29,7 +29,7 @@ public class FertilizerRecyclerAdapter extends RecyclerView.Adapter<FertilizerRe
     private List<Fertilizer> fertilizerList;
     private Context mContext;
     List<Integer> resourceIds = Arrays.asList(
-            R.drawable.leaf
+            R.drawable.fertilizer
     );
 
     public FertilizerRecyclerAdapter(List<Fertilizer> fertilizerList, Context mContext) {
@@ -84,7 +84,24 @@ public class FertilizerRecyclerAdapter extends RecyclerView.Adapter<FertilizerRe
                 break;
         }
 
-        //holder.farmerAddress.setText(DateFormat.getDateInstance().format(plantingSeason.getStartDate()) + " - " + DateFormat.getDateInstance().format(plantingSeason.getTargetDate()));
+        switch(fertilizer.getMainNutrients()){
+            case EnumUtils.FertilizerNutrientType.NPK:
+                holder.farmerAddress.setText(R.string.NPK);
+                break;
+            case EnumUtils.FertilizerNutrientType.ASN:
+                holder.farmerAddress.setText(R.string.ASN);
+                break;
+            case EnumUtils.FertilizerNutrientType.CAN:
+                holder.farmerAddress.setText(R.string.CAN);
+                break;
+            case EnumUtils.FertilizerNutrientType.DAP:
+                holder.farmerAddress.setText(R.string.DAP);
+                break;
+            case EnumUtils.FertilizerNutrientType.TSP:
+                holder.farmerAddress.setText(R.string.TSP);
+                break;
+        }
+
         Crop crop= DataRepository.getCropById(mContext, fertilizer.getCropID());
         holder.farmerDescription.setText(crop.getCropName());
 

@@ -14,6 +14,7 @@ import net.azurewebsites.farmtrace.R;
 import net.azurewebsites.farmtrace.datamodel.dao.Farmer;
 import net.azurewebsites.farmtrace.datamodel.dao.Field;
 import net.azurewebsites.farmtrace.datamodel.repository.DataRepository;
+import net.azurewebsites.farmtrace.farmingactivity.FarmingDashboardActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,8 +26,9 @@ import butterknife.ButterKnife;
  * Created by sebichondo on 8/20/15.
  */
 public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.CustomViewHolder> {
-
     private List<Field> fieldItemList;
+    private String fieldDesc;
+    private String farmerDesc;
     private Context mContext;
     List<Integer> resourceIds = Arrays.asList(
             R.drawable.michaeljackson,
@@ -37,20 +39,22 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
             R.drawable.female2,
             R.drawable.female8);
 
+    public interface MyClickListener {
+        public void onItemClick(int position, View v);
+    }
+
     @Override
     public void onBindViewHolder(MyRecyclerAdapter.CustomViewHolder holder, int position) {
         Field fieldItem = fieldItemList.get(position);
 
         //Download image using picasso library
         Picasso.with(mContext).load(resourceIds.get(position))
-                //.error(R.drawable.placeholder)
-               // .placeholder(R.drawable.placeholder)
                 .into(holder.farmerImage);
         holder.farmDescription.setText(fieldItem.getFieldName());
         Farmer farmer= DataRepository.getFarmerById(mContext,fieldItem.getFarmerID());
         holder.farmerDescription.setText(farmer.getNames());
-
     }
+
 
     public MyRecyclerAdapter(Context context, List<Field> fieldItemList) {
         this.fieldItemList = fieldItemList;
@@ -64,7 +68,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
     }
 
 
-    public class CustomViewHolder extends RecyclerView.ViewHolder {
+    public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.farm_image)
         ImageView farmerImage;
         @Bind(R.id.farm_description)
@@ -75,6 +79,14 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         public CustomViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            fieldDesc= farmDescription.getText().toString();
+            farmerDesc=farmerDescription.getText().toString();
+            v.getContext().startActivity(FarmingDashboardActivity.newInstance(v.getContext(), fieldDesc,farmerDesc));
         }
     }
 

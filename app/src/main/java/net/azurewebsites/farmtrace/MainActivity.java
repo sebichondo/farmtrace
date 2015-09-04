@@ -49,7 +49,6 @@ import net.azurewebsites.farmtrace.fragment.PlantingSeasonFragment;
 import net.azurewebsites.farmtrace.utils.UiUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -89,7 +88,6 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
 
 
     private ActionBarDrawerToggle drawerToggle;
-    //private Bus bus = BusProvider.getInstance();
     private MainComponent mainComponent;
 
 
@@ -104,15 +102,12 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.content_view, new DashboardFragment()).
-                    setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).
+                    setTransition(FragmentTransaction.TRANSIT_NONE).
                     commit();
             setToolbarTransparent(true);
         }
 
         loadMasterData();
-
-        List<FarmerGroup> farmerGroups=DataRepository.getAllFarmerGroups(this);
-
     }
 
     private void loadMasterData() {
@@ -167,8 +162,6 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
         if (!fertilizerResponses.isEmpty() && fertilizerResponses.get(0) instanceof FertilizerResponse) {
 
             for (FertilizerResponse fertilizerResponse : fertilizerResponses) {
-                Log.d("Fertilizer", "Fertilizer Count: " + fertilizerResponse.toString());
-                Log.d("Fertilizer", "Fertilizer Crop ID: " + fertilizerResponse.getCropID());
                 Fertilizer fertilizer = new Fertilizer(fertilizerResponse.getFertilizerID(), fertilizerResponse.getFertilizerType(),
                         fertilizerResponse.getMainNutrients(), fertilizerResponse.getSoilConditions(), fertilizerResponse.getTimeOfPlanting(),
                         fertilizerResponse.getTopDressing(), fertilizerResponse.getCropID());

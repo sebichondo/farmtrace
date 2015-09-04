@@ -1,6 +1,7 @@
 package net.azurewebsites.farmtrace;
 
 import net.azurewebsites.api.APIServicesModule;
+import net.azurewebsites.farmtrace.farmingactivity.FarmingDashboardActivity;
 
 import dagger.Component;
 
@@ -24,4 +25,6 @@ import dagger.Component;
 )
 public interface MainComponent {
     void inject(MainActivity activity);
+    void inject(FarmingDashboardActivity activity);
+
 }

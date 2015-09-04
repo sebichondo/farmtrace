@@ -16,7 +16,6 @@ import net.azurewebsites.farmtrace.datamodel.dao.PlantingSeason;
 import net.azurewebsites.farmtrace.datamodel.repository.DataRepository;
 
 import java.text.DateFormat;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
@@ -28,9 +27,7 @@ import butterknife.ButterKnife;
 public class SeasonRecyclerAdapter extends RecyclerView.Adapter<SeasonRecyclerAdapter.CustomViewHolder> {
     private List<PlantingSeason> plantingSeasonList;
     private Context mContext;
-    List<Integer> resourceIds = Arrays.asList(
-            R.drawable.weather
-            );
+
 
     public SeasonRecyclerAdapter(List<PlantingSeason> plantingSeasonList, Context mContext) {
         this.plantingSeasonList = plantingSeasonList;
@@ -66,7 +63,7 @@ public class SeasonRecyclerAdapter extends RecyclerView.Adapter<SeasonRecyclerAd
         PlantingSeason plantingSeason = plantingSeasonList.get(position);
 
         //Download image using picasso library
-        Picasso.with(mContext).load(resourceIds.get(position))
+        Picasso.with(mContext).load(R.drawable.weather)
                 //.error(R.drawable.placeholder)
                 // .placeholder(R.drawable.placeholder)
                 .into(holder.farmerImage);
