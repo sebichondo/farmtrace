@@ -32,6 +32,8 @@ import net.azurewebsites.api.plantingseason.IPlantingSeasonService;
 import net.azurewebsites.api.plantingseason.PlantingSeasonResponse;
 import net.azurewebsites.api.seed.ISeedService;
 import net.azurewebsites.api.seed.SeedResponse;
+import net.azurewebsites.api.user.IUserService;
+import net.azurewebsites.api.user.UserResponse;
 import net.azurewebsites.farmtrace.datamodel.dao.Chemical;
 import net.azurewebsites.farmtrace.datamodel.dao.Crop;
 import net.azurewebsites.farmtrace.datamodel.dao.Farmer;
@@ -40,6 +42,7 @@ import net.azurewebsites.farmtrace.datamodel.dao.Fertilizer;
 import net.azurewebsites.farmtrace.datamodel.dao.Field;
 import net.azurewebsites.farmtrace.datamodel.dao.PlantingSeason;
 import net.azurewebsites.farmtrace.datamodel.dao.Seed;
+import net.azurewebsites.farmtrace.datamodel.dao.User;
 import net.azurewebsites.farmtrace.datamodel.repository.DataRepository;
 import net.azurewebsites.farmtrace.event.Events;
 import net.azurewebsites.farmtrace.fragment.DashboardFragment;
@@ -85,7 +88,8 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
     IChemicalService chemicalService;
     @Inject
     ISeedService seedService;
-
+    @Inject
+    IUserService userService;
 
     private ActionBarDrawerToggle drawerToggle;
     private MainComponent mainComponent;
@@ -119,6 +123,7 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
         fertilizerService.getFertilizers(bus);
         chemicalService.getChemicals(bus);
         seedService.getSeeds(bus);
+        userService.getUsers(bus);
     }
 
     @Subscribe
@@ -129,6 +134,18 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
                         groupResponse.getTelephone(), groupResponse.getEmailAddress(), groupResponse.getContactPerson(),
                         groupResponse.getAddress(), groupResponse.getCropID());
                 DataRepository.insertOrUpdateFarmerGroup(this, farmerGroup);
+            }
+        }
+    }
+
+    @Subscribe
+    public void onFetchUsersResponse(ArrayList<UserResponse> userResponses) {
+        if (!userResponses.isEmpty() && userResponses.get(0) instanceof UserResponse) {
+            for (UserResponse userResponse : userResponses) {
+                User user = new User(userResponse.getUserID(),userResponse.getUserName()
+                        ,userResponse.getUserPassword(),userResponse.getUserType(),userResponse.getUserStatus(),
+                        "");
+                DataRepository.insertOrUpdateUser(this, user);
             }
         }
     }
@@ -212,7 +229,7 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
         if (!fieldResponses.isEmpty() && fieldResponses.get(0) instanceof FieldResponse) {
             for (FieldResponse fieldResponse : fieldResponses) {
                 Field field = new Field(fieldResponse.getFieldID(), fieldResponse.getFieldName(),
-                        fieldResponse.getLocation(),
+                        fieldResponse.getLocation(),fieldResponse.getArea(),
                         fieldResponse.getFarmerID());
                 DataRepository.insertOrUpdateField(this, field);
             }
@@ -343,7 +360,5 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
         Log.d("MainActivity", "onResume");
         //BusProvider.getInstance().register(this);
     }
-
-
 }
 

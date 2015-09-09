@@ -67,4 +67,8 @@ public class Seed {
         this.cropID = cropID;
     }
 
+    @Override
+    public String toString() {
+        return  seedVariety;
+    }
 }

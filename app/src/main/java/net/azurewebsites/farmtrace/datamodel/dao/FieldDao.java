@@ -29,7 +29,8 @@ public class FieldDao extends AbstractDao<Field, Long> {
         public final static Property FieldID = new Property(0, Long.class, "fieldID", true, "FIELD_ID");
         public final static Property FieldName = new Property(1, String.class, "fieldName", false, "FIELD_NAME");
         public final static Property Location = new Property(2, String.class, "location", false, "LOCATION");
-        public final static Property FarmerID = new Property(3, Long.class, "farmerID", false, "FARMER_ID");
+        public final static Property Area = new Property(3, Double.class, "area", false, "AREA");
+        public final static Property FarmerID = new Property(4, Long.class, "farmerID", false, "FARMER_ID");
     };
 
     private Query<Field> farmer_FieldListQuery;
@@ -49,7 +50,8 @@ public class FieldDao extends AbstractDao<Field, Long> {
                 "'FIELD_ID' INTEGER PRIMARY KEY ," + // 0: fieldID
                 "'FIELD_NAME' TEXT," + // 1: fieldName
                 "'LOCATION' TEXT," + // 2: location
-                "'FARMER_ID' INTEGER);"); // 3: farmerID
+                "'AREA' REAL," + // 3: area
+                "'FARMER_ID' INTEGER);"); // 4: farmerID
     }
 
     /** Drops the underlying database table. */
@@ -78,9 +80,14 @@ public class FieldDao extends AbstractDao<Field, Long> {
             stmt.bindString(3, location);
         }
  
+        Double area = entity.getArea();
+        if (area != null) {
+            stmt.bindDouble(4, area);
+        }
+ 
         Long farmerID = entity.getFarmerID();
         if (farmerID != null) {
-            stmt.bindLong(4, farmerID);
+            stmt.bindLong(5, farmerID);
         }
     }
 
@@ -97,7 +104,8 @@ public class FieldDao extends AbstractDao<Field, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // fieldID
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // fieldName
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // location
-            cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3) // farmerID
+            cursor.isNull(offset + 3) ? null : cursor.getDouble(offset + 3), // area
+            cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4) // farmerID
         );
         return entity;
     }
@@ -108,7 +116,8 @@ public class FieldDao extends AbstractDao<Field, Long> {
         entity.setFieldID(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setFieldName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setLocation(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setFarmerID(cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3));
+        entity.setArea(cursor.isNull(offset + 3) ? null : cursor.getDouble(offset + 3));
+        entity.setFarmerID(cursor.isNull(offset + 4) ? null : cursor.getLong(offset + 4));
      }
     
     /** @inheritdoc */

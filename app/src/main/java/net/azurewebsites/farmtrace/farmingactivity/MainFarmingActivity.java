@@ -8,27 +8,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.squareup.otto.Subscribe;
-
 import net.azurewebsites.farmtrace.AppComponent;
 import net.azurewebsites.farmtrace.BaseActivity;
-import net.azurewebsites.farmtrace.Constants;
 import net.azurewebsites.farmtrace.DaggerMainComponent;
 import net.azurewebsites.farmtrace.FarmerServiceModule;
 import net.azurewebsites.farmtrace.HasComponent;
 import net.azurewebsites.farmtrace.MainComponent;
 import net.azurewebsites.farmtrace.R;
-import net.azurewebsites.farmtrace.event.Events;
-import net.azurewebsites.farmtrace.fragment.FarmingActivitySummaryFragment;
+import net.azurewebsites.farmtrace.fragment.FarmingActivityFragment;
 import net.azurewebsites.farmtrace.utils.UiUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * Created by sebichondo on 8/27/15.
+ * Created by sebichondo on 9/5/15.
  */
-public class FarmingDashboardActivity extends BaseActivity implements HasComponent<MainComponent> {
+public class MainFarmingActivity extends BaseActivity implements HasComponent<MainComponent> {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -42,8 +38,9 @@ public class FarmingDashboardActivity extends BaseActivity implements HasCompone
     private String fieldDesc;
     private String farmerDesc;
 
+
     public static Intent newInstance(Context context,String fieldDesc,String farmerDesc) {
-        Intent intent = new Intent(context, FarmingDashboardActivity.class);
+        Intent intent = new Intent(context, MainFarmingActivity.class);
         intent.putExtra(FIELD_DESC, fieldDesc);
         intent.putExtra(FARMER_DESC, farmerDesc);
         return intent;
@@ -76,20 +73,13 @@ public class FarmingDashboardActivity extends BaseActivity implements HasCompone
         this.setTitle("");
         this.toolbartitle.setText(getResources().getString(R.string.farmingActivities));
 
-
         fieldDesc = getIntent().getStringExtra(FIELD_DESC);
         farmerDesc = getIntent().getStringExtra(FARMER_DESC);
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_view, FarmingActivitySummaryFragment.newInstance(fieldDesc,farmerDesc)).
-                    setTransition(FragmentTransaction.TRANSIT_NONE).
-                    commit();
-        }
-    }
-
-    @Subscribe
-    public void onFabButtonClickEvent(Events.FabButtonClickEvent event) {
-        startActivityForResult(MainFarmingActivity.newInstance(this,fieldDesc, farmerDesc), Constants.FARMING_ACTIVITY_CODE);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_view, FarmingActivityFragment.newInstance(fieldDesc, farmerDesc)).
+                setTransition(FragmentTransaction.TRANSIT_NONE).
+                commit();
+        this.toolbartitle.setText("Choose Farming Activity");
     }
 
     @Override

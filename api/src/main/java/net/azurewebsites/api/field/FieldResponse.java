@@ -16,95 +16,64 @@ public class FieldResponse {
     private String FieldName;
     @Expose
     private String Location;
+    @Expose
+    private Double Area;
 
-    /**
-     *
-     * @return
-     * The FieldID
-     */
+    public FieldResponse(Long fieldID, Long farmerID, net.azurewebsites.api.field.Farmer farmer, String fieldName, String location, Double area) {
+        FieldID = fieldID;
+        FarmerID = farmerID;
+        Farmer = farmer;
+        FieldName = fieldName;
+        Location = location;
+        Area = area;
+    }
+
     public Long getFieldID() {
         return FieldID;
     }
 
-    /**
-     *
-     * @param FieldID
-     * The FieldID
-     */
-    public void setFieldID(Long FieldID) {
-        this.FieldID = FieldID;
+    public void setFieldID(Long fieldID) {
+        FieldID = fieldID;
     }
 
-    /**
-     *
-     * @return
-     * The FarmerID
-     */
     public Long getFarmerID() {
         return FarmerID;
     }
 
-    /**
-     *
-     * @param FarmerID
-     * The FarmerID
-     */
-    public void setFarmerID(Long FarmerID) {
-        this.FarmerID = FarmerID;
+    public void setFarmerID(Long farmerID) {
+        FarmerID = farmerID;
     }
 
-    /**
-     *
-     * @return
-     * The Farmer
-     */
-    public Farmer getFarmer() {
+    public net.azurewebsites.api.field.Farmer getFarmer() {
         return Farmer;
     }
 
-    /**
-     *
-     * @param Farmer
-     * The Farmer
-     */
-    public void setFarmer(Farmer Farmer) {
-        this.Farmer = Farmer;
+    public void setFarmer(net.azurewebsites.api.field.Farmer farmer) {
+        Farmer = farmer;
     }
 
-    /**
-     *
-     * @return
-     * The FieldName
-     */
     public String getFieldName() {
         return FieldName;
     }
 
-    /**
-     *
-     * @param FieldName
-     * The FieldName
-     */
-    public void setFieldName(String FieldName) {
-        this.FieldName = FieldName;
+    public void setFieldName(String fieldName) {
+        FieldName = fieldName;
     }
 
-    /**
-     *
-     * @return
-     * The Location
-     */
     public String getLocation() {
         return Location;
     }
 
-    /**
-     *
-     * @param Location
-     * The Location
-     */
-    public void setLocation(String Location) {
-        this.Location = Location;
+    public void setLocation(String location) {
+        Location = location;
+    }
+
+    public Double getArea() {
+        return Area;
+    }
+
+    public void setArea(Double area) {
+        Area = area;
     }
 
     @Override
@@ -115,6 +84,7 @@ public class FieldResponse {
                 ", Farmer=" + Farmer +
                 ", FieldName='" + FieldName + '\'' +
                 ", Location='" + Location + '\'' +
+                ", Area=" + Area +
                 '}';
     }
 }

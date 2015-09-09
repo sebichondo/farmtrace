@@ -32,5 +32,43 @@
         <item name="fontPath">fonts/kontrapunkt_light.otf</item>
     </style>
 
+    <!-- Text Styles -->
+    <style name="Text" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/text_main_color</item>
+    </style>
+
+    <style name="Text.Big" parent="@style/Text">
+        <item name="android:textSize">@dimen/large_text</item>
+    </style>
+
+    <style name="Text.Headline" parent="@style/Text">
+        <item name="android:textSize">@dimen/headline_text</item>
+        <item name="android:textColor">@color/text_main_color</item>
+    </style>
+
+    <style name="Text.Medium" parent="@style/Text">
+        <item name="android:textSize">@dimen/medium_text</item>
+    </style>
+
+    <style name="Text.Regular" parent="@style/Text">
+        <item name="android:textSize">@dimen/regular_text</item>
+    </style>
+
+    <style name="Text.Small" parent="@style/Text">
+        <item name="android:textSize">@dimen/small_text</item>
+    </style>
+
+    <style name="Text.Subhader" parent="Text.Regular">
+        <item name="android:textColor">@color/text_sub_color</item>
+    </style>
+
+    <style name="Text.Placeholder" parent="Text.Medium">
+        <item name="android:textColor">@color/text_sub_color</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
 
 </resources>

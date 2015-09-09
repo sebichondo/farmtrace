@@ -2,6 +2,7 @@ package net.azurewebsites.farmtrace.widget;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,6 +76,7 @@ public class ChemicalRecyclerAdapter extends RecyclerView.Adapter<ChemicalRecycl
                 break;
         }
 
+        Log.d("MainActivity", "Active Ingredient" + chemical.getActiveIngredient());
         switch (chemical.getActiveIngredient()){
             case EnumUtils.ChemicalActiveIngeredient.Acetamiprid:
                 holder.farmerAddress.setText(R.string.acetamiprid);

@@ -9,6 +9,7 @@ public class Field {
     private Long fieldID;
     private String fieldName;
     private String location;
+    private Double area;
     private Long farmerID;
 
     public Field() {
@@ -18,10 +19,11 @@ public class Field {
         this.fieldID = fieldID;
     }
 
-    public Field(Long fieldID, String fieldName, String location, Long farmerID) {
+    public Field(Long fieldID, String fieldName, String location, Double area, Long farmerID) {
         this.fieldID = fieldID;
         this.fieldName = fieldName;
         this.location = location;
+        this.area = area;
         this.farmerID = farmerID;
     }
 
@@ -47,6 +49,14 @@ public class Field {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Double getArea() {
+        return area;
+    }
+
+    public void setArea(Double area) {
+        this.area = area;
     }
 
     public Long getFarmerID() {

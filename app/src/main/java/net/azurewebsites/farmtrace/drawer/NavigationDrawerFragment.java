@@ -22,6 +22,8 @@ import net.azurewebsites.farmtrace.BaseFragment;
 import net.azurewebsites.farmtrace.Constants;
 import net.azurewebsites.farmtrace.R;
 import net.azurewebsites.farmtrace.event.Events;
+import net.azurewebsites.farmtrace.utils.EnumUtils;
+import net.azurewebsites.farmtrace.utils.Settings;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -110,8 +112,21 @@ public class NavigationDrawerFragment  extends BaseFragment implements View.OnCl
         final View view = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         ButterKnife.bind(this, view);
 
-        username.setText("David Kamau");
-        designation.setText("Techincal Assistant");
+        username.setText(Settings.getCurrentUser().getUserName());
+        switch (Settings.getCurrentUser().getUserType()){
+            case EnumUtils.UserType.Buyer:
+                designation.setText(R.string.buyer);
+                break;
+            case EnumUtils.UserType.FieldEmployee:
+                designation.setText(R.string.fieldemployee);
+                break;
+            case EnumUtils.UserType.HeadOfficeEmployee:
+                designation.setText(R.string.headofficeemployee);
+                break;
+            case EnumUtils.UserType.Farmer:
+                designation.setText(R.string.farmer);
+                break;
+        }
 
         farmers.setOnClickListener(this);
         farmInputs.setOnClickListener(this);

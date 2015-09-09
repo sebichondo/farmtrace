@@ -8,6 +8,14 @@ public class Events {
 
     }
 
+    public static class FabButtonClickEvent {
+        public boolean expanded;
+
+        public FabButtonClickEvent(boolean expanded) {
+            this.expanded = expanded;
+        }
+    }
+
 
     public static class CropsSelectedEvent {
 

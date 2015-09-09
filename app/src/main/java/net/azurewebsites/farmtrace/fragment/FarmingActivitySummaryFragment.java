@@ -1,18 +1,26 @@
 package net.azurewebsites.farmtrace.fragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.squareup.otto.Bus;
+
 import net.azurewebsites.farmtrace.R;
 import net.azurewebsites.farmtrace.datamodel.dao.Farmer;
 import net.azurewebsites.farmtrace.datamodel.repository.DataRepository;
+import net.azurewebsites.farmtrace.event.BusProvider;
+import net.azurewebsites.farmtrace.event.Events;
 import net.azurewebsites.farmtrace.widget.FarmerRecyclerAdapter;
 
 import java.util.List;
@@ -28,9 +36,14 @@ public class FarmingActivitySummaryFragment extends Fragment implements View.OnC
     RecyclerView rv;
     @Bind(R.id.farm_activity_description)
     TextView farmerDescription;
+    @Bind(R.id.multiple_actions_down)
+    FloatingActionsMenu plusButton;
 
     protected final static String FIELD_DESC = "FIELD_DESC";
     protected final static String FARMER_DESC = "FARMER_DESC";
+
+    private boolean fabMenuExapnded = false;
+    protected Bus bus = BusProvider.getInstance();
 
     private String farmDescription;
 
@@ -45,9 +58,34 @@ public class FarmingActivitySummaryFragment extends Fragment implements View.OnC
     }
 
 
+    public static void setFabMenuBackground(final Context context, final Bus bus, final FloatingActionsMenu plusButton) {
+
+        plusButton.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                bus.post(new Events.FabButtonClickEvent(plusButton.isExpanded()));
+                Log.d("Farming Dashboard", "MENU EXPANDED");
+                plusButton.collapse();
+            }
+
+            @Override
+            public void onMenuCollapsed() {
+                //bus.post(new Events.FabButtonClickEvent(plusButton.isExpanded()));
+                Log.d("Farming Dashboard", "MENU COLLAPSED");
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d("Farming Dashboard", "MENU COLLAPSED ON ACTIVITY RESULT");
+
+    }
+
     @Override
     public void onClick(View v) {
-
+        Log.d("Farming Dashboard", "Just got CLICKED YOU Type");
     }
 
     @Nullable
@@ -55,8 +93,11 @@ public class FarmingActivitySummaryFragment extends Fragment implements View.OnC
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_farming_activity, container, false);
         ButterKnife.bind(this, view);
-        farmDescription = "Field : " + getArguments().getString(FIELD_DESC) + " - Farmer : " + getArguments().getString(FARMER_DESC);
+        farmDescription = getArguments().getString(FIELD_DESC) + " - " + getArguments().getString(FARMER_DESC);
         farmerDescription.setText(farmDescription);
+        Log.d("Farming Dashboard", "Just got CLICKED YOU Type");
+        plusButton.setOnClickListener(this);
+        setFabMenuBackground(getActivity(), bus, plusButton);
         List<Farmer> farmers= DataRepository.getAllFarmers(getActivity());
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         rv.setAdapter(new FarmerRecyclerAdapter(getActivity(), farmers));

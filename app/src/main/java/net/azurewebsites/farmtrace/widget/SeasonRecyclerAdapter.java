@@ -64,8 +64,6 @@ public class SeasonRecyclerAdapter extends RecyclerView.Adapter<SeasonRecyclerAd
 
         //Download image using picasso library
         Picasso.with(mContext).load(R.drawable.weather)
-                //.error(R.drawable.placeholder)
-                // .placeholder(R.drawable.placeholder)
                 .into(holder.farmerImage);
 
         holder.farmDescription.setText(plantingSeason.getSeasonName());

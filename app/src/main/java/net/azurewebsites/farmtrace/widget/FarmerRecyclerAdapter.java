@@ -34,8 +34,10 @@ public class FarmerRecyclerAdapter extends RecyclerView.Adapter<FarmerRecyclerAd
             R.drawable.female2,
             R.drawable.female5,
             R.drawable.female2,
-            R.drawable.female8);
-
+            R.drawable.female8,
+            R.drawable.female7,
+            R.drawable.female9,
+            R.drawable.male5);
 
     public FarmerRecyclerAdapter(Context context, List<Farmer> farmerList) {
         this.farmerList = farmerList;
@@ -47,15 +49,16 @@ public class FarmerRecyclerAdapter extends RecyclerView.Adapter<FarmerRecyclerAd
         Farmer farmer = farmerList.get(position);
 
         //Download image using picasso library
-        Picasso.with(mContext).load(resourceIds.get(position))
-                .into(holder.farmerImage);
+        if(position < 10) {
+            Picasso.with(mContext).load(resourceIds.get(position))
+                    .into(holder.farmerImage);
+        }
 
         holder.farmDescription.setText(farmer.getNames());
         holder.farmerAddress.setText(farmer.getTelephone());
         FarmerGroup farmerGroup= DataRepository.getGroupById(mContext, farmer.getFarmerGroupID());
         holder.farmerDescription.setText(farmerGroup.getGroupName() + " Group");
     }
-
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.farm_image)
@@ -73,8 +76,6 @@ public class FarmerRecyclerAdapter extends RecyclerView.Adapter<FarmerRecyclerAd
         }
     }
 
-
-
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.farmer_item, null);
@@ -82,8 +83,6 @@ public class FarmerRecyclerAdapter extends RecyclerView.Adapter<FarmerRecyclerAd
         CustomViewHolder viewHolder = new CustomViewHolder(view);
         return viewHolder;
     }
-
-
 
     @Override
     public int getItemCount() {

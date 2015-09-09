@@ -10,6 +10,7 @@ import de.greenrobot.dao.identityscope.IdentityScopeType;
 import de.greenrobot.dao.internal.DaoConfig;
 
 import net.azurewebsites.farmtrace.datamodel.dao.Crop;
+import net.azurewebsites.farmtrace.datamodel.dao.User;
 import net.azurewebsites.farmtrace.datamodel.dao.Chemical;
 import net.azurewebsites.farmtrace.datamodel.dao.FarmerGroup;
 import net.azurewebsites.farmtrace.datamodel.dao.Farmer;
@@ -19,6 +20,7 @@ import net.azurewebsites.farmtrace.datamodel.dao.Seed;
 import net.azurewebsites.farmtrace.datamodel.dao.PlantingSeason;
 
 import net.azurewebsites.farmtrace.datamodel.dao.CropDao;
+import net.azurewebsites.farmtrace.datamodel.dao.UserDao;
 import net.azurewebsites.farmtrace.datamodel.dao.ChemicalDao;
 import net.azurewebsites.farmtrace.datamodel.dao.FarmerGroupDao;
 import net.azurewebsites.farmtrace.datamodel.dao.FarmerDao;
@@ -37,6 +39,7 @@ import net.azurewebsites.farmtrace.datamodel.dao.PlantingSeasonDao;
 public class DaoSession extends AbstractDaoSession {
 
     private final DaoConfig cropDaoConfig;
+    private final DaoConfig userDaoConfig;
     private final DaoConfig chemicalDaoConfig;
     private final DaoConfig farmerGroupDaoConfig;
     private final DaoConfig farmerDaoConfig;
@@ -46,6 +49,7 @@ public class DaoSession extends AbstractDaoSession {
     private final DaoConfig plantingSeasonDaoConfig;
 
     private final CropDao cropDao;
+    private final UserDao userDao;
     private final ChemicalDao chemicalDao;
     private final FarmerGroupDao farmerGroupDao;
     private final FarmerDao farmerDao;
@@ -60,6 +64,9 @@ public class DaoSession extends AbstractDaoSession {
 
         cropDaoConfig = daoConfigMap.get(CropDao.class).clone();
         cropDaoConfig.initIdentityScope(type);
+
+        userDaoConfig = daoConfigMap.get(UserDao.class).clone();
+        userDaoConfig.initIdentityScope(type);
 
         chemicalDaoConfig = daoConfigMap.get(ChemicalDao.class).clone();
         chemicalDaoConfig.initIdentityScope(type);
@@ -83,6 +90,7 @@ public class DaoSession extends AbstractDaoSession {
         plantingSeasonDaoConfig.initIdentityScope(type);
 
         cropDao = new CropDao(cropDaoConfig, this);
+        userDao = new UserDao(userDaoConfig, this);
         chemicalDao = new ChemicalDao(chemicalDaoConfig, this);
         farmerGroupDao = new FarmerGroupDao(farmerGroupDaoConfig, this);
         farmerDao = new FarmerDao(farmerDaoConfig, this);
@@ -92,6 +100,7 @@ public class DaoSession extends AbstractDaoSession {
         plantingSeasonDao = new PlantingSeasonDao(plantingSeasonDaoConfig, this);
 
         registerDao(Crop.class, cropDao);
+        registerDao(User.class, userDao);
         registerDao(Chemical.class, chemicalDao);
         registerDao(FarmerGroup.class, farmerGroupDao);
         registerDao(Farmer.class, farmerDao);
@@ -103,6 +112,7 @@ public class DaoSession extends AbstractDaoSession {
     
     public void clear() {
         cropDaoConfig.getIdentityScope().clear();
+        userDaoConfig.getIdentityScope().clear();
         chemicalDaoConfig.getIdentityScope().clear();
         farmerGroupDaoConfig.getIdentityScope().clear();
         farmerDaoConfig.getIdentityScope().clear();
@@ -114,6 +124,10 @@ public class DaoSession extends AbstractDaoSession {
 
     public CropDao getCropDao() {
         return cropDao;
+    }
+
+    public UserDao getUserDao() {
+        return userDao;
     }
 
     public ChemicalDao getChemicalDao() {

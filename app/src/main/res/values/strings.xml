@@ -56,4 +56,13 @@
     <string name="back">Back</string>
     <string name="farmingActivities">Farming Activities</string>
     <string name="addActivity">Add Activity</string>
+    <string name="chooseActivity">Choose Activity</string>
+    <string name="buyer">Buyer</string>
+    <string name="fieldemployee">Field Employee</string>
+    <string name="headofficeemployee">Head Office Employee</string>
+    <string name="farmer">Farmer</string>
+    <string name="input">Input : </string>
+    <string name="inputType">Input Type : </string>
+    <string name="quantity">Quantity : </string>
+    <string name="save">Save</string>
 </resources>

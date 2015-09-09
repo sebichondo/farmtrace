@@ -6,6 +6,16 @@
     tools:context="net.azurewebsites.farmtrace.Login">
 
     <LinearLayout
+        android:id="@+id/header_top"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+        </LinearLayout>
+
+
+    <LinearLayout
         android:id="@+id/header_bottom"
         android:layout_width="match_parent"
         android:layout_gravity="center_horizontal"

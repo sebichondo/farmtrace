@@ -10,13 +10,21 @@ import de.greenrobot.daogenerator.Schema;
  */
 public class MyDaoGenerator {
     public static void main(String args[]) throws Exception {
-        Schema schema = new Schema(7, "net.azurewebsites.farmtrace.datamodel.dao");
+        Schema schema = new Schema(8, "net.azurewebsites.farmtrace.datamodel.dao");
 
         //Entities
         Entity crop = schema.addEntity("Crop");
         crop.addLongProperty("cropID").primaryKey();
         crop.addStringProperty("cropName");
         crop.addStringProperty("cropVariety");
+
+        Entity user = schema.addEntity("User");
+        user.addLongProperty("userID").primaryKey();
+        user.addStringProperty("userName");
+        user.addStringProperty("userPassword");
+        user.addIntProperty("userType");
+        user.addIntProperty("userStatus");
+        user.addStringProperty("profilePicUri");
 
         Entity chemical = schema.addEntity("Chemical");
         chemical.addLongProperty("chemicalID").primaryKey();
@@ -61,6 +69,7 @@ public class MyDaoGenerator {
         field.addLongProperty("fieldID").primaryKey();
         field.addStringProperty("fieldName");
         field.addStringProperty("location");
+        field.addDoubleProperty("area");
         Property fieldIdForFarmer= field.addLongProperty("farmerID").getProperty();
 
         Entity seed = schema.addEntity("Seed");

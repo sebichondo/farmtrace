@@ -20,13 +20,28 @@ import net.azurewebsites.farmtrace.datamodel.dao.PlantingSeason;
 import net.azurewebsites.farmtrace.datamodel.dao.PlantingSeasonDao;
 import net.azurewebsites.farmtrace.datamodel.dao.Seed;
 import net.azurewebsites.farmtrace.datamodel.dao.SeedDao;
+import net.azurewebsites.farmtrace.datamodel.dao.User;
+import net.azurewebsites.farmtrace.datamodel.dao.UserDao;
 
 import java.util.List;
+
+import de.greenrobot.dao.query.QueryBuilder;
 
 /**
  * Created by sebichondo on 8/15/15.
  */
 public class DataRepository {
+
+    public static User getUserByUserName(Context context, String userName) {
+        QueryBuilder<User> builder = getUserDao(context).queryBuilder();
+        builder.where(UserDao.Properties.UserName.eq(userName));
+        List<User> items = builder.list();
+
+        if (items.isEmpty())
+            return null;
+
+        return items.get(0);
+    }
 
     public static void insertOrUpdateFarmer(Context context, Farmer farmer) {
         Long rowsReturned=getFarmerDao(context).insertOrReplace(farmer);
@@ -49,6 +64,12 @@ public class DataRepository {
         Long rowsReturned=getFarmerGroupDao(context).insertOrReplace(farmerGroup);
         Log.d("DataRepository", "The Number of Groups Inserted: " + rowsReturned);
     }
+
+    public static void insertOrUpdateUser(Context context, User user) {
+        Long rowsReturned=getUserDao(context).insertOrReplace(user);
+        Log.d("DataRepository", "The Number of Users Inserted: " + rowsReturned);
+    }
+
 
     public static void insertOrUpdateSeed(Context context, Seed seed) {
         Long rowsReturned=getSeedDao(context).insertOrReplace(seed);
@@ -154,4 +175,7 @@ public class DataRepository {
         return ((FarmTraceApp) c.getApplicationContext()).getDaoSession().getSeedDao();
     }
 
+    private static UserDao getUserDao(Context c) {
+        return ((FarmTraceApp) c.getApplicationContext()).getDaoSession().getUserDao();
+    }
 }

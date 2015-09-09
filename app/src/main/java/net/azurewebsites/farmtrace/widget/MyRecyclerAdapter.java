@@ -1,6 +1,7 @@
 package net.azurewebsites.farmtrace.widget;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import net.azurewebsites.farmtrace.datamodel.dao.Field;
 import net.azurewebsites.farmtrace.datamodel.repository.DataRepository;
 import net.azurewebsites.farmtrace.farmingactivity.FarmingDashboardActivity;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +39,10 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
             R.drawable.female2,
             R.drawable.female5,
             R.drawable.female2,
-            R.drawable.female8);
+            R.drawable.female8,
+            R.drawable.female7,
+            R.drawable.female9,
+            R.drawable.male5);
 
     public interface MyClickListener {
         public void onItemClick(int position, View v);
@@ -46,20 +51,25 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
     @Override
     public void onBindViewHolder(MyRecyclerAdapter.CustomViewHolder holder, int position) {
         Field fieldItem = fieldItemList.get(position);
-
+        DecimalFormat f = new DecimalFormat("##.000");
+        Double ha=fieldItem.getArea()/10000;
         //Download image using picasso library
-        Picasso.with(mContext).load(resourceIds.get(position))
-                .into(holder.farmerImage);
-        holder.farmDescription.setText(fieldItem.getFieldName());
+
+        if(position < 10) {
+            Picasso.with(mContext).load(resourceIds.get(position))
+                    .into(holder.farmerImage);
+        }
+
+        holder.farmDescription.setText("Field : " + fieldItem.getFieldName());
         Farmer farmer= DataRepository.getFarmerById(mContext,fieldItem.getFarmerID());
-        holder.farmerDescription.setText(farmer.getNames());
+        holder.farmerDescription.setText("Farmer : " + farmer.getNames());
+        holder.farmerAddress.setText("Field Size : " + f.format(ha) + " Ha");
     }
 
 
     public MyRecyclerAdapter(Context context, List<Field> fieldItemList) {
         this.fieldItemList = fieldItemList;
         this.mContext = context;
-
     }
 
     @Override
@@ -75,6 +85,8 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         TextView farmDescription;
         @Bind(R.id.farmer_description)
         TextView farmerDescription;
+        @Bind(R.id.farmer_address)
+        TextView farmerAddress;
 
         public CustomViewHolder(View itemView) {
             super(itemView);
@@ -86,13 +98,14 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         public void onClick(View v) {
             fieldDesc= farmDescription.getText().toString();
             farmerDesc=farmerDescription.getText().toString();
-            v.getContext().startActivity(FarmingDashboardActivity.newInstance(v.getContext(), fieldDesc,farmerDesc));
+            Intent intent=FarmingDashboardActivity.newInstance(v.getContext(), fieldDesc, farmerDesc);
+            v.getContext().startActivity (intent);
         }
     }
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.farm_item, null);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.farmer_item, null);
 
         CustomViewHolder viewHolder = new CustomViewHolder(view);
         return viewHolder;

@@ -10,8 +10,14 @@
         android:icon="@mipmap/black_hand_planting"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name=".farmingactivity.FarmingDashboardActivity">
-
+        <activity android:name=".farmingactivity.FarmingDashboardActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".farmingactivity.MainFarmingActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".planting.PlantingActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".MainActivity"

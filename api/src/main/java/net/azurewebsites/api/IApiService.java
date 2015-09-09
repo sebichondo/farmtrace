@@ -8,6 +8,7 @@ import net.azurewebsites.api.field.FieldResponse;
 import net.azurewebsites.api.group.GroupResponse;
 import net.azurewebsites.api.plantingseason.PlantingSeasonResponse;
 import net.azurewebsites.api.seed.SeedResponse;
+import net.azurewebsites.api.user.UserResponse;
 
 import java.util.List;
 
@@ -34,4 +35,6 @@ public interface IApiService {
     void getChemicals(Callback<List<ChemicalResponse>> callback);
     @GET("/seeds")
     void getSeeds(Callback<List<SeedResponse>> callback);
+    @GET("/users")
+    void getUsers(Callback<List<UserResponse>> callback);
 }

@@ -35,40 +35,4 @@ public class UiUtils{
 
         return darker;
     }
-
-    /*
-    public static void setFabMenuBackground(final Context context, final Bus bus, final FloatingActionsMenu plusButton, final View opaqueBackground) {
-
-        plusButton.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
-            @Override
-            public void onMenuExpanded() {
-                Animation in = AnimationUtils.loadAnimation(context, R.anim.fadein);
-                bus.post(new Events.FabButtonClickEvent(plusButton.isExpanded()));
-                opaqueBackground.startAnimation(in);
-
-                in.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-                        opaqueBackground.setVisibility(View.VISIBLE);
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-                    }
-                });
-            }
-
-            @Override
-            public void onMenuCollapsed() {
-                Animation out = AnimationUtils.loadAnimation(context, R.anim.fadeout);
-                opaqueBackground.startAnimation(out);
-                bus.post(new Events.FabButtonClickEvent(plusButton.isExpanded()));
-            }
-        });
-    }*/
-
 }
