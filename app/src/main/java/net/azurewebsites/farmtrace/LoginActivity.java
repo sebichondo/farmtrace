@@ -40,12 +40,11 @@ public class LoginActivity extends BaseDetailActivity {
         String userName = txtUserName.getText().toString();
         String userPassword = txtPassword.getText().toString();
         User loggedInUser = DataRepository.getUserByUserName(this, userName);
-        if (loggedInUser != null)
-        {
+
+        if (loggedInUser != null) {
             Settings.setCurrentUser(loggedInUser);
             startActivity(MainActivity.newIntent(this));
-        }
-        else
+        } else
             showToast("Invalid user credentials");
     }
 
@@ -57,11 +56,11 @@ public class LoginActivity extends BaseDetailActivity {
     }
 
 
-    private void showToast(String message){
+    private void showToast(String message) {
 
         LayoutInflater inflater = getLayoutInflater();
 
-        View layout = inflater.inflate(R.layout.toast,null);
+        View layout = inflater.inflate(R.layout.toast, null);
 
         TextView text = (TextView) layout.findViewById(R.id.toastText);
         text.setText(message);

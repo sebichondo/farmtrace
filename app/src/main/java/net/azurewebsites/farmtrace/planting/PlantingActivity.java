@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.squareup.otto.Subscribe;
+
 import net.azurewebsites.farmtrace.AppComponent;
 import net.azurewebsites.farmtrace.BaseActivity;
 import net.azurewebsites.farmtrace.DaggerMainComponent;
@@ -15,6 +17,7 @@ import net.azurewebsites.farmtrace.FarmerServiceModule;
 import net.azurewebsites.farmtrace.HasComponent;
 import net.azurewebsites.farmtrace.MainComponent;
 import net.azurewebsites.farmtrace.R;
+import net.azurewebsites.farmtrace.event.Events;
 import net.azurewebsites.farmtrace.utils.EnumUtils;
 import net.azurewebsites.farmtrace.utils.UiUtils;
 
@@ -74,6 +77,12 @@ public class PlantingActivity extends BaseActivity implements HasComponent<MainC
         }
     }
 
+    @Subscribe
+    public void onSaveButtonClickEvent(Events.SaveButtonClickEvent event) {
+        setResult(RESULT_OK);
+        finish();
+    }
+
     @Override
     protected void onCreateComponent(AppComponent appComponent) {
         mainComponent = DaggerMainComponent.builder()
@@ -81,6 +90,12 @@ public class PlantingActivity extends BaseActivity implements HasComponent<MainC
                 .farmerServiceModule(new FarmerServiceModule())
                 .build();
         mainComponent.inject(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        setResult(RESULT_OK, data);
+        finish();
     }
 
     public static Intent newInstance(Context context,Long fieldID,int plantingActivityTypeID) {

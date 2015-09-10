@@ -40,7 +40,7 @@ import butterknife.OnClick;
 /**
  * Created by sebichondo on 8/4/15.
  */
-public class NavigationDrawerFragment  extends BaseFragment implements View.OnClickListener {
+public class NavigationDrawerFragment extends BaseFragment implements View.OnClickListener {
 
     private File mCurrentPhoto;
     private Context context;
@@ -108,12 +108,11 @@ public class NavigationDrawerFragment  extends BaseFragment implements View.OnCl
         this.context = getActivity();
 
 
-
         final View view = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         ButterKnife.bind(this, view);
 
         username.setText(Settings.getCurrentUser().getUserName());
-        switch (Settings.getCurrentUser().getUserType()){
+        switch (Settings.getCurrentUser().getUserType()) {
             case EnumUtils.UserType.Buyer:
                 designation.setText(R.string.buyer);
                 break;
@@ -133,7 +132,7 @@ public class NavigationDrawerFragment  extends BaseFragment implements View.OnCl
         crops.setOnClickListener(this);
         dashboard.setOnClickListener(this);
 
-        Iconify.addIcons(logout,farmerimage,cropimage,inputimage,dashboardimage);
+        Iconify.addIcons(logout, farmerimage, cropimage, inputimage, dashboardimage);
 
 
         return view;

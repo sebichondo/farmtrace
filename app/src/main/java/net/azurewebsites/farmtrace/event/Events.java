@@ -8,6 +8,10 @@ public class Events {
 
     }
 
+    public static class SaveButtonClickEvent {
+
+    }
+
     public static class FabButtonClickEvent {
         public boolean expanded;
 

@@ -33,6 +33,8 @@ public class FieldDao extends AbstractDao<Field, Long> {
         public final static Property FarmerID = new Property(4, Long.class, "farmerID", false, "FARMER_ID");
     };
 
+    private DaoSession daoSession;
+
     private Query<Field> farmer_FieldListQuery;
 
     public FieldDao(DaoConfig config) {
@@ -41,6 +43,7 @@ public class FieldDao extends AbstractDao<Field, Long> {
     
     public FieldDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
+        this.daoSession = daoSession;
     }
 
     /** Creates the underlying database table. */
@@ -89,6 +92,12 @@ public class FieldDao extends AbstractDao<Field, Long> {
         if (farmerID != null) {
             stmt.bindLong(5, farmerID);
         }
+    }
+
+    @Override
+    protected void attachEntity(Field entity) {
+        super.attachEntity(entity);
+        entity.__setDaoSession(daoSession);
     }
 
     /** @inheritdoc */

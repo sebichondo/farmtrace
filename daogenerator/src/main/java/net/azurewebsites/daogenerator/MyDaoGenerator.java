@@ -10,7 +10,7 @@ import de.greenrobot.daogenerator.Schema;
  */
 public class MyDaoGenerator {
     public static void main(String args[]) throws Exception {
-        Schema schema = new Schema(8, "net.azurewebsites.farmtrace.datamodel.dao");
+        Schema schema = new Schema(15, "net.azurewebsites.farmtrace.datamodel.dao");
 
         //Entities
         Entity crop = schema.addEntity("Crop");
@@ -25,6 +25,7 @@ public class MyDaoGenerator {
         user.addIntProperty("userType");
         user.addIntProperty("userStatus");
         user.addStringProperty("profilePicUri");
+
 
         Entity chemical = schema.addEntity("Chemical");
         chemical.addLongProperty("chemicalID").primaryKey();
@@ -88,6 +89,16 @@ public class MyDaoGenerator {
         plantingSeason.addIntProperty("targetQuantity");
         Property cropIdForSeason= plantingSeason.addLongProperty("cropID").getProperty();
 
+        Entity plantingActivity = schema.addEntity("PlantingActivity");
+        plantingActivity.addLongProperty("plantingActivityID").primaryKey().autoincrement();
+        plantingActivity.addIntProperty("activityType");
+        plantingActivity.addStringProperty("input");
+        plantingActivity.addDoubleProperty("quantity");
+        plantingActivity.addStringProperty("location");
+        plantingActivity.addStringProperty("activityDate");
+        Property userIdForPlantingActivity= plantingActivity.addLongProperty("userID").getProperty();
+        Property fieldIdForPlantingActivity= plantingActivity.addLongProperty("fieldID").getProperty();
+
         /**
          * Relationships
          * */
@@ -97,6 +108,8 @@ public class MyDaoGenerator {
         farmer.addToMany(field,fieldIdForFarmer);
         crop.addToMany(seed,seedIdForCrop);
         crop.addToMany(plantingSeason, cropIdForSeason);
+        user.addToMany(plantingActivity, userIdForPlantingActivity);
+        field.addToMany(plantingActivity,fieldIdForPlantingActivity);
 
         new DaoGenerator().generateAll(schema, args[0]);
 

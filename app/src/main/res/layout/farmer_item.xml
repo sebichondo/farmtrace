@@ -59,5 +59,17 @@
             android:layout_marginTop="@dimen/icon_farmer"
 
             />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/icon_width"
+            android:id="@+id/txtFieldID"
+            android:layout_toRightOf="@+id/farm_image"
+            android:layout_alignParentTop="true"
+            android:visibility="invisible"
+            android:textSize="@dimen/medium_text"
+            android:paddingLeft="@dimen/ui_spacing_large"
+            android:layout_marginTop="@dimen/icon_farmer"
+
+            />
     </RelativeLayout>
 </android.support.v7.widget.CardView>

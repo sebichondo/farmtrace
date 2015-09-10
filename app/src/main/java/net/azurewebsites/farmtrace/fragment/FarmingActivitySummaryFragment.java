@@ -17,11 +17,11 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.squareup.otto.Bus;
 
 import net.azurewebsites.farmtrace.R;
-import net.azurewebsites.farmtrace.datamodel.dao.Farmer;
+import net.azurewebsites.farmtrace.datamodel.dao.PlantingActivity;
 import net.azurewebsites.farmtrace.datamodel.repository.DataRepository;
 import net.azurewebsites.farmtrace.event.BusProvider;
 import net.azurewebsites.farmtrace.event.Events;
-import net.azurewebsites.farmtrace.widget.FarmerRecyclerAdapter;
+import net.azurewebsites.farmtrace.widget.PlantingActivityRecyclerAdapter;
 
 import java.util.List;
 
@@ -39,18 +39,26 @@ public class FarmingActivitySummaryFragment extends Fragment implements View.OnC
     @Bind(R.id.multiple_actions_down)
     FloatingActionsMenu plusButton;
 
+    protected final static String FIELD_ID = "FIELD_ID";
     protected final static String FIELD_DESC = "FIELD_DESC";
     protected final static String FARMER_DESC = "FARMER_DESC";
 
+    private Long fieldID;
     private boolean fabMenuExapnded = false;
     protected Bus bus = BusProvider.getInstance();
 
     private String farmDescription;
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUI();
+    }
 
-    public static FarmingActivitySummaryFragment newInstance(String fieldDesc,String farmerDesc) {
+    public static FarmingActivitySummaryFragment newInstance(Long fieldID,String fieldDesc,String farmerDesc) {
         FarmingActivitySummaryFragment fragment = new FarmingActivitySummaryFragment();
         Bundle args = new Bundle();
+        args.putLong(FIELD_ID, fieldID);
         args.putString(FIELD_DESC, fieldDesc);
         args.putString(FARMER_DESC, farmerDesc);
         fragment.setArguments(args);
@@ -80,9 +88,14 @@ public class FarmingActivitySummaryFragment extends Fragment implements View.OnC
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d("Farming Dashboard", "MENU COLLAPSED ON ACTIVITY RESULT");
-
     }
 
+    private void updateUI(){
+        List<PlantingActivity> plantingActivities= DataRepository.getAllPlantingActivityByFieldId(getActivity(), fieldID);
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rv.setAdapter(new PlantingActivityRecyclerAdapter(getActivity(), plantingActivities));
+    }
     @Override
     public void onClick(View v) {
         Log.d("Farming Dashboard", "Just got CLICKED YOU Type");
@@ -95,12 +108,10 @@ public class FarmingActivitySummaryFragment extends Fragment implements View.OnC
         ButterKnife.bind(this, view);
         farmDescription = getArguments().getString(FIELD_DESC) + " - " + getArguments().getString(FARMER_DESC);
         farmerDescription.setText(farmDescription);
-        Log.d("Farming Dashboard", "Just got CLICKED YOU Type");
+        fieldID = getArguments().getLong(FIELD_ID);
         plusButton.setOnClickListener(this);
         setFabMenuBackground(getActivity(), bus, plusButton);
-        List<Farmer> farmers= DataRepository.getAllFarmers(getActivity());
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rv.setAdapter(new FarmerRecyclerAdapter(getActivity(), farmers));
+        updateUI();
         return view;
     }
 }

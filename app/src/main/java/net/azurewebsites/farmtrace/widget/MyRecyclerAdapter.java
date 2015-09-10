@@ -3,6 +3,7 @@ package net.azurewebsites.farmtrace.widget;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
     private String fieldDesc;
     private String farmerDesc;
     private Context mContext;
+    private Long fieldID;
     List<Integer> resourceIds = Arrays.asList(
             R.drawable.michaeljackson,
             R.drawable.female6,
@@ -64,6 +66,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         Farmer farmer= DataRepository.getFarmerById(mContext,fieldItem.getFarmerID());
         holder.farmerDescription.setText("Farmer : " + farmer.getNames());
         holder.farmerAddress.setText("Field Size : " + f.format(ha) + " Ha");
+        holder.txtFieldID.setText(fieldItem.getFieldID().toString());
     }
 
 
@@ -87,6 +90,8 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         TextView farmerDescription;
         @Bind(R.id.farmer_address)
         TextView farmerAddress;
+        @Bind(R.id.txtFieldID)
+        TextView txtFieldID;
 
         public CustomViewHolder(View itemView) {
             super(itemView);
@@ -98,7 +103,9 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
         public void onClick(View v) {
             fieldDesc= farmDescription.getText().toString();
             farmerDesc=farmerDescription.getText().toString();
-            Intent intent=FarmingDashboardActivity.newInstance(v.getContext(), fieldDesc, farmerDesc);
+            fieldID=fieldID.valueOf(txtFieldID.getText().toString());
+            Log.d("Farming Dashboard", "FIELD ID" + fieldID);
+            Intent intent=FarmingDashboardActivity.newInstance(v.getContext(),fieldID, fieldDesc, farmerDesc);
             v.getContext().startActivity (intent);
         }
     }

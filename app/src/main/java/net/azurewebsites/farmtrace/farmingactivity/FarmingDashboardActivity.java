@@ -36,14 +36,18 @@ public class FarmingDashboardActivity extends BaseActivity implements HasCompone
     TextView toolbartitle;
 
     private MainComponent mainComponent;
+    protected final static String FIELD_ID = "FIELD_ID";
     protected final static String FIELD_DESC = "FIELD_DESC";
     protected final static String FARMER_DESC = "FARMER_DESC";
 
+    private Long fieldID;
     private String fieldDesc;
     private String farmerDesc;
 
-    public static Intent newInstance(Context context,String fieldDesc,String farmerDesc) {
+
+    public static Intent newInstance(Context context, Long fieldID, String fieldDesc, String farmerDesc) {
         Intent intent = new Intent(context, FarmingDashboardActivity.class);
+        intent.putExtra(FIELD_ID, fieldID);
         intent.putExtra(FIELD_DESC, fieldDesc);
         intent.putExtra(FARMER_DESC, farmerDesc);
         return intent;
@@ -76,12 +80,12 @@ public class FarmingDashboardActivity extends BaseActivity implements HasCompone
         this.setTitle("");
         this.toolbartitle.setText(getResources().getString(R.string.farmingActivities));
 
-
         fieldDesc = getIntent().getStringExtra(FIELD_DESC);
         farmerDesc = getIntent().getStringExtra(FARMER_DESC);
+        fieldID = getIntent().getLongExtra(FIELD_ID, 0);
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_view, FarmingActivitySummaryFragment.newInstance(fieldDesc,farmerDesc)).
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_view, FarmingActivitySummaryFragment.newInstance(fieldID, fieldDesc, farmerDesc)).
                     setTransition(FragmentTransaction.TRANSIT_NONE).
                     commit();
         }
@@ -89,7 +93,7 @@ public class FarmingDashboardActivity extends BaseActivity implements HasCompone
 
     @Subscribe
     public void onFabButtonClickEvent(Events.FabButtonClickEvent event) {
-        startActivityForResult(MainFarmingActivity.newInstance(this,fieldDesc, farmerDesc), Constants.FARMING_ACTIVITY_CODE);
+        startActivityForResult(MainFarmingActivity.newInstance(this, fieldID, fieldDesc, farmerDesc), Constants.FARMING_ACTIVITY_CODE);
     }
 
     @Override

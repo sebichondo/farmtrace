@@ -6,6 +6,7 @@ import net.azurewebsites.api.farmer.FarmerResponse;
 import net.azurewebsites.api.fertilizer.FertilizerResponse;
 import net.azurewebsites.api.field.FieldResponse;
 import net.azurewebsites.api.group.GroupResponse;
+import net.azurewebsites.api.plantingactivity.PlantingActivityResponse;
 import net.azurewebsites.api.plantingseason.PlantingSeasonResponse;
 import net.azurewebsites.api.seed.SeedResponse;
 import net.azurewebsites.api.user.UserResponse;
@@ -37,4 +38,6 @@ public interface IApiService {
     void getSeeds(Callback<List<SeedResponse>> callback);
     @GET("/users")
     void getUsers(Callback<List<UserResponse>> callback);
+    @GET("/plantingactivities")
+    void getPlantingActivities(Callback<List<PlantingActivityResponse>> callback);
 }

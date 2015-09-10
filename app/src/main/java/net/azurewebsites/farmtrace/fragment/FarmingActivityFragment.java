@@ -37,9 +37,10 @@ public class FarmingActivityFragment extends Fragment implements View.OnClickLis
 
     }
 
-    public static FarmingActivityFragment newInstance(String fieldDesc, String farmerDesc) {
+    public static FarmingActivityFragment newInstance(Long fieldID,String fieldDesc, String farmerDesc) {
         FarmingActivityFragment fragment = new FarmingActivityFragment();
         Bundle args = new Bundle();
+        args.putLong(FIELD_ID, fieldID);
         args.putString(FIELD_DESC, fieldDesc);
         args.putString(FARMER_DESC, farmerDesc);
         fragment.setArguments(args);

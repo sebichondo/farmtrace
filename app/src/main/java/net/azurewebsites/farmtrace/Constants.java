@@ -9,6 +9,10 @@ public class Constants {
 
     public static final int FARMING_ACTIVITY_CODE = 200;
     public static final int PLANTING_ACTIVITY_CODE = 201;
+    public static final int GPS_MIN_WAIT_TIME = 1000 * 60 * 3;// three minutes
+    public static final int NETWORK_MIN_WAIT_TIME = 1000 * 60 * 1;// 1 minutes
+    public static final int TWO_MINUTES = 1000 * 60 * 2;
+    public static final float MIN_DISTANCE = 50;
 
 
     public static class IntentRequestCode {

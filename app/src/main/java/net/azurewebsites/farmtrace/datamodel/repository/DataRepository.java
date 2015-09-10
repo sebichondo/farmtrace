@@ -16,13 +16,16 @@ import net.azurewebsites.farmtrace.datamodel.dao.Fertilizer;
 import net.azurewebsites.farmtrace.datamodel.dao.FertilizerDao;
 import net.azurewebsites.farmtrace.datamodel.dao.Field;
 import net.azurewebsites.farmtrace.datamodel.dao.FieldDao;
+import net.azurewebsites.farmtrace.datamodel.dao.PlantingActivityDao;
 import net.azurewebsites.farmtrace.datamodel.dao.PlantingSeason;
 import net.azurewebsites.farmtrace.datamodel.dao.PlantingSeasonDao;
 import net.azurewebsites.farmtrace.datamodel.dao.Seed;
 import net.azurewebsites.farmtrace.datamodel.dao.SeedDao;
 import net.azurewebsites.farmtrace.datamodel.dao.User;
 import net.azurewebsites.farmtrace.datamodel.dao.UserDao;
+import net.azurewebsites.farmtrace.datamodel.dao.PlantingActivity;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import de.greenrobot.dao.query.QueryBuilder;
@@ -46,6 +49,12 @@ public class DataRepository {
     public static void insertOrUpdateFarmer(Context context, Farmer farmer) {
         Long rowsReturned=getFarmerDao(context).insertOrReplace(farmer);
         Log.d("DataRepository", "The Number of Farmers Inserted: " + rowsReturned);
+
+    }
+
+    public static void insertOrUpdatePlantingActivity(Context context, PlantingActivity plantingActivity) {
+        Long rowsReturned=getPlantingActivityDao(context).insertOrReplace(plantingActivity);
+        Log.d("DataRepository", "The Number of Activities Inserted: " + rowsReturned);
 
     }
 
@@ -93,8 +102,25 @@ public class DataRepository {
         Log.d("DataRepository", "The Number of Planting Seasons Inserted: " + rowsReturned);
     }
 
+    public static List<PlantingActivity> getAllPlantingActivityByFieldId(Context context,Long fieldID) {
+        List<PlantingActivity> plantingActivityList= new LinkedList<>();
+        QueryBuilder<PlantingActivity> builder = getPlantingActivityDao(context).queryBuilder();
+        builder.where(PlantingActivityDao.Properties.FieldID.eq(fieldID));
+        List<PlantingActivity> items = builder.list();
+
+        if (items.isEmpty())
+            return plantingActivityList;
+
+        return items;
+    }
+
     public static List<Crop> getAllCrops(Context context) {
         return getCropDao(context).loadAll();
+    }
+
+
+    public static List<PlantingActivity> getAllPlantingActivities(Context context) {
+        return getPlantingActivityDao(context).loadAll();
     }
 
 
@@ -177,5 +203,9 @@ public class DataRepository {
 
     private static UserDao getUserDao(Context c) {
         return ((FarmTraceApp) c.getApplicationContext()).getDaoSession().getUserDao();
+    }
+
+    private static PlantingActivityDao getPlantingActivityDao(Context c) {
+        return ((FarmTraceApp) c.getApplicationContext()).getDaoSession().getPlantingActivityDao();
     }
 }

@@ -32,15 +32,23 @@ public class MainFarmingActivity extends BaseActivity implements HasComponent<Ma
     TextView toolbartitle;
 
     private MainComponent mainComponent;
+    protected final static String FIELD_ID = "FIELD_ID";
     protected final static String FIELD_DESC = "FIELD_DESC";
     protected final static String FARMER_DESC = "FARMER_DESC";
 
+    private Long fieldID;
     private String fieldDesc;
     private String farmerDesc;
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        setResult(RESULT_OK, data);
+        finish();
+    }
 
-    public static Intent newInstance(Context context,String fieldDesc,String farmerDesc) {
+    public static Intent newInstance(Context context,Long fieldID,String fieldDesc,String farmerDesc) {
         Intent intent = new Intent(context, MainFarmingActivity.class);
+        intent.putExtra(FIELD_ID, fieldID);
         intent.putExtra(FIELD_DESC, fieldDesc);
         intent.putExtra(FARMER_DESC, farmerDesc);
         return intent;
@@ -73,10 +81,11 @@ public class MainFarmingActivity extends BaseActivity implements HasComponent<Ma
         this.setTitle("");
         this.toolbartitle.setText(getResources().getString(R.string.farmingActivities));
 
+        fieldID = getIntent().getLongExtra(FIELD_ID,0);
         fieldDesc = getIntent().getStringExtra(FIELD_DESC);
         farmerDesc = getIntent().getStringExtra(FARMER_DESC);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_view, FarmingActivityFragment.newInstance(fieldDesc, farmerDesc)).
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_view, FarmingActivityFragment.newInstance(fieldID,fieldDesc, farmerDesc)).
                 setTransition(FragmentTransaction.TRANSIT_NONE).
                 commit();
         this.toolbartitle.setText("Choose Farming Activity");
