@@ -4,29 +4,53 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/icon_height"
     resauto:cardCornerRadius="4dp"
-    resauto:cardElevation="4dp"
+    resauto:cardElevation="2dp"
     resauto:cardMaxElevation="4dp"
     resauto:cardPreventCornerOverlap="true"
     resauto:cardUseCompatPadding="true">
 
     <RelativeLayout
-        android:layout_marginTop="@dimen/drawer_icon_size"
-        android:paddingLeft="@dimen/ui_spacing_large"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?android:attr/selectableItemBackground">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/ImageLayout"
+            android:layout_width="@dimen/icon_height"
+            android:layout_height="@dimen/icon_height"
+            android:paddingLeft="@dimen/ui_padding"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="@dimen/drawer_icon_size"
+                android:id="@+id/txtImageText"
+                android:layout_width="@dimen/profile_pic_size"
+                android:layout_height="@dimen/profile_pic_size"
+                android:gravity="center"
+                android:text="P"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/large_text"
+                android:background="@drawable/circularview">
+            </TextView>
+        </RelativeLayout>
+
 
         <TextView
             android:id="@+id/farm_description"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/icon_width"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/drawer_icon_size"
+            android:layout_toRightOf="@+id/ImageLayout"
             android:textSize="@dimen/medium_text" />
 
         <TextView
             android:id="@+id/farmer_description"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/icon_width"
+            android:layout_alignParentTop="true"
             android:layout_marginTop="@dimen/layout_height"
+            android:layout_toRightOf="@+id/ImageLayout"
             android:textSize="@dimen/medium_text"
             />
 
@@ -34,9 +58,10 @@
             android:id="@+id/farmer_address"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/icon_width"
-            android:layout_marginTop="@dimen/icon_farmer"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/profile_pic_size"
+            android:layout_toRightOf="@+id/ImageLayout"
             android:textSize="@dimen/medium_text"
-
             />
     </RelativeLayout>
 </android.support.v7.widget.CardView>

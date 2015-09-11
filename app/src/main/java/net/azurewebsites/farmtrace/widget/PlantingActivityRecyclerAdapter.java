@@ -31,28 +31,24 @@ public class PlantingActivityRecyclerAdapter extends RecyclerView.Adapter<Planti
     @Override
     public void onBindViewHolder(PlantingActivityRecyclerAdapter.CustomViewHolder holder, int position) {
         PlantingActivity plantingActivity = plantingActivityList.get(position);
-        /*
-        if(position < 10) {
-            Picasso.with(mContext).load(resourceIds.get(position))
-                    .into(holder.farmerImage);
-        }
-        /*
-
-         */
-
         switch (plantingActivity.getActivityType()) {
             case EnumUtils.FarmingActivityType.Planting:
-                holder.txtActivityType.setText("Activity Type : Planting" + " on " + plantingActivity.getActivityDate());
+                holder.txtActivityType.setText(plantingActivity.getActivityDate());
+                holder.txtImageText.setText("P");
+                holder.txtImageText.setBackgroundResource(R.drawable.blue_circle);
                 break;
             case EnumUtils.FarmingActivityType.FertilizerApplication:
-                holder.txtActivityType.setText("Activity Type : Fertilizer Application" + " on " + plantingActivity.getActivityDate());
+                holder.txtActivityType.setText(plantingActivity.getActivityDate());
+                holder.txtImageText.setText("F");
+                holder.txtImageText.setBackgroundResource(R.drawable.purple_circle);
                 break;
             case EnumUtils.FarmingActivityType.CropProtection:
-                holder.txtActivityType.setText("Activity Type : Crop Protection" + " on " + plantingActivity.getActivityDate());
+                holder.txtActivityType.setText(plantingActivity.getActivityDate());
+                holder.txtImageText.setText("C");
                 break;
         }
         holder.txtActivityInput.setText("Input : " + plantingActivity.getInput());
-        holder.txtInputQuantity.setText("Quantity Applied : " + plantingActivity.getQuantity().toString());
+        holder.txtInputQuantity.setText("Quantity Applied : " + plantingActivity.getQuantity().toString() + " Kg");
     }
 
 
@@ -68,13 +64,14 @@ public class PlantingActivityRecyclerAdapter extends RecyclerView.Adapter<Planti
 
 
     public class CustomViewHolder extends RecyclerView.ViewHolder{
-
         @Bind(R.id.farm_description)
         TextView txtActivityType;
         @Bind(R.id.farmer_description)
         TextView txtActivityInput;
         @Bind(R.id.farmer_address)
         TextView txtInputQuantity;
+        @Bind(R.id.txtImageText)
+        TextView txtImageText;
 
         public CustomViewHolder(View itemView) {
             super(itemView);

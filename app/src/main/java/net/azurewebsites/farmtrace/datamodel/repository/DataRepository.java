@@ -104,7 +104,7 @@ public class DataRepository {
 
     public static List<PlantingActivity> getAllPlantingActivityByFieldId(Context context,Long fieldID) {
         List<PlantingActivity> plantingActivityList= new LinkedList<>();
-        QueryBuilder<PlantingActivity> builder = getPlantingActivityDao(context).queryBuilder();
+        QueryBuilder<PlantingActivity> builder = getPlantingActivityDao(context).queryBuilder().orderDesc(PlantingActivityDao.Properties.ActivityDate);
         builder.where(PlantingActivityDao.Properties.FieldID.eq(fieldID));
         List<PlantingActivity> items = builder.list();
 
