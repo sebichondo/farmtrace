@@ -60,6 +60,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".syncadapter.accounts.AuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator"/>
+        </service>
+        <service android:name=".syncadapter.accounts.SyncService">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter"/>
+            </intent-filter>
+            <meta-data android:name="android.content.SyncAdapter"
+                android:resource="@xml/sync_adapter"/>
+        </service>
+        <provider
+            android:name="net.azurewebsites.farmtrace.syncadapter.accounts.providers.FarmTraceContentProvider"
+            android:authorities="net.azurewebsites.farmtrace.provider"
+            android:exported="false"
+            android:label="@string/main_provider_name"
+            android:syncable="true"/>
     </application>
-
 </manifest>

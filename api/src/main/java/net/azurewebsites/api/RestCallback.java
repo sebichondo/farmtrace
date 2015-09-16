@@ -32,7 +32,7 @@ public abstract class RestCallback<T> implements Callback<T> {
 
     @Override
     public void success(T t, Response response) {
-        Log.d(tag, "ON SUCCESS");
+        Log.d(tag, "ON SUCCESS ");
         try {
             //the app crashes when the response processing fails downstream
             if (t != null) {

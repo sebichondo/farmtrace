@@ -4,6 +4,7 @@ import net.azurewebsites.api.APIServicesModule;
 import net.azurewebsites.farmtrace.farmingactivity.FarmingDashboardActivity;
 import net.azurewebsites.farmtrace.farmingactivity.MainFarmingActivity;
 import net.azurewebsites.farmtrace.planting.PlantingActivity;
+import net.azurewebsites.farmtrace.syncadapter.accounts.adapters.FarmTraceSyncAdapter;
 
 import dagger.Component;
 
@@ -23,14 +24,21 @@ import dagger.Component;
                 FertilizerServiceModule.class,
                 ChemicalServiceModule.class,
                 SeedServiceModule.class,
-                UserServiceModule.class
+                UserServiceModule.class,
+                PlantingActivityServiceModule.class,
+                USNServiceModule.class
         }
 )
 public interface MainComponent {
     void inject(MainActivity activity);
+
     void inject(MainFarmingActivity activity);
+
     void inject(FarmingDashboardActivity activity);
+
     void inject(LoginActivity activity);
+
     void inject(PlantingActivity activity);
 
+    void inject(FarmTraceSyncAdapter adapter);
 }

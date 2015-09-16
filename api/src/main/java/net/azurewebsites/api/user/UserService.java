@@ -22,4 +22,10 @@ public class UserService implements IUserService {
         apiService.getUsers(new RestCallback<List<UserResponse>>(bus) {
         });
     }
+
+    @Override
+    public void getUser(Bus bus) {
+        apiService.getUser(new RestCallback<UserResponse>(bus) {
+        });
+    }
 }

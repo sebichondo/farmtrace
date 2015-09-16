@@ -11,7 +11,9 @@ import net.azurewebsites.farmtrace.R;
 import net.azurewebsites.farmtrace.datamodel.dao.PlantingActivity;
 import net.azurewebsites.farmtrace.utils.EnumUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -31,19 +33,21 @@ public class PlantingActivityRecyclerAdapter extends RecyclerView.Adapter<Planti
     @Override
     public void onBindViewHolder(PlantingActivityRecyclerAdapter.CustomViewHolder holder, int position) {
         PlantingActivity plantingActivity = plantingActivityList.get(position);
+        String sdate = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss", Locale.getDefault()).format(plantingActivity.getActivityDate());
+
         switch (plantingActivity.getActivityType()) {
             case EnumUtils.FarmingActivityType.Planting:
-                holder.txtActivityType.setText(plantingActivity.getActivityDate());
+                holder.txtActivityType.setText(sdate);
                 holder.txtImageText.setText("P");
                 holder.txtImageText.setBackgroundResource(R.drawable.blue_circle);
                 break;
             case EnumUtils.FarmingActivityType.FertilizerApplication:
-                holder.txtActivityType.setText(plantingActivity.getActivityDate());
+                holder.txtActivityType.setText(sdate);
                 holder.txtImageText.setText("F");
                 holder.txtImageText.setBackgroundResource(R.drawable.purple_circle);
                 break;
             case EnumUtils.FarmingActivityType.CropProtection:
-                holder.txtActivityType.setText(plantingActivity.getActivityDate());
+                holder.txtActivityType.setText(sdate);
                 holder.txtImageText.setText("C");
                 break;
         }

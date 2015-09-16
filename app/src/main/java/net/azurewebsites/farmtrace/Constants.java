@@ -6,6 +6,7 @@ package net.azurewebsites.farmtrace;
 public class Constants {
     public static final String ACCOUNT_NUMBER = "ACCOUNT_NUMBER";
     public static final String ACCOUNT_TYPE = "_ACCOUNT_TYPE";
+    public static final String LOG_TAG = "FarmTrace Log: ";
 
     public static final int FARMING_ACTIVITY_CODE = 200;
     public static final int PLANTING_ACTIVITY_CODE = 201;
@@ -13,6 +14,10 @@ public class Constants {
     public static final int NETWORK_MIN_WAIT_TIME = 1000 * 60 * 1;// 1 minutes
     public static final int TWO_MINUTES = 1000 * 60 * 2;
     public static final float MIN_DISTANCE = 50;
+
+    public static final int ID_SYNC = 191919;
+    public static final int  ID_SYNC_ERROR=99999;
+    public static final int MAX_COMMENTS = 10;
 
 
     public static class IntentRequestCode {

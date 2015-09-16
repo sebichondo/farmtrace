@@ -16,14 +16,16 @@ import net.azurewebsites.farmtrace.datamodel.dao.Fertilizer;
 import net.azurewebsites.farmtrace.datamodel.dao.FertilizerDao;
 import net.azurewebsites.farmtrace.datamodel.dao.Field;
 import net.azurewebsites.farmtrace.datamodel.dao.FieldDao;
+import net.azurewebsites.farmtrace.datamodel.dao.PlantingActivity;
 import net.azurewebsites.farmtrace.datamodel.dao.PlantingActivityDao;
 import net.azurewebsites.farmtrace.datamodel.dao.PlantingSeason;
 import net.azurewebsites.farmtrace.datamodel.dao.PlantingSeasonDao;
 import net.azurewebsites.farmtrace.datamodel.dao.Seed;
 import net.azurewebsites.farmtrace.datamodel.dao.SeedDao;
+import net.azurewebsites.farmtrace.datamodel.dao.UpdateSequenceNumbers;
+import net.azurewebsites.farmtrace.datamodel.dao.UpdateSequenceNumbersDao;
 import net.azurewebsites.farmtrace.datamodel.dao.User;
 import net.azurewebsites.farmtrace.datamodel.dao.UserDao;
-import net.azurewebsites.farmtrace.datamodel.dao.PlantingActivity;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -46,6 +48,16 @@ public class DataRepository {
         return items.get(0);
     }
 
+    public static Long getMaxUSN(Context context) {
+        QueryBuilder<UpdateSequenceNumbers> builder = getUpdateSequenceNumbersyDao(context).queryBuilder().orderDesc(UpdateSequenceNumbersDao.Properties.UpdateSequenceNumberID).limit(1);
+        List<UpdateSequenceNumbers> items=builder.list();
+
+        if (items.isEmpty())
+            return Long.valueOf("1");
+
+        return items.get(0).getUpdateSequenceNumberID();
+    }
+    
     public static void insertOrUpdateFarmer(Context context, Farmer farmer) {
         Long rowsReturned=getFarmerDao(context).insertOrReplace(farmer);
         Log.d("DataRepository", "The Number of Farmers Inserted: " + rowsReturned);
@@ -102,10 +114,27 @@ public class DataRepository {
         Log.d("DataRepository", "The Number of Planting Seasons Inserted: " + rowsReturned);
     }
 
+    public static void insertOrUpdateUSNs(Context context, UpdateSequenceNumbers updateSequenceNumbers) {
+        Long rowsReturned=getUpdateSequenceNumbersyDao(context).insertOrReplace(updateSequenceNumbers);
+        Log.d("DataRepository", "The Number of USNs Inserted: " + rowsReturned);
+    }
+
     public static List<PlantingActivity> getAllPlantingActivityByFieldId(Context context,Long fieldID) {
         List<PlantingActivity> plantingActivityList= new LinkedList<>();
         QueryBuilder<PlantingActivity> builder = getPlantingActivityDao(context).queryBuilder().orderDesc(PlantingActivityDao.Properties.ActivityDate);
         builder.where(PlantingActivityDao.Properties.FieldID.eq(fieldID));
+        List<PlantingActivity> items = builder.list();
+
+        if (items.isEmpty())
+            return plantingActivityList;
+
+        return items;
+    }
+
+    public static List<PlantingActivity> getAllPlantingActivitiesByUSNID(Context context,Long usnID) {
+        List<PlantingActivity> plantingActivityList= new LinkedList<>();
+        QueryBuilder<PlantingActivity> builder = getPlantingActivityDao(context).queryBuilder();
+        builder.where(PlantingActivityDao.Properties.UsnID.eq(usnID));
         List<PlantingActivity> items = builder.list();
 
         if (items.isEmpty())
@@ -207,5 +236,9 @@ public class DataRepository {
 
     private static PlantingActivityDao getPlantingActivityDao(Context c) {
         return ((FarmTraceApp) c.getApplicationContext()).getDaoSession().getPlantingActivityDao();
+    }
+
+    private static UpdateSequenceNumbersDao getUpdateSequenceNumbersyDao(Context c) {
+        return ((FarmTraceApp) c.getApplicationContext()).getDaoSession().getUpdateSequenceNumbersDao();
     }
 }

@@ -24,6 +24,7 @@ public class User {
     private transient UserDao myDao;
 
     private List<PlantingActivity> plantingActivityList;
+    private List<UpdateSequenceNumbers> updateSequenceNumbersList;
 
     public User() {
     }
@@ -115,6 +116,28 @@ public class User {
     /** Resets a to-many relationship, making the next get call to query for a fresh result. */
     public synchronized void resetPlantingActivityList() {
         plantingActivityList = null;
+    }
+
+    /** To-many relationship, resolved on first access (and after reset). Changes to to-many relations are not persisted, make changes to the target entity. */
+    public List<UpdateSequenceNumbers> getUpdateSequenceNumbersList() {
+        if (updateSequenceNumbersList == null) {
+            if (daoSession == null) {
+                throw new DaoException("Entity is detached from DAO context");
+            }
+            UpdateSequenceNumbersDao targetDao = daoSession.getUpdateSequenceNumbersDao();
+            List<UpdateSequenceNumbers> updateSequenceNumbersListNew = targetDao._queryUser_UpdateSequenceNumbersList(userID);
+            synchronized (this) {
+                if(updateSequenceNumbersList == null) {
+                    updateSequenceNumbersList = updateSequenceNumbersListNew;
+                }
+            }
+        }
+        return updateSequenceNumbersList;
+    }
+
+    /** Resets a to-many relationship, making the next get call to query for a fresh result. */
+    public synchronized void resetUpdateSequenceNumbersList() {
+        updateSequenceNumbersList = null;
     }
 
     /** Convenient call for {@link AbstractDao#delete(Object)}. Entity must attached to an entity context. */

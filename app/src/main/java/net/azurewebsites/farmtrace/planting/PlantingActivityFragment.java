@@ -27,10 +27,8 @@ import net.azurewebsites.farmtrace.utils.EnumUtils;
 import net.azurewebsites.farmtrace.utils.FieldLocationManager;
 import net.azurewebsites.farmtrace.utils.Settings;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -58,22 +56,23 @@ public class PlantingActivityFragment extends Fragment implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
+        Long usnID=DataRepository.getMaxUSN(getActivity());
         switch (v.getId()) {
             case R.id.btnSave:
                 Double appliedQuantity=Double.valueOf(txtQuantity.getText().toString());
                 Location loc = FieldLocationManager.getInstance(getActivity()).getCurrentLocation();
-                String sdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
+                Date date = new Date();
                 if(loc != null) {
                     PlantingActivity plantingActivity=new
                             PlantingActivity(null,plantingActivityTypeID,cboInputType.getSelectedItem().toString(),
-                            appliedQuantity,(loc.getLatitude() + "," + loc.getLongitude()),sdate, Settings.getCurrentUser().getUserID(),fieldID);
+                            appliedQuantity,(loc.getLatitude() + "," + loc.getLongitude()),date, Settings.getCurrentUser().getUserID(),fieldID,usnID);
                     DataRepository.insertOrUpdatePlantingActivity(getActivity(),plantingActivity);
                 }
                 else
                 {
                     PlantingActivity plantingActivity=new
                             PlantingActivity(null,plantingActivityTypeID,cboInputType.getSelectedItem().toString(),
-                            appliedQuantity,"unknown", sdate,Settings.getCurrentUser().getUserID(),fieldID);
+                            appliedQuantity,"unknown", date,Settings.getCurrentUser().getUserID(),fieldID,usnID);
                     DataRepository.insertOrUpdatePlantingActivity(getActivity(),plantingActivity);
                 }
                 bus.post(new Events.SaveButtonClickEvent());
@@ -119,7 +118,6 @@ public class PlantingActivityFragment extends Fragment implements View.OnClickLi
                 cboInputType.setAdapter(chemicalArrayAdapter);
                 break;
         }
-
         btnSave.setOnClickListener(this);
         return v;
     }

@@ -11,9 +11,10 @@ public class PlantingActivity {
     private String input;
     private Double quantity;
     private String location;
-    private String activityDate;
+    private java.util.Date activityDate;
     private Long userID;
     private Long fieldID;
+    private Long usnID;
 
     public PlantingActivity() {
     }
@@ -22,7 +23,7 @@ public class PlantingActivity {
         this.plantingActivityID = plantingActivityID;
     }
 
-    public PlantingActivity(Long plantingActivityID, Integer activityType, String input, Double quantity, String location, String activityDate, Long userID, Long fieldID) {
+    public PlantingActivity(Long plantingActivityID, Integer activityType, String input, Double quantity, String location, java.util.Date activityDate, Long userID, Long fieldID, Long usnID) {
         this.plantingActivityID = plantingActivityID;
         this.activityType = activityType;
         this.input = input;
@@ -31,6 +32,7 @@ public class PlantingActivity {
         this.activityDate = activityDate;
         this.userID = userID;
         this.fieldID = fieldID;
+        this.usnID = usnID;
     }
 
     public Long getPlantingActivityID() {
@@ -73,11 +75,11 @@ public class PlantingActivity {
         this.location = location;
     }
 
-    public String getActivityDate() {
+    public java.util.Date getActivityDate() {
         return activityDate;
     }
 
-    public void setActivityDate(String activityDate) {
+    public void setActivityDate(java.util.Date activityDate) {
         this.activityDate = activityDate;
     }
 
@@ -97,4 +99,26 @@ public class PlantingActivity {
         this.fieldID = fieldID;
     }
 
+    public Long getUsnID() {
+        return usnID;
+    }
+
+    public void setUsnID(Long usnID) {
+        this.usnID = usnID;
+    }
+
+    @Override
+    public String toString() {
+        return "PlantingActivity{" +
+                "plantingActivityID=" + plantingActivityID +
+                ", activityType=" + activityType +
+                ", input='" + input + '\'' +
+                ", quantity=" + quantity +
+                ", location='" + location + '\'' +
+                ", activityDate=" + activityDate +
+                ", userID=" + userID +
+                ", fieldID=" + fieldID +
+                ", usnID=" + usnID +
+                '}';
+    }
 }

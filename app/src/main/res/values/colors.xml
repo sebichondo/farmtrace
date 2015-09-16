@@ -12,7 +12,7 @@
     <color name="text_sub_sub_color">#ffcccccc</color>
     <color name="text_dark_bg_color">#ffffffff</color>
     <color name="opaque_white_background">#CCFFFFFF</color>
-
+    <color name="error_color">#ff6633</color>
     <color name="fab_loans">#616161</color>
     <color name="fab_loans_pressed">#2E2E2E</color>
     <color name="fab_pay_bill">#B91E56</color>

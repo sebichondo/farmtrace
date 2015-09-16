@@ -65,4 +65,6 @@
     <string name="inputType">Input Type : </string>
     <string name="quantity">Quantity : </string>
     <string name="save">Save</string>
+    <string name="main_provider_name">FarmTrace Data</string>
+    <string name="sync_title">Syncing</string>
 </resources>

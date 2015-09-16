@@ -27,7 +27,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_with_toolbar);
         FarmTraceApp app = FarmTraceApp.get(this);
         onCreateComponent(app.component());
-        //bus.register(this);
 
         if(appContainer == null ){
             throw new IllegalStateException("No injection happened. Add component.inject(this) in onCreateComponent.");

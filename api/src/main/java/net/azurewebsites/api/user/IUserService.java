@@ -7,4 +7,6 @@ import com.squareup.otto.Bus;
  */
 public interface IUserService {
     public void getUsers(Bus bus);
+
+    public void getUser(Bus bus);
 }

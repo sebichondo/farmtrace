@@ -166,4 +166,18 @@ public class Group {
     public void setCropID(Integer CropID) {
         this.CropID = CropID;
     }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "GroupID=" + GroupID +
+                ", GroupName='" + GroupName + '\'' +
+                ", ContactPerson='" + ContactPerson + '\'' +
+                ", Address='" + Address + '\'' +
+                ", Telephone='" + Telephone + '\'' +
+                ", EmailAddress='" + EmailAddress + '\'' +
+                ", Crop=" + Crop +
+                ", CropID=" + CropID +
+                '}';
+    }
 }

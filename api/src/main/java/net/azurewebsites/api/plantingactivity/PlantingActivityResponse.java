@@ -15,91 +15,97 @@ public class PlantingActivityResponse {
     @Expose
     private Integer Quantity;
     @Expose
+    private User User;
+    @Expose
     private Long UserID;
     @Expose
     private String Location;
+    @Expose
+    private Field Field;
+    @Expose
+    private UpdateSequenceNumber UpdateSequenceNumber;
 
-    /**
-     * @return The PlantingActivityID
-     */
+    public PlantingActivityResponse(Long plantingActivityID, Integer activityType, String input, Integer quantity, net.azurewebsites.api.plantingactivity.User user, Long userID, String location, net.azurewebsites.api.plantingactivity.Field field, net.azurewebsites.api.plantingactivity.UpdateSequenceNumber updateSequenceNumber) {
+        PlantingActivityID = plantingActivityID;
+        ActivityType = activityType;
+        Input = input;
+        Quantity = quantity;
+        User = user;
+        UserID = userID;
+        Location = location;
+        Field = field;
+        UpdateSequenceNumber = updateSequenceNumber;
+    }
+
     public Long getPlantingActivityID() {
         return PlantingActivityID;
     }
 
-    /**
-     * @param PlantingActivityID The PlantingActivityID
-     */
-    public void setPlantingActivityID(Long PlantingActivityID) {
-        this.PlantingActivityID = PlantingActivityID;
+    public void setPlantingActivityID(Long plantingActivityID) {
+        PlantingActivityID = plantingActivityID;
     }
 
-    /**
-     * @return The ActivityType
-     */
     public Integer getActivityType() {
         return ActivityType;
     }
 
-    /**
-     * @param ActivityType The ActivityType
-     */
-    public void setActivityType(Integer ActivityType) {
-        this.ActivityType = ActivityType;
+    public void setActivityType(Integer activityType) {
+        ActivityType = activityType;
     }
 
-    /**
-     * @return The Input
-     */
     public String getInput() {
         return Input;
     }
 
-    /**
-     * @param Input The Input
-     */
-    public void setInput(String Input) {
-        this.Input = Input;
+    public void setInput(String input) {
+        Input = input;
     }
 
-    /**
-     * @return The Quantity
-     */
     public Integer getQuantity() {
         return Quantity;
     }
 
-    /**
-     * @param Quantity The Quantity
-     */
-    public void setQuantity(Integer Quantity) {
-        this.Quantity = Quantity;
+    public void setQuantity(Integer quantity) {
+        Quantity = quantity;
     }
 
-    /**
-     * @return The UserID
-     */
+    public net.azurewebsites.api.plantingactivity.User getUser() {
+        return User;
+    }
+
+    public void setUser(net.azurewebsites.api.plantingactivity.User user) {
+        User = user;
+    }
+
     public Long getUserID() {
         return UserID;
     }
 
-    /**
-     * @param UserID The UserID
-     */
-    public void setUserID(Long UserID) {
-        this.UserID = UserID;
+    public void setUserID(Long userID) {
+        UserID = userID;
     }
 
-    /**
-     * @return The Location
-     */
     public String getLocation() {
         return Location;
     }
 
-    /**
-     * @param Location The Location
-     */
-    public void setLocation(String Location) {
-        this.Location = Location;
+    public void setLocation(String location) {
+        Location = location;
+    }
+
+    public net.azurewebsites.api.plantingactivity.Field getField() {
+        return Field;
+    }
+
+    public void setField(net.azurewebsites.api.plantingactivity.Field field) {
+        Field = field;
+    }
+
+    public net.azurewebsites.api.plantingactivity.UpdateSequenceNumber getUpdateSequenceNumber() {
+        return UpdateSequenceNumber;
+    }
+
+    public void setUpdateSequenceNumber(net.azurewebsites.api.plantingactivity.UpdateSequenceNumber updateSequenceNumber) {
+        UpdateSequenceNumber = updateSequenceNumber;
     }
 }

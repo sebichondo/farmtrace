@@ -19,6 +19,7 @@ import net.azurewebsites.farmtrace.MainComponent;
 import net.azurewebsites.farmtrace.R;
 import net.azurewebsites.farmtrace.event.Events;
 import net.azurewebsites.farmtrace.utils.EnumUtils;
+import net.azurewebsites.farmtrace.utils.Settings;
 import net.azurewebsites.farmtrace.utils.UiUtils;
 
 import butterknife.Bind;
@@ -54,10 +55,10 @@ public class PlantingActivity extends BaseActivity implements HasComponent<MainC
         this.setTitle("");
         this.toolbartitle.setText(getResources().getString(R.string.farmingActivities));
 
-        fieldID = getIntent().getLongExtra(FIELD_ID,0);
+        fieldID = getIntent().getLongExtra(FIELD_ID, 0);
         plantingActivityTypeID = getIntent().getIntExtra(PLANTING_ACTIVITY_TYPE, 0);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_view, PlantingActivityFragment.newInstance(fieldID,plantingActivityTypeID)).
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_view, PlantingActivityFragment.newInstance(fieldID, plantingActivityTypeID)).
                 setTransition(FragmentTransaction.TRANSIT_NONE).
                 commit();
 
@@ -79,6 +80,8 @@ public class PlantingActivity extends BaseActivity implements HasComponent<MainC
 
     @Subscribe
     public void onSaveButtonClickEvent(Events.SaveButtonClickEvent event) {
+        Settings.checkifSyncisOn(PlantingActivity.this);
+        Settings.requestSync();
         setResult(RESULT_OK);
         finish();
     }
@@ -98,7 +101,7 @@ public class PlantingActivity extends BaseActivity implements HasComponent<MainC
         finish();
     }
 
-    public static Intent newInstance(Context context,Long fieldID,int plantingActivityTypeID) {
+    public static Intent newInstance(Context context, Long fieldID, int plantingActivityTypeID) {
         Intent intent = new Intent(context, PlantingActivity.class);
         intent.putExtra(FIELD_ID, fieldID);
         intent.putExtra(PLANTING_ACTIVITY_TYPE, plantingActivityTypeID);

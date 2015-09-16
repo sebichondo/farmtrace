@@ -27,6 +27,7 @@ public class FarmTraceApp extends Application {
         buildComponentAndInject();
         setupDatabase();
     }
+
     /**
      * Initialize our root AppComponent, kick off our dependency resolutions
      */
@@ -42,7 +43,6 @@ public class FarmTraceApp extends Application {
     public static FarmTraceApp get(Context context) {
         return (FarmTraceApp) context.getApplicationContext();
     }
-
 
     private void setupDatabase() {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "farmtrace-db", null);
