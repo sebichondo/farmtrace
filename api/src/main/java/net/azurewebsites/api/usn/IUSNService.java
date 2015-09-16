@@ -10,5 +10,5 @@ import java.util.Date;
 public interface IUSNService {
     public void getUSNs(Bus bus);
 
-    public void saveUSNs(Long usnID, Date usnDate, Long usnUserID,Long appUSNID, Bus bus);
+    public void saveUSNs(Long usnID, Date usnDate, Long usnUserID, Long appUSNID, Bus bus);
 }

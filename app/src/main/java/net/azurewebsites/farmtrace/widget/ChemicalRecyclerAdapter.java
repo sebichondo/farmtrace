@@ -59,6 +59,7 @@ public class ChemicalRecyclerAdapter extends RecyclerView.Adapter<ChemicalRecycl
         CustomViewHolder viewHolder = new CustomViewHolder(view);
         return viewHolder;
     }
+
     @Override
     public void onBindViewHolder(ChemicalRecyclerAdapter.CustomViewHolder holder, int position) {
         Chemical chemical = chemicalList.get(position);
@@ -67,7 +68,7 @@ public class ChemicalRecyclerAdapter extends RecyclerView.Adapter<ChemicalRecycl
         Picasso.with(mContext).load(resourceIds.get(0))
                 .into(holder.farmerImage);
 
-        switch (chemical.getChemicalType()){
+        switch (chemical.getChemicalType()) {
             case EnumUtils.ChemicalType.Fungicide:
                 holder.farmDescription.setText(R.string.fungicide);
                 break;
@@ -77,7 +78,7 @@ public class ChemicalRecyclerAdapter extends RecyclerView.Adapter<ChemicalRecycl
         }
 
         Log.d("MainActivity", "Active Ingredient" + chemical.getActiveIngredient());
-        switch (chemical.getActiveIngredient()){
+        switch (chemical.getActiveIngredient()) {
             case EnumUtils.ChemicalActiveIngeredient.Acetamiprid:
                 holder.farmerAddress.setText(R.string.acetamiprid);
                 break;

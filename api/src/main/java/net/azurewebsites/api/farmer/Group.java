@@ -24,144 +24,112 @@ public class Group {
     private Integer CropID;
 
     /**
-     *
-     * @return
-     * The GroupID
+     * @return The GroupID
      */
     public Integer getGroupID() {
         return GroupID;
     }
 
     /**
-     *
-     * @param GroupID
-     * The GroupID
+     * @param GroupID The GroupID
      */
     public void setGroupID(Integer GroupID) {
         this.GroupID = GroupID;
     }
 
     /**
-     *
-     * @return
-     * The GroupName
+     * @return The GroupName
      */
     public String getGroupName() {
         return GroupName;
     }
 
     /**
-     *
-     * @param GroupName
-     * The GroupName
+     * @param GroupName The GroupName
      */
     public void setGroupName(String GroupName) {
         this.GroupName = GroupName;
     }
 
     /**
-     *
-     * @return
-     * The ContactPerson
+     * @return The ContactPerson
      */
     public String getContactPerson() {
         return ContactPerson;
     }
 
     /**
-     *
-     * @param ContactPerson
-     * The ContactPerson
+     * @param ContactPerson The ContactPerson
      */
     public void setContactPerson(String ContactPerson) {
         this.ContactPerson = ContactPerson;
     }
 
     /**
-     *
-     * @return
-     * The Address
+     * @return The Address
      */
     public String getAddress() {
         return Address;
     }
 
     /**
-     *
-     * @param Address
-     * The Address
+     * @param Address The Address
      */
     public void setAddress(String Address) {
         this.Address = Address;
     }
 
     /**
-     *
-     * @return
-     * The Telephone
+     * @return The Telephone
      */
     public String getTelephone() {
         return Telephone;
     }
 
     /**
-     *
-     * @param Telephone
-     * The Telephone
+     * @param Telephone The Telephone
      */
     public void setTelephone(String Telephone) {
         this.Telephone = Telephone;
     }
 
     /**
-     *
-     * @return
-     * The EmailAddress
+     * @return The EmailAddress
      */
     public String getEmailAddress() {
         return EmailAddress;
     }
 
     /**
-     *
-     * @param EmailAddress
-     * The EmailAddress
+     * @param EmailAddress The EmailAddress
      */
     public void setEmailAddress(String EmailAddress) {
         this.EmailAddress = EmailAddress;
     }
 
     /**
-     *
-     * @return
-     * The Crop
+     * @return The Crop
      */
     public Object getCrop() {
         return Crop;
     }
 
     /**
-     *
-     * @param Crop
-     * The Crop
+     * @param Crop The Crop
      */
     public void setCrop(Object Crop) {
         this.Crop = Crop;
     }
 
     /**
-     *
-     * @return
-     * The CropID
+     * @return The CropID
      */
     public Integer getCropID() {
         return CropID;
     }
 
     /**
-     *
-     * @param CropID
-     * The CropID
+     * @param CropID The CropID
      */
     public void setCropID(Integer CropID) {
         this.CropID = CropID;

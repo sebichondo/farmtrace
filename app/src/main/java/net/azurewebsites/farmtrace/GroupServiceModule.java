@@ -14,7 +14,7 @@ import dagger.Provides;
 public class GroupServiceModule {
     @Provides
     @MainScope
-    IGroupService provideGroupService(IApiService apiService){
+    IGroupService provideGroupService(IApiService apiService) {
         return new GroupService(apiService);
     }
 }

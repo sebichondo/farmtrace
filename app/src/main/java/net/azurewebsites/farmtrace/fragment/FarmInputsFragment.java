@@ -57,7 +57,7 @@ public class FarmInputsFragment extends Fragment implements View.OnClickListener
         viewPager.setAdapter(pagerAdapter);
         tabs.setViewPager(viewPager);
         Typeface typeFace = Typeface.createFromAsset(getActivity().getAssets(), "fonts/kontrapunkt_light.otf");
-        tabs.setTypeface(typeFace,Typeface.NORMAL);
+        tabs.setTypeface(typeFace, Typeface.NORMAL);
 
         return view;
     }

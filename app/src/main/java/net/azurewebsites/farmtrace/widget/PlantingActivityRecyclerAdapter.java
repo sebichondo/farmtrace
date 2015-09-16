@@ -67,7 +67,7 @@ public class PlantingActivityRecyclerAdapter extends RecyclerView.Adapter<Planti
     }
 
 
-    public class CustomViewHolder extends RecyclerView.ViewHolder{
+    public class CustomViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.farm_description)
         TextView txtActivityType;
         @Bind(R.id.farmer_description)

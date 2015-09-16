@@ -16,7 +16,7 @@ public class Constants {
     public static final float MIN_DISTANCE = 50;
 
     public static final int ID_SYNC = 191919;
-    public static final int  ID_SYNC_ERROR=99999;
+    public static final int ID_SYNC_ERROR = 99999;
     public static final int MAX_COMMENTS = 10;
 
 

@@ -15,7 +15,7 @@ import dagger.Provides;
 public class CropServiceModule {
     @Provides
     @MainScope
-    ICropService provideCropService(IApiService apiService){
+    ICropService provideCropService(IApiService apiService) {
         return new CropService(apiService);
     }
 }

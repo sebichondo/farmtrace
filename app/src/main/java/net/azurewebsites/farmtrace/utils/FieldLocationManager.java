@@ -24,7 +24,7 @@ public class FieldLocationManager {
     protected Location currentLocation;
     LocationProviderChangedReceiver receiver;
 
-    public Location getCurrentLocation(){
+    public Location getCurrentLocation() {
         return currentLocation;
     }
 
@@ -64,11 +64,12 @@ public class FieldLocationManager {
 
     }
 
-    private void startLocationMonitoring(){
+    private void startLocationMonitoring() {
         IntentFilter filter = new IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION);
         receiver = new LocationProviderChangedReceiver();
         basecontext.registerReceiver(receiver, filter);
     }
+
     private void createLocationServices() {
         Criteria criteria = new Criteria();
         String best = locationManager.getBestProvider(criteria, true);
@@ -103,9 +104,11 @@ public class FieldLocationManager {
     }
 
 
-    /** Determines whether one Location reading is better than the current Location fix
-     * @param location  The new Location that you want to evaluate
-     * @param currentBestLocation  The current Location fix, to which you want to compare the new one
+    /**
+     * Determines whether one Location reading is better than the current Location fix
+     *
+     * @param location            The new Location that you want to evaluate
+     * @param currentBestLocation The current Location fix, to which you want to compare the new one
      */
     public static boolean isBetterLocation(Location location, Location currentBestLocation) {
         if (currentBestLocation == null) {
@@ -116,7 +119,7 @@ public class FieldLocationManager {
         // Check whether the new location fix is newer or older
         long timeDelta = location.getTime() - currentBestLocation.getTime();
         boolean isSignificantlyNewer = timeDelta > Constants.TWO_MINUTES;
-        boolean isSignificantlyOlder = timeDelta < - Constants.TWO_MINUTES;
+        boolean isSignificantlyOlder = timeDelta < -Constants.TWO_MINUTES;
         boolean isNewer = timeDelta > 0;
 
         // If it's been more than two minutes since the current location, use the new location
@@ -150,7 +153,9 @@ public class FieldLocationManager {
     }
 
 
-    /** Checks whether two providers are the same */
+    /**
+     * Checks whether two providers are the same
+     */
     private static boolean isSameProvider(String provider1, String provider2) {
         if (provider1 == null) {
             return provider2 == null;
@@ -166,7 +171,7 @@ public class FieldLocationManager {
         public void onLocationChanged(Location d) {
             // synchronized (this) {
 
-            if (d == null )
+            if (d == null)
                 return;
 
             if (isBetterLocation(d, currentLocation)) {
@@ -197,8 +202,7 @@ public class FieldLocationManager {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.getAction().matches("android.location.PROVIDERS_CHANGED"))
-            {
+            if (intent.getAction().matches("android.location.PROVIDERS_CHANGED")) {
                 checkLocations();
             }
         }

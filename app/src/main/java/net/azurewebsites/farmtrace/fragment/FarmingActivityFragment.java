@@ -37,7 +37,7 @@ public class FarmingActivityFragment extends Fragment implements View.OnClickLis
 
     }
 
-    public static FarmingActivityFragment newInstance(Long fieldID,String fieldDesc, String farmerDesc) {
+    public static FarmingActivityFragment newInstance(Long fieldID, String fieldDesc, String farmerDesc) {
         FarmingActivityFragment fragment = new FarmingActivityFragment();
         Bundle args = new Bundle();
         args.putLong(FIELD_ID, fieldID);
@@ -52,7 +52,7 @@ public class FarmingActivityFragment extends Fragment implements View.OnClickLis
         int sendTo;
         switch (position) {
             case EnumUtils.FarmingActivityType.Planting:
-                getActivity().startActivityForResult(PlantingActivity.newInstance(getActivity(), fieldID,position), Constants.PLANTING_ACTIVITY_CODE);
+                getActivity().startActivityForResult(PlantingActivity.newInstance(getActivity(), fieldID, position), Constants.PLANTING_ACTIVITY_CODE);
                 break;
             case EnumUtils.FarmingActivityType.FertilizerApplication:
                 getActivity().startActivityForResult(PlantingActivity.newInstance(getActivity(), fieldID, position), Constants.PLANTING_ACTIVITY_CODE);

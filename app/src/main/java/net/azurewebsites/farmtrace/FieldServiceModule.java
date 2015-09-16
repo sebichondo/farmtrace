@@ -14,7 +14,7 @@ import dagger.Provides;
 public class FieldServiceModule {
     @Provides
     @MainScope
-    IFieldService provideFieldService(IApiService apiService){
+    IFieldService provideFieldService(IApiService apiService) {
         return new FieldService(apiService);
     }
 }

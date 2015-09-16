@@ -37,7 +37,7 @@ import net.azurewebsites.farmtrace.datamodel.dao.UpdateSequenceNumbersDao;
 
 /**
  * {@inheritDoc}
- * 
+ *
  * @see de.greenrobot.dao.AbstractDaoSession
  */
 public class DaoSession extends AbstractDaoSession {
@@ -127,7 +127,7 @@ public class DaoSession extends AbstractDaoSession {
         registerDao(PlantingActivity.class, plantingActivityDao);
         registerDao(UpdateSequenceNumbers.class, updateSequenceNumbersDao);
     }
-    
+
     public void clear() {
         cropDaoConfig.getIdentityScope().clear();
         userDaoConfig.getIdentityScope().clear();

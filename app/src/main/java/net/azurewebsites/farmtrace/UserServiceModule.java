@@ -14,7 +14,7 @@ import dagger.Provides;
 public class UserServiceModule {
     @Provides
     @MainScope
-    IUserService provideUserService(IApiService apiService){
+    IUserService provideUserService(IApiService apiService) {
         return new UserService(apiService);
     }
 }

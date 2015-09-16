@@ -34,7 +34,7 @@ public class MainThreadBus extends Bus implements Callback {
     @Override
     public void success(Object o, Response response) {
         post(o);
-        if(response != null) {
+        if (response != null) {
             for (Header header : response.getHeaders()) {
                 if (header.getName().equals("X_SESSION")) {
                     XSessionTokenService.setSessionToken(header.getValue());

@@ -92,25 +92,25 @@ public class Fertilizer {
 
     @Override
     public String toString() {
-        String fertilizerName="";
-        switch (fertilizerType){
+        String fertilizerName = "";
+        switch (fertilizerType) {
             case EnumUtils.FertilizerNutrientType.TSP:
-                fertilizerName="TSP";
+                fertilizerName = "TSP";
                 break;
             case EnumUtils.FertilizerNutrientType.DAP:
-                fertilizerName="DAP";
+                fertilizerName = "DAP";
                 break;
             case EnumUtils.FertilizerNutrientType.CAN:
-                fertilizerName="CAN";
+                fertilizerName = "CAN";
                 break;
             case EnumUtils.FertilizerNutrientType.ASN:
-                fertilizerName="ASN";
+                fertilizerName = "ASN";
                 break;
             case EnumUtils.FertilizerNutrientType.NPK:
-                fertilizerName="NPK";
+                fertilizerName = "NPK";
                 break;
         }
-        return  fertilizerName;
+        return fertilizerName;
     }
 
 

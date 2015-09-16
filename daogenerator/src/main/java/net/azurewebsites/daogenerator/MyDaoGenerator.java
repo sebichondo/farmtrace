@@ -71,14 +71,14 @@ public class MyDaoGenerator {
         field.addStringProperty("fieldName");
         field.addStringProperty("location");
         field.addDoubleProperty("area");
-        Property fieldIdForFarmer= field.addLongProperty("farmerID").getProperty();
+        Property fieldIdForFarmer = field.addLongProperty("farmerID").getProperty();
 
         Entity seed = schema.addEntity("Seed");
         seed.addLongProperty("seedID").primaryKey();
         seed.addIntProperty("seedRate");
         seed.addStringProperty("seedVariety");
         seed.addIntProperty("transplantToHarvest");
-        Property seedIdForCrop= seed.addLongProperty("cropID").getProperty();
+        Property seedIdForCrop = seed.addLongProperty("cropID").getProperty();
 
         Entity plantingSeason = schema.addEntity("PlantingSeason");
         plantingSeason.addLongProperty("plantingSeasonID").primaryKey();
@@ -87,7 +87,7 @@ public class MyDaoGenerator {
         plantingSeason.addDateProperty("startDate");
         plantingSeason.addDateProperty("targetDate");
         plantingSeason.addIntProperty("targetQuantity");
-        Property cropIdForSeason= plantingSeason.addLongProperty("cropID").getProperty();
+        Property cropIdForSeason = plantingSeason.addLongProperty("cropID").getProperty();
 
         Entity plantingActivity = schema.addEntity("PlantingActivity");
         plantingActivity.addLongProperty("plantingActivityID").primaryKey().autoincrement();
@@ -96,14 +96,14 @@ public class MyDaoGenerator {
         plantingActivity.addDoubleProperty("quantity");
         plantingActivity.addStringProperty("location");
         plantingActivity.addDateProperty("activityDate");
-        Property userIdForPlantingActivity= plantingActivity.addLongProperty("userID").getProperty();
-        Property fieldIdForPlantingActivity= plantingActivity.addLongProperty("fieldID").getProperty();
-        Property usnIdForPlantingActivity= plantingActivity.addLongProperty("usnID").getProperty();
+        Property userIdForPlantingActivity = plantingActivity.addLongProperty("userID").getProperty();
+        Property fieldIdForPlantingActivity = plantingActivity.addLongProperty("fieldID").getProperty();
+        Property usnIdForPlantingActivity = plantingActivity.addLongProperty("usnID").getProperty();
 
         Entity updateSequenceNumbers = schema.addEntity("UpdateSequenceNumbers");
         updateSequenceNumbers.addLongProperty("updateSequenceNumberID").primaryKey().autoincrement();
         updateSequenceNumbers.addDateProperty("usnDate");
-        Property userIdForUSN= updateSequenceNumbers.addLongProperty("userID").getProperty();
+        Property userIdForUSN = updateSequenceNumbers.addLongProperty("userID").getProperty();
 
         /**
          * Relationships
@@ -111,13 +111,13 @@ public class MyDaoGenerator {
         crop.addToMany(farmerGroup, cropIdForGroup);
         farmerGroup.addToMany(farmer, groupIdForFamer);
         crop.addToMany(fertilizer, cropIdForFertilizer);
-        farmer.addToMany(field,fieldIdForFarmer);
-        crop.addToMany(seed,seedIdForCrop);
+        farmer.addToMany(field, fieldIdForFarmer);
+        crop.addToMany(seed, seedIdForCrop);
         crop.addToMany(plantingSeason, cropIdForSeason);
         user.addToMany(plantingActivity, userIdForPlantingActivity);
         user.addToMany(updateSequenceNumbers, userIdForUSN);
-        field.addToMany(plantingActivity,fieldIdForPlantingActivity);
-        updateSequenceNumbers.addToMany(plantingActivity,usnIdForPlantingActivity);
+        field.addToMany(plantingActivity, fieldIdForPlantingActivity);
+        updateSequenceNumbers.addToMany(plantingActivity, usnIdForPlantingActivity);
 
         new DaoGenerator().generateAll(schema, args[0]);
     }

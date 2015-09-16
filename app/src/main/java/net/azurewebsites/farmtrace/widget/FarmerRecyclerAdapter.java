@@ -49,14 +49,14 @@ public class FarmerRecyclerAdapter extends RecyclerView.Adapter<FarmerRecyclerAd
         Farmer farmer = farmerList.get(position);
 
         //Download image using picasso library
-        if(position < 10) {
+        if (position < 10) {
             Picasso.with(mContext).load(resourceIds.get(position))
                     .into(holder.farmerImage);
         }
 
         holder.farmDescription.setText(farmer.getNames());
         holder.farmerAddress.setText(farmer.getTelephone());
-        FarmerGroup farmerGroup= DataRepository.getGroupById(mContext, farmer.getFarmerGroupID());
+        FarmerGroup farmerGroup = DataRepository.getGroupById(mContext, farmer.getFarmerGroupID());
         holder.farmerDescription.setText(farmerGroup.getGroupName() + " Group");
     }
 

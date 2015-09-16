@@ -28,7 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         FarmTraceApp app = FarmTraceApp.get(this);
         onCreateComponent(app.component());
 
-        if(appContainer == null ){
+        if (appContainer == null) {
             throw new IllegalStateException("No injection happened. Add component.inject(this) in onCreateComponent.");
         }
     }

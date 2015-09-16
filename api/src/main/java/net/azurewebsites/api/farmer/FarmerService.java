@@ -24,6 +24,7 @@ public class FarmerService implements IFarmerService {
 
     @Override
     public void getFarmers(Bus bus) {
-        apiService.getFarmers(new RestCallback<List<FarmerResponse>>(bus) { });
+        apiService.getFarmers(new RestCallback<List<FarmerResponse>>(bus) {
+        });
     }
 }

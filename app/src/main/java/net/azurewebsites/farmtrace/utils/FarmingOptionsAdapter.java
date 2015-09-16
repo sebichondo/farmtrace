@@ -16,9 +16,9 @@ import java.util.List;
  */
 public class FarmingOptionsAdapter extends BaseAdapter {
     private final List<FarmingActivityOption> mData = new ArrayList<FarmingActivityOption>() {{
-        add(new FarmingActivityOption( "Planting"));
-        add(new FarmingActivityOption( "Fertilizer Application"));
-        add(new FarmingActivityOption( "Crop Protection"));
+        add(new FarmingActivityOption("Planting"));
+        add(new FarmingActivityOption("Fertilizer Application"));
+        add(new FarmingActivityOption("Crop Protection"));
     }};
 
     @Override

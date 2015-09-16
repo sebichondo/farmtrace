@@ -14,7 +14,7 @@ import dagger.Provides;
 public class USNServiceModule {
     @Provides
     @MainScope
-    IUSNService provideUSNService(IApiService apiService){
+    IUSNService provideUSNService(IApiService apiService) {
         return new USNService(apiService);
     }
 }

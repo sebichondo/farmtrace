@@ -26,90 +26,70 @@ public class UserResponse {
     }
 
     /**
-     *
-     * @return
-     * The UserID
+     * @return The UserID
      */
     public Long getUserID() {
         return UserID;
     }
 
     /**
-     *
-     * @param UserID
-     * The UserID
+     * @param UserID The UserID
      */
     public void setUserID(Long UserID) {
         this.UserID = UserID;
     }
 
     /**
-     *
-     * @return
-     * The UserType
+     * @return The UserType
      */
     public Integer getUserType() {
         return UserType;
     }
 
     /**
-     *
-     * @param UserType
-     * The UserType
+     * @param UserType The UserType
      */
     public void setUserType(Integer UserType) {
         this.UserType = UserType;
     }
 
     /**
-     *
-     * @return
-     * The UserName
+     * @return The UserName
      */
     public String getUserName() {
         return UserName;
     }
 
     /**
-     *
-     * @param UserName
-     * The UserName
+     * @param UserName The UserName
      */
     public void setUserName(String UserName) {
         this.UserName = UserName;
     }
 
     /**
-     *
-     * @return
-     * The UserPassword
+     * @return The UserPassword
      */
     public String getUserPassword() {
         return UserPassword;
     }
 
     /**
-     *
-     * @param UserPassword
-     * The UserPassword
+     * @param UserPassword The UserPassword
      */
     public void setUserPassword(String UserPassword) {
         this.UserPassword = UserPassword;
     }
 
     /**
-     *
-     * @return
-     * The UserStatus
+     * @return The UserStatus
      */
     public Integer getUserStatus() {
         return UserStatus;
     }
 
     /**
-     *
-     * @param UserStatus
-     * The UserStatus
+     * @param UserStatus The UserStatus
      */
     public void setUserStatus(Integer UserStatus) {
         this.UserStatus = UserStatus;

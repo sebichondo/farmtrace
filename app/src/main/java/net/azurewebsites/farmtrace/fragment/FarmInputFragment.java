@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
 /**
  * Created by sebichondo on 8/26/15.
  */
-public class FarmInputFragment extends Fragment{
+public class FarmInputFragment extends Fragment {
     public static final int SEEDS = 1;
     public static final int CHEMICALS = 2;
     public static final int FERTILIZERS = 3;
@@ -55,21 +55,21 @@ public class FarmInputFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_farminput_list, container, false);
         ButterKnife.bind(this, view);
 
-        intInputType =getArguments().getInt(ARG_LIST_TYPE, 0);
-        List<Chemical> chemicalList= DataRepository.getAllChemicals(getActivity());
-        List<Seed> seedList= DataRepository.getAllSeeds(getActivity());
-        List<Fertilizer> fertilizerList= DataRepository.getAllFertilizers(getActivity());
+        intInputType = getArguments().getInt(ARG_LIST_TYPE, 0);
+        List<Chemical> chemicalList = DataRepository.getAllChemicals(getActivity());
+        List<Seed> seedList = DataRepository.getAllSeeds(getActivity());
+        List<Fertilizer> fertilizerList = DataRepository.getAllFertilizers(getActivity());
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        switch (intInputType){
+        switch (intInputType) {
             case 1:
-                rv.setAdapter(new SeedRecyclerAdapter(seedList,getActivity()));
+                rv.setAdapter(new SeedRecyclerAdapter(seedList, getActivity()));
                 break;
             case 2:
-                rv.setAdapter(new ChemicalRecyclerAdapter(chemicalList,getActivity()));
+                rv.setAdapter(new ChemicalRecyclerAdapter(chemicalList, getActivity()));
                 break;
             case 3:
-                rv.setAdapter(new FertilizerRecyclerAdapter(fertilizerList,getActivity()));
+                rv.setAdapter(new FertilizerRecyclerAdapter(fertilizerList, getActivity()));
                 break;
         }
 

@@ -50,77 +50,77 @@ public class DataRepository {
 
     public static Long getMaxUSN(Context context) {
         QueryBuilder<UpdateSequenceNumbers> builder = getUpdateSequenceNumbersyDao(context).queryBuilder().orderDesc(UpdateSequenceNumbersDao.Properties.UpdateSequenceNumberID).limit(1);
-        List<UpdateSequenceNumbers> items=builder.list();
+        List<UpdateSequenceNumbers> items = builder.list();
 
         if (items.isEmpty())
             return Long.valueOf("1");
 
         return items.get(0).getUpdateSequenceNumberID();
     }
-    
+
     public static void insertOrUpdateFarmer(Context context, Farmer farmer) {
-        Long rowsReturned=getFarmerDao(context).insertOrReplace(farmer);
+        Long rowsReturned = getFarmerDao(context).insertOrReplace(farmer);
         Log.d("DataRepository", "The Number of Farmers Inserted: " + rowsReturned);
 
     }
 
     public static void insertOrUpdatePlantingActivity(Context context, PlantingActivity plantingActivity) {
-        Long rowsReturned=getPlantingActivityDao(context).insertOrReplace(plantingActivity);
+        Long rowsReturned = getPlantingActivityDao(context).insertOrReplace(plantingActivity);
         Log.d("DataRepository", "The Number of Activities Inserted: " + rowsReturned);
 
     }
 
     public static void insertOrUpdateCrop(Context context, Crop crop) {
-        Long rowsReturned=getCropDao(context).insertOrReplace(crop);
+        Long rowsReturned = getCropDao(context).insertOrReplace(crop);
         Log.d("DataRepository", "The Number of Crops Inserted: " + rowsReturned);
     }
 
     public static void insertOrUpdateChemical(Context context, Chemical chemical) {
-        Long rowsReturned=getChemicalDao(context).insertOrReplace(chemical);
+        Long rowsReturned = getChemicalDao(context).insertOrReplace(chemical);
         Log.d("DataRepository", "The Number of Chemicals Inserted: " + rowsReturned);
     }
 
 
     public static void insertOrUpdateFarmerGroup(Context context, FarmerGroup farmerGroup) {
-        Long rowsReturned=getFarmerGroupDao(context).insertOrReplace(farmerGroup);
+        Long rowsReturned = getFarmerGroupDao(context).insertOrReplace(farmerGroup);
         Log.d("DataRepository", "The Number of Groups Inserted: " + rowsReturned);
     }
 
     public static void insertOrUpdateUser(Context context, User user) {
-        Long rowsReturned=getUserDao(context).insertOrReplace(user);
+        Long rowsReturned = getUserDao(context).insertOrReplace(user);
         Log.d("DataRepository", "The Number of Users Inserted: " + rowsReturned);
     }
 
 
     public static void insertOrUpdateSeed(Context context, Seed seed) {
-        Long rowsReturned=getSeedDao(context).insertOrReplace(seed);
+        Long rowsReturned = getSeedDao(context).insertOrReplace(seed);
         Log.d("DataRepository", "The Number of Seeds Inserted: " + rowsReturned);
     }
 
 
     public static void insertOrUpdateFertilizer(Context context, Fertilizer fertilizer) {
-        Long rowsReturned=getFertilizerDao(context).insertOrReplace(fertilizer);
+        Long rowsReturned = getFertilizerDao(context).insertOrReplace(fertilizer);
         Log.d("DataRepository", "The Number of Fertilizers Inserted: " + rowsReturned);
     }
 
 
     public static void insertOrUpdateField(Context context, Field field) {
-        Long rowsReturned=getFieldsDao(context).insertOrReplace(field);
+        Long rowsReturned = getFieldsDao(context).insertOrReplace(field);
         Log.d("DataRepository", "The Number of Fields Inserted: " + rowsReturned);
     }
 
     public static void insertOrUpdatePlantingSeason(Context context, PlantingSeason plantingSeason) {
-        Long rowsReturned=getPlantingSeasonsDao(context).insertOrReplace(plantingSeason);
+        Long rowsReturned = getPlantingSeasonsDao(context).insertOrReplace(plantingSeason);
         Log.d("DataRepository", "The Number of Planting Seasons Inserted: " + rowsReturned);
     }
 
     public static void insertOrUpdateUSNs(Context context, UpdateSequenceNumbers updateSequenceNumbers) {
-        Long rowsReturned=getUpdateSequenceNumbersyDao(context).insertOrReplace(updateSequenceNumbers);
+        Long rowsReturned = getUpdateSequenceNumbersyDao(context).insertOrReplace(updateSequenceNumbers);
         Log.d("DataRepository", "The Number of USNs Inserted: " + rowsReturned);
     }
 
-    public static List<PlantingActivity> getAllPlantingActivityByFieldId(Context context,Long fieldID) {
-        List<PlantingActivity> plantingActivityList= new LinkedList<>();
+    public static List<PlantingActivity> getAllPlantingActivityByFieldId(Context context, Long fieldID) {
+        List<PlantingActivity> plantingActivityList = new LinkedList<>();
         QueryBuilder<PlantingActivity> builder = getPlantingActivityDao(context).queryBuilder().orderDesc(PlantingActivityDao.Properties.ActivityDate);
         builder.where(PlantingActivityDao.Properties.FieldID.eq(fieldID));
         List<PlantingActivity> items = builder.list();
@@ -131,8 +131,8 @@ public class DataRepository {
         return items;
     }
 
-    public static List<PlantingActivity> getAllPlantingActivitiesByUSNID(Context context,Long usnID) {
-        List<PlantingActivity> plantingActivityList= new LinkedList<>();
+    public static List<PlantingActivity> getAllPlantingActivitiesByUSNID(Context context, Long usnID) {
+        List<PlantingActivity> plantingActivityList = new LinkedList<>();
         QueryBuilder<PlantingActivity> builder = getPlantingActivityDao(context).queryBuilder();
         builder.where(PlantingActivityDao.Properties.UsnID.eq(usnID));
         List<PlantingActivity> items = builder.list();
@@ -182,15 +182,15 @@ public class DataRepository {
         return getFarmerDao(context).loadAll();
     }
 
-    public static Farmer getFarmerById(Context context,Long Id) {
+    public static Farmer getFarmerById(Context context, Long Id) {
         return getFarmerDao(context).load(Id);
     }
 
-    public static FarmerGroup getGroupById(Context context,Long Id) {
+    public static FarmerGroup getGroupById(Context context, Long Id) {
         return getFarmerGroupDao(context).load(Id);
     }
 
-    public static Crop getCropById(Context context,Long Id) {
+    public static Crop getCropById(Context context, Long Id) {
         return getCropDao(context).load(Id);
     }
 

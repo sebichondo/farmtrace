@@ -56,31 +56,29 @@ public class PlantingActivityFragment extends Fragment implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        Long usnID=DataRepository.getMaxUSN(getActivity());
+        Long usnID = DataRepository.getMaxUSN(getActivity());
         switch (v.getId()) {
             case R.id.btnSave:
-                Double appliedQuantity=Double.valueOf(txtQuantity.getText().toString());
+                Double appliedQuantity = Double.valueOf(txtQuantity.getText().toString());
                 Location loc = FieldLocationManager.getInstance(getActivity()).getCurrentLocation();
                 Date date = new Date();
-                if(loc != null) {
-                    PlantingActivity plantingActivity=new
-                            PlantingActivity(null,plantingActivityTypeID,cboInputType.getSelectedItem().toString(),
-                            appliedQuantity,(loc.getLatitude() + "," + loc.getLongitude()),date, Settings.getCurrentUser().getUserID(),fieldID,usnID);
-                    DataRepository.insertOrUpdatePlantingActivity(getActivity(),plantingActivity);
-                }
-                else
-                {
-                    PlantingActivity plantingActivity=new
-                            PlantingActivity(null,plantingActivityTypeID,cboInputType.getSelectedItem().toString(),
-                            appliedQuantity,"unknown", date,Settings.getCurrentUser().getUserID(),fieldID,usnID);
-                    DataRepository.insertOrUpdatePlantingActivity(getActivity(),plantingActivity);
+                if (loc != null) {
+                    PlantingActivity plantingActivity = new
+                            PlantingActivity(null, plantingActivityTypeID, cboInputType.getSelectedItem().toString(),
+                            appliedQuantity, (loc.getLatitude() + "," + loc.getLongitude()), date, Settings.getCurrentUser().getUserID(), fieldID, usnID);
+                    DataRepository.insertOrUpdatePlantingActivity(getActivity(), plantingActivity);
+                } else {
+                    PlantingActivity plantingActivity = new
+                            PlantingActivity(null, plantingActivityTypeID, cboInputType.getSelectedItem().toString(),
+                            appliedQuantity, "unknown", date, Settings.getCurrentUser().getUserID(), fieldID, usnID);
+                    DataRepository.insertOrUpdatePlantingActivity(getActivity(), plantingActivity);
                 }
                 bus.post(new Events.SaveButtonClickEvent());
                 break;
         }
     }
 
-    public static PlantingActivityFragment newInstance(Long fieldID,int plantingActivityTypeID) {
+    public static PlantingActivityFragment newInstance(Long fieldID, int plantingActivityTypeID) {
         PlantingActivityFragment fragment = new PlantingActivityFragment();
         Bundle args = new Bundle();
         args.putLong(FIELD_ID, fieldID);
@@ -101,20 +99,20 @@ public class PlantingActivityFragment extends Fragment implements View.OnClickLi
         switch (plantingActivityTypeID) {
             case EnumUtils.FarmingActivityType.Planting:
                 farmInput.setText(R.string.seeds);
-                List<Seed> seedList= DataRepository.getAllSeeds(getActivity());
-                ArrayAdapter<Seed> adapter=new ArrayAdapter<Seed>(getActivity(),android.R.layout.simple_list_item_1,seedList);
+                List<Seed> seedList = DataRepository.getAllSeeds(getActivity());
+                ArrayAdapter<Seed> adapter = new ArrayAdapter<Seed>(getActivity(), android.R.layout.simple_list_item_1, seedList);
                 cboInputType.setAdapter(adapter);
                 break;
             case EnumUtils.FarmingActivityType.FertilizerApplication:
                 farmInput.setText(R.string.fertilizers);
-                List<Fertilizer> fertilizerList= DataRepository.getAllFertilizers(getActivity());
-                ArrayAdapter<Fertilizer> fertilizerArrayAdapteradapter=new ArrayAdapter<Fertilizer>(getActivity(),android.R.layout.simple_list_item_1,fertilizerList);
+                List<Fertilizer> fertilizerList = DataRepository.getAllFertilizers(getActivity());
+                ArrayAdapter<Fertilizer> fertilizerArrayAdapteradapter = new ArrayAdapter<Fertilizer>(getActivity(), android.R.layout.simple_list_item_1, fertilizerList);
                 cboInputType.setAdapter(fertilizerArrayAdapteradapter);
                 break;
             case EnumUtils.FarmingActivityType.CropProtection:
                 farmInput.setText(R.string.chemicals);
-                List<Chemical> chemicalList= DataRepository.getAllChemicals(getActivity());
-                ArrayAdapter<Chemical> chemicalArrayAdapter=new ArrayAdapter<Chemical>(getActivity(),android.R.layout.simple_list_item_1,chemicalList);
+                List<Chemical> chemicalList = DataRepository.getAllChemicals(getActivity());
+                ArrayAdapter<Chemical> chemicalArrayAdapter = new ArrayAdapter<Chemical>(getActivity(), android.R.layout.simple_list_item_1, chemicalList);
                 cboInputType.setAdapter(chemicalArrayAdapter);
                 break;
         }

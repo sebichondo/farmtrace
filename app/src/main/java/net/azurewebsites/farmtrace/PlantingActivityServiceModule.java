@@ -14,7 +14,7 @@ import dagger.Provides;
 public class PlantingActivityServiceModule {
     @Provides
     @MainScope
-    IPlantingActivityService providePlantingActivityService(IApiService apiService){
+    IPlantingActivityService providePlantingActivityService(IApiService apiService) {
         return new PlantingActivityService(apiService);
     }
 }

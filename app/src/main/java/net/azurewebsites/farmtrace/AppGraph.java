@@ -5,6 +5,7 @@ package net.azurewebsites.farmtrace;
  */
 public interface AppGraph {
     void inject(FarmTraceApp app);
+
     AppContainer appContainer();
     //Picasso picasso();
 }

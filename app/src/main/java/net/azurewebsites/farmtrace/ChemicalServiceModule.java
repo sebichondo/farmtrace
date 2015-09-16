@@ -14,7 +14,7 @@ import dagger.Provides;
 public class ChemicalServiceModule {
     @Provides
     @MainScope
-    IChemicalService provideChemicalService(IApiService apiService){
+    IChemicalService provideChemicalService(IApiService apiService) {
         return new ChemicalService(apiService);
     }
 }

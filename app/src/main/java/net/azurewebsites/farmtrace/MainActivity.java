@@ -142,8 +142,8 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
     public void onFetchUsersResponse(ArrayList<UserResponse> userResponses) {
         if (!userResponses.isEmpty() && userResponses.get(0) instanceof UserResponse) {
             for (UserResponse userResponse : userResponses) {
-                User user = new User(userResponse.getUserID(),userResponse.getUserName()
-                        ,userResponse.getUserPassword(),userResponse.getUserType(),userResponse.getUserStatus(),
+                User user = new User(userResponse.getUserID(), userResponse.getUserName()
+                        , userResponse.getUserPassword(), userResponse.getUserType(), userResponse.getUserStatus(),
                         "");
                 DataRepository.insertOrUpdateUser(this, user);
             }
@@ -229,7 +229,7 @@ public class MainActivity extends BaseActivity implements HasComponent<MainCompo
         if (!fieldResponses.isEmpty() && fieldResponses.get(0) instanceof FieldResponse) {
             for (FieldResponse fieldResponse : fieldResponses) {
                 Field field = new Field(fieldResponse.getFieldID(), fieldResponse.getFieldName(),
-                        fieldResponse.getLocation(),fieldResponse.getArea(),
+                        fieldResponse.getLocation(), fieldResponse.getArea(),
                         fieldResponse.getFarmerID());
                 DataRepository.insertOrUpdateField(this, field);
             }

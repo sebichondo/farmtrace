@@ -67,8 +67,8 @@ public class SeasonRecyclerAdapter extends RecyclerView.Adapter<SeasonRecyclerAd
                 .into(holder.farmerImage);
 
         holder.farmDescription.setText(plantingSeason.getSeasonName());
-        holder.farmerAddress.setText(DateFormat.getDateInstance().format(plantingSeason.getStartDate()) + " - " + DateFormat.getDateInstance().format(plantingSeason.getTargetDate()) );
-        Crop crop= DataRepository.getCropById(mContext, plantingSeason.getCropID());
+        holder.farmerAddress.setText(DateFormat.getDateInstance().format(plantingSeason.getStartDate()) + " - " + DateFormat.getDateInstance().format(plantingSeason.getTargetDate()));
+        Crop crop = DataRepository.getCropById(mContext, plantingSeason.getCropID());
         holder.farmerDescription.setText(crop.getCropName());
 
     }

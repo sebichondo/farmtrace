@@ -16,10 +16,10 @@ public class FarmingOptionsViewHolder {
     TextView farmingActivityTextView;
 
     public FarmingOptionsViewHolder(View view) {
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
     }
 
-    public void setFarmingActivityText(String text){
+    public void setFarmingActivityText(String text) {
         farmingActivityTextView.setText(text);
     }
 }

@@ -69,7 +69,7 @@ public class FertilizerRecyclerAdapter extends RecyclerView.Adapter<FertilizerRe
         Picasso.with(mContext).load(resourceIds.get(0))
                 .into(holder.farmerImage);
 
-        switch(fertilizer.getFertilizerType()){
+        switch (fertilizer.getFertilizerType()) {
             case EnumUtils.FertilizerType.Anyhdrous:
                 holder.farmDescription.setText(R.string.anyhdrous);
                 break;
@@ -84,7 +84,7 @@ public class FertilizerRecyclerAdapter extends RecyclerView.Adapter<FertilizerRe
                 break;
         }
 
-        switch(fertilizer.getMainNutrients()){
+        switch (fertilizer.getMainNutrients()) {
             case EnumUtils.FertilizerNutrientType.NPK:
                 holder.farmerAddress.setText(R.string.NPK);
                 break;
@@ -102,7 +102,7 @@ public class FertilizerRecyclerAdapter extends RecyclerView.Adapter<FertilizerRe
                 break;
         }
 
-        Crop crop= DataRepository.getCropById(mContext, fertilizer.getCropID());
+        Crop crop = DataRepository.getCropById(mContext, fertilizer.getCropID());
         holder.farmerDescription.setText(crop.getCropName());
 
     }

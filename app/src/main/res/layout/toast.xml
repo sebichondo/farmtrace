@@ -7,8 +7,7 @@
     android:layout_margin="0dp"
     android:paddingTop="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_horizontal_margin"
-    android:background="@color/primary_color"
-    >
+    android:background="@color/primary_color">
 
     <ImageView
         android:id="@+id/info_pic"

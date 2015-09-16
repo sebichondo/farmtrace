@@ -14,7 +14,7 @@ import dagger.Provides;
 public class FertilizerServiceModule {
     @Provides
     @MainScope
-    IFertilizerService provideFertilizerrService(IApiService apiService){
+    IFertilizerService provideFertilizerrService(IApiService apiService) {
         return new FertilizerService(apiService);
     }
 }

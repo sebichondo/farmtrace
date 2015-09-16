@@ -44,9 +44,9 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fields_list, container, false);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
         //fields
-        List<Field> fields= DataRepository.getAllFields(getActivity());
+        List<Field> fields = DataRepository.getAllFields(getActivity());
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         rv.setAdapter(new MyRecyclerAdapter(getActivity(), fields));
         return view;

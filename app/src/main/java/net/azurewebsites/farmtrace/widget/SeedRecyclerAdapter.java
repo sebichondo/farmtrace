@@ -71,7 +71,7 @@ public class SeedRecyclerAdapter extends RecyclerView.Adapter<SeedRecyclerAdapte
 
         holder.farmDescription.setText("Variety : " + seed.getSeedVariety());
         holder.farmerAddress.setText("Transplant to Harvest : " + seed.getTransplantToHarvest() + " Days");
-        Crop crop= DataRepository.getCropById(mContext, seed.getCropID());
+        Crop crop = DataRepository.getCropById(mContext, seed.getCropID());
         holder.farmerDescription.setText("Crop : " + crop.getCropName());
 
     }

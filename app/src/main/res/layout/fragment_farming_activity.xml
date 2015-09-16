@@ -28,6 +28,7 @@
             android:scrollbars="vertical" />
 
     </LinearLayout>
+
     <com.getbase.floatingactionbutton.FloatingActionsMenu xmlns:fab="http://schemas.android.com/apk/res-auto"
         android:id="@+id/multiple_actions_down"
         fontPath="fonts/proxima_nova.otf"

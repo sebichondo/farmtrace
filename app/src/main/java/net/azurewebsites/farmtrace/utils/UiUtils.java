@@ -7,7 +7,7 @@ import android.os.Build;
 /**
  * Created by sebichondo on 8/5/15.
  */
-public class UiUtils{
+public class UiUtils {
 
     public static void setStatusBarColor(int color, Activity context) {
 

@@ -209,7 +209,7 @@ public class FarmTraceSyncAdapter extends AbstractThreadedSyncAdapter implements
 
             Log.d("DataRepository", "The SIZE OF THE Planting Activities: " + plantingActivities.size());
 
-            usnService.saveUSNs(null, new Date(), Settings.getCurrentUser().getUserID(),usnID, bus);
+            usnService.saveUSNs(null, new Date(), Settings.getCurrentUser().getUserID(), usnID, bus);
 
             Date date = new Date();
             UpdateSequenceNumbers usn = new UpdateSequenceNumbers(null, date, Settings.getCurrentUser().getUserID());

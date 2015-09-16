@@ -55,7 +55,7 @@ public class FarmingActivitySummaryFragment extends Fragment implements View.OnC
         updateUI();
     }
 
-    public static FarmingActivitySummaryFragment newInstance(Long fieldID,String fieldDesc,String farmerDesc) {
+    public static FarmingActivitySummaryFragment newInstance(Long fieldID, String fieldDesc, String farmerDesc) {
         FarmingActivitySummaryFragment fragment = new FarmingActivitySummaryFragment();
         Bundle args = new Bundle();
         args.putLong(FIELD_ID, fieldID);
@@ -90,12 +90,13 @@ public class FarmingActivitySummaryFragment extends Fragment implements View.OnC
         Log.d("Farming Dashboard", "MENU COLLAPSED ON ACTIVITY RESULT");
     }
 
-    private void updateUI(){
-        List<PlantingActivity> plantingActivities= DataRepository.getAllPlantingActivityByFieldId(getActivity(), fieldID);
+    private void updateUI() {
+        List<PlantingActivity> plantingActivities = DataRepository.getAllPlantingActivityByFieldId(getActivity(), fieldID);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         rv.setAdapter(new PlantingActivityRecyclerAdapter(getActivity(), plantingActivities));
     }
+
     @Override
     public void onClick(View v) {
         Log.d("Farming Dashboard", "Just got CLICKED YOU Type");

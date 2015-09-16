@@ -37,7 +37,7 @@ public class FarmerFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_farmer, container, false);
         ButterKnife.bind(this, view);
         //fields
-        List<Farmer> farmers= DataRepository.getAllFarmers(getActivity());
+        List<Farmer> farmers = DataRepository.getAllFarmers(getActivity());
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         rv.setAdapter(new FarmerRecyclerAdapter(getActivity(), farmers));
         return view;

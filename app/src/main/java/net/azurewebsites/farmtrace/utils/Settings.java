@@ -31,7 +31,7 @@ public class Settings implements SharedPreferences.OnSharedPreferenceChangeListe
     private static String versionName;
     private static int versionCode = 0;
     private static String packageName;
-    private static final String currentUserKey="currentUser";
+    private static final String currentUserKey = "currentUser";
     private static boolean syncShowNotifications;
 
     public static User getCurrentUser() {
@@ -122,9 +122,8 @@ public class Settings implements SharedPreferences.OnSharedPreferenceChangeListe
     }
 
 
-
-    public static void setHasPendingSync(boolean val){
-        Settings.pendingsynch=val;
+    public static void setHasPendingSync(boolean val) {
+        Settings.pendingsynch = val;
         final SharedPreferences.Editor edit = Settings.mSharedPreferences.edit();
         edit.putBoolean("pendingsynch", val);
         edit.commit();
@@ -165,7 +164,6 @@ public class Settings implements SharedPreferences.OnSharedPreferenceChangeListe
     }
 
 
-
     private Settings(final Context context) {
         super();
         Settings.mOwner = context.getApplicationContext();
@@ -188,16 +186,16 @@ public class Settings implements SharedPreferences.OnSharedPreferenceChangeListe
 
         //Settings.secureToken = Settings.mSharedPreferences.getString(secureTokenKey, "");
         //Settings.fbLoginToken = Settings.mSharedPreferences.getString(fbLoginTokenKey, null);
-        String custring = Settings.mSharedPreferences.getString(currentUserKey,null);
-        Settings.pendingsynch= Settings.mSharedPreferences.getBoolean("pendingsynch",false);
+        String custring = Settings.mSharedPreferences.getString(currentUserKey, null);
+        Settings.pendingsynch = Settings.mSharedPreferences.getBoolean("pendingsynch", false);
         //Settings.dummydataputin= Settings.mSharedPreferences.getBoolean("DummyDataGen",false);
         //Settings.playedCongrats= Settings.mSharedPreferences.getBoolean("playedCongrats",false);
-        Settings.syncShowNotifications= Settings.mSharedPreferences.getBoolean("syncShowNotifications",true);
+        Settings.syncShowNotifications = Settings.mSharedPreferences.getBoolean("syncShowNotifications", true);
 
-        if(custring != null){
-            currentUser=getCurrentUser();
+        if (custring != null) {
+            currentUser = getCurrentUser();
         } else {
-            currentUser=null;
+            currentUser = null;
         }
     }
 

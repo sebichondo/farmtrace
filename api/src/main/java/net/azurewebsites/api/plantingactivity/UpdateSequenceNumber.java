@@ -21,63 +21,49 @@ public class UpdateSequenceNumber {
     }
 
     /**
-     *
-     * @param UpdateSequenceNumberID
-     * The UpdateSequenceNumberID
+     * @param UpdateSequenceNumberID The UpdateSequenceNumberID
      */
     public void setUpdateSequenceNumberID(Integer UpdateSequenceNumberID) {
         this.UpdateSequenceNumberID = UpdateSequenceNumberID;
     }
 
     /**
-     *
-     * @return
-     * The USNDate
+     * @return The USNDate
      */
     public String getUSNDate() {
         return USNDate;
     }
 
     /**
-     *
-     * @param USNDate
-     * The USNDate
+     * @param USNDate The USNDate
      */
     public void setUSNDate(String USNDate) {
         this.USNDate = USNDate;
     }
 
     /**
-     *
-     * @return
-     * The UserID
+     * @return The UserID
      */
     public Integer getUserID() {
         return UserID;
     }
 
     /**
-     *
-     * @param UserID
-     * The UserID
+     * @param UserID The UserID
      */
     public void setUserID(Integer UserID) {
         this.UserID = UserID;
     }
 
     /**
-     *
-     * @return
-     * The User
+     * @return The User
      */
     public User getUser() {
         return User;
     }
 
     /**
-     *
-     * @param User
-     * The User
+     * @param User The User
      */
     public void setUser(User User) {
         this.User = User;

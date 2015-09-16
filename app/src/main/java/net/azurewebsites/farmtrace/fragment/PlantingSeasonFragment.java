@@ -37,9 +37,9 @@ public class PlantingSeasonFragment extends Fragment implements View.OnClickList
         View view = inflater.inflate(R.layout.fragment_farmer, container, false);
         ButterKnife.bind(this, view);
         //fields
-        List<PlantingSeason> plantingSeasonList= DataRepository.getAllPlantingSeasons(getActivity());
+        List<PlantingSeason> plantingSeasonList = DataRepository.getAllPlantingSeasons(getActivity());
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rv.setAdapter(new SeasonRecyclerAdapter(plantingSeasonList,getActivity()));
+        rv.setAdapter(new SeasonRecyclerAdapter(plantingSeasonList, getActivity()));
         return view;
     }
 }

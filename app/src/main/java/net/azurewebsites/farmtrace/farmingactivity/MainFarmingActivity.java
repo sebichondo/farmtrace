@@ -46,7 +46,7 @@ public class MainFarmingActivity extends BaseActivity implements HasComponent<Ma
         finish();
     }
 
-    public static Intent newInstance(Context context,Long fieldID,String fieldDesc,String farmerDesc) {
+    public static Intent newInstance(Context context, Long fieldID, String fieldDesc, String farmerDesc) {
         Intent intent = new Intent(context, MainFarmingActivity.class);
         intent.putExtra(FIELD_ID, fieldID);
         intent.putExtra(FIELD_DESC, fieldDesc);
@@ -81,11 +81,11 @@ public class MainFarmingActivity extends BaseActivity implements HasComponent<Ma
         this.setTitle("");
         this.toolbartitle.setText(getResources().getString(R.string.farmingActivities));
 
-        fieldID = getIntent().getLongExtra(FIELD_ID,0);
+        fieldID = getIntent().getLongExtra(FIELD_ID, 0);
         fieldDesc = getIntent().getStringExtra(FIELD_DESC);
         farmerDesc = getIntent().getStringExtra(FARMER_DESC);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_view, FarmingActivityFragment.newInstance(fieldID,fieldDesc, farmerDesc)).
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_view, FarmingActivityFragment.newInstance(fieldID, fieldDesc, farmerDesc)).
                 setTransition(FragmentTransaction.TRANSIT_NONE).
                 commit();
         this.toolbartitle.setText("Choose Farming Activity");

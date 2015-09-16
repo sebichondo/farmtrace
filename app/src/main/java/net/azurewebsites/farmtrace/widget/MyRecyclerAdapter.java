@@ -54,16 +54,16 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
     public void onBindViewHolder(MyRecyclerAdapter.CustomViewHolder holder, int position) {
         Field fieldItem = fieldItemList.get(position);
         DecimalFormat f = new DecimalFormat("##.000");
-        Double ha=fieldItem.getArea()/10000;
+        Double ha = fieldItem.getArea() / 10000;
         //Download image using picasso library
 
-        if(position < 10) {
+        if (position < 10) {
             Picasso.with(mContext).load(resourceIds.get(position))
                     .into(holder.farmerImage);
         }
 
         holder.farmDescription.setText("Field : " + fieldItem.getFieldName());
-        Farmer farmer= DataRepository.getFarmerById(mContext,fieldItem.getFarmerID());
+        Farmer farmer = DataRepository.getFarmerById(mContext, fieldItem.getFarmerID());
         holder.farmerDescription.setText("Farmer : " + farmer.getNames());
         holder.farmerAddress.setText("Field Size : " + f.format(ha) + " Ha");
         holder.txtFieldID.setText(fieldItem.getFieldID().toString());
@@ -95,18 +95,18 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Cu
 
         public CustomViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            fieldDesc= farmDescription.getText().toString();
-            farmerDesc=farmerDescription.getText().toString();
-            fieldID=fieldID.valueOf(txtFieldID.getText().toString());
+            fieldDesc = farmDescription.getText().toString();
+            farmerDesc = farmerDescription.getText().toString();
+            fieldID = fieldID.valueOf(txtFieldID.getText().toString());
             Log.d("Farming Dashboard", "FIELD ID" + fieldID);
-            Intent intent=FarmingDashboardActivity.newInstance(v.getContext(),fieldID, fieldDesc, farmerDesc);
-            v.getContext().startActivity (intent);
+            Intent intent = FarmingDashboardActivity.newInstance(v.getContext(), fieldID, fieldDesc, farmerDesc);
+            v.getContext().startActivity(intent);
         }
     }
 

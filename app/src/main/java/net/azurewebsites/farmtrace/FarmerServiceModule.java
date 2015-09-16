@@ -15,7 +15,7 @@ import dagger.Provides;
 public class FarmerServiceModule {
     @Provides
     @MainScope
-    IFarmerService provideFarmerService(IApiService apiService){
+    IFarmerService provideFarmerService(IApiService apiService) {
         return new FarmerService(apiService);
     }
 }

@@ -14,54 +14,42 @@ public class CropResponse {
     private String CropVariety;
 
     /**
-     *
-     * @return
-     * The CropID
+     * @return The CropID
      */
     public Long getCropID() {
         return CropID;
     }
 
     /**
-     *
-     * @param CropID
-     * The CropID
+     * @param CropID The CropID
      */
     public void setCropID(Long CropID) {
         this.CropID = CropID;
     }
 
     /**
-     *
-     * @return
-     * The CropName
+     * @return The CropName
      */
     public String getCropName() {
         return CropName;
     }
 
     /**
-     *
-     * @param CropName
-     * The CropName
+     * @param CropName The CropName
      */
     public void setCropName(String CropName) {
         this.CropName = CropName;
     }
 
     /**
-     *
-     * @return
-     * The CropVariety
+     * @return The CropVariety
      */
     public String getCropVariety() {
         return CropVariety;
     }
 
     /**
-     *
-     * @param CropVariety
-     * The CropVariety
+     * @param CropVariety The CropVariety
      */
     public void setCropVariety(String CropVariety) {
         this.CropVariety = CropVariety;

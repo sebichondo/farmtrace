@@ -25,8 +25,9 @@ public class USNService implements IUSNService {
     }
 
     @Override
-    public void saveUSNs(Long usnID, Date usnDate, Long usnUserID,Long appUSNID, Bus bus) {
+    public void saveUSNs(Long usnID, Date usnDate, Long usnUserID, Long appUSNID, Bus bus) {
 
-        apiService.saveUpdateSequenceNumbers(new USN(usnID,usnDate,usnUserID,appUSNID),new RestCallback<USNResponse>(bus){});
+        apiService.saveUpdateSequenceNumbers(new USN(usnID, usnDate, usnUserID, appUSNID), new RestCallback<USNResponse>(bus) {
+        });
     }
 }

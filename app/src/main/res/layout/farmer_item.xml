@@ -7,15 +7,13 @@
     resauto:cardUseCompatPadding="true"
     resauto:cardElevation="4dp"
     resauto:cardMaxElevation="4dp"
-    resauto:cardCornerRadius="4dp"
-    >
+    resauto:cardCornerRadius="4dp">
 
     <RelativeLayout
         android:layout_marginTop="@dimen/drawer_icon_size"
         android:layout_width="match_parent"
         android:background="?android:attr/selectableItemBackground"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <net.azurewebsites.farmtrace.widget.RoundedImageView
             android:id="@+id/farm_image"
@@ -23,8 +21,7 @@
             android:layout_height="@dimen/profile_pic_size"
             android:layout_gravity="center_vertical"
             android:scaleType="centerInside"
-            android:layout_marginLeft="@dimen/ui_spacing_small"
-            />
+            android:layout_marginLeft="@dimen/ui_spacing_small" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -33,8 +30,7 @@
             android:layout_toRightOf="@+id/farm_image"
             android:layout_alignParentTop="true"
             android:textSize="@dimen/medium_text"
-            android:paddingLeft="@dimen/ui_spacing_large"
-            />
+            android:paddingLeft="@dimen/ui_spacing_large" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -59,6 +55,7 @@
             android:layout_marginTop="@dimen/icon_farmer"
 
             />
+
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="@dimen/icon_width"

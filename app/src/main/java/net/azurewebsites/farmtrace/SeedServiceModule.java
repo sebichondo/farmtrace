@@ -14,7 +14,7 @@ import dagger.Provides;
 public class SeedServiceModule {
     @Provides
     @MainScope
-    ISeedService provideSeedsService(IApiService apiService){
+    ISeedService provideSeedsService(IApiService apiService) {
         return new SeedService(apiService);
     }
 }

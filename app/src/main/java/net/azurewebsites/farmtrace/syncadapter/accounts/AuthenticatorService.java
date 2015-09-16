@@ -10,6 +10,7 @@ import android.app.Service;
 public class AuthenticatorService extends Service {
     private static final Object lock = new Object();
     private Authenticator auth;
+
     @Override
     public void onCreate() {
         synchronized (lock) {
@@ -18,6 +19,7 @@ public class AuthenticatorService extends Service {
             }
         }
     }
+
     @Override
     public IBinder onBind(Intent intent) {
         return auth.getIBinder();

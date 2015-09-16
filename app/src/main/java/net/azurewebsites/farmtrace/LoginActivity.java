@@ -59,7 +59,7 @@ public class LoginActivity extends BaseActivity implements HasComponent<MainComp
 
     @OnClick(R.id.btnLogIn)
     public void login() {
-        userName= txtUserName.getText().toString();
+        userName = txtUserName.getText().toString();
         String userPassword = txtPassword.getText().toString();
         loggedInUser = DataRepository.getUserByUserName(this, userName);
 
@@ -76,15 +76,14 @@ public class LoginActivity extends BaseActivity implements HasComponent<MainComp
     public void onFetchUsersResponse(ArrayList<UserResponse> userResponses) {
         if (!userResponses.isEmpty() && userResponses.get(0) instanceof UserResponse) {
             for (UserResponse userResponse : userResponses) {
-                if (userResponse.getUserName().equals(userName)){
-                    loggedInUser=new User(userResponse.getUserID(),userResponse.getUserName()
-                            ,userResponse.getUserPassword(),userResponse.getUserType(),userResponse.getUserStatus(),
+                if (userResponse.getUserName().equals(userName)) {
+                    loggedInUser = new User(userResponse.getUserID(), userResponse.getUserName()
+                            , userResponse.getUserPassword(), userResponse.getUserType(), userResponse.getUserStatus(),
                             "");
                     Settings.setCurrentUser(loggedInUser);
                     configureAccountInfo();
                     startActivity(MainActivity.newIntent(this));
-                }
-                else
+                } else
                     showToast("Invalid user credentials");
             }
         }

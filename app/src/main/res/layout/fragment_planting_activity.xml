@@ -53,9 +53,9 @@
         android:text="@string/inputType"
         android:background="@drawable/round_rect_shape"
         android:paddingBottom="@dimen/ui_padding"
-        android:layout_marginBottom="@dimen/drawer_icon_size"
-        />
-    <requestFocus/>
+        android:layout_marginBottom="@dimen/drawer_icon_size" />
+
+    <requestFocus />
 
     <TextView
         android:id="@+id/txtQuantity"
@@ -82,13 +82,13 @@
         android:layout_marginBottom="@dimen/drawer_icon_size"
         android:textSize="@dimen/medium_text" />
 
-    <Button android:id="@+id/btnSave"
+    <Button
+        android:id="@+id/btnSave"
         android:layout_width="fill_parent"
         android:layout_marginTop="50dp"
         android:layout_height="50dp"
         android:background="@drawable/green_button"
         android:text="@string/save"
         fontPath="fonts/kontrapunkt_light.otf"
-        android:textColor="@android:color/white"
-        />
+        android:textColor="@android:color/white" />
 </LinearLayout>
